@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La réforme en bref | E-Invoicing Academy</title>
+    <link rel="icon" href="./assets/favicon-Fluxym-V2.png" sizes="32x32" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Miriam+Libre:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/pages.css">
+</head>
+<body>
+
+    <nav id="main-nav"></nav>
+
+    <header class="page-hero">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="./index.html">Accueil</a> <span>/</span> <span>Niveau 1 — Découverte</span>
+            </div>
+            <span class="hero-badge">Niveau 1 — Découverte</span>
+            <h1>La réforme en bref</h1>
+            <p>Tout ce qu'il faut savoir en une seule page. Le résumé et le glossaire des 10 termes essentiels.</p>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <div class="page-container page-layout">
+
+            <aside class="page-sidebar">
+                <div class="sidebar-sticky">
+                    <h4>Sur cette page</h4>
+                    <ul class="sidebar-nav">
+                        <li><a href="#cquoi" class="sidebar-link active">C'est quoi ?</a></li>
+                        <li><a href="#pourquoi" class="sidebar-link">Pourquoi ?</a></li>
+                        <li><a href="#qui" class="sidebar-link">Qui ?</a></li>
+                        <li><a href="#quand" class="sidebar-link">Quand ?</a></li>
+                        <li><a href="#comment" class="sidebar-link">Comment ?</a></li>
+                        <li><a href="#acteurs" class="sidebar-link">Les acteurs</a></li>
+                        <li><a href="#einvoicing-ereporting" class="sidebar-link">E-invoicing vs E-reporting</a></li>
+                        <li><a href="#formats" class="sidebar-link">Les formats</a></li>
+                        <li><a href="#agir" class="sidebar-link">Que faire ?</a></li>
+                        <li><a href="#glossaire" class="sidebar-link">Glossaire</a></li>
+                    </ul>
+                    <div class="sidebar-nav-pages">
+                        <h4>Parcours Niveau 1</h4>
+                        <a href="./comprendre.html" class="sidebar-page">📖 Comprendre</a>
+                        <a href="./calendrier.html" class="sidebar-page">📅 Calendrier</a>
+                        <a href="./en-bref.html" class="sidebar-page active">⚡ En bref</a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="page-content">
+
+                <section id="cquoi" class="content-section brief-section">
+                    <div class="brief-icon">📄</div>
+                    <h2>C'est quoi ?</h2>
+                    <p>La réforme impose à toutes les entreprises assujetties à la TVA en France d'<strong>émettre, transmettre et recevoir leurs factures sous forme de données structurées</strong> (fichiers XML normalisés), via des Plateformes Agréées par l'État. Les données de chaque facture sont automatiquement transmises à l'administration fiscale.</p>
+                </section>
+
+                <section id="pourquoi" class="content-section brief-section">
+                    <div class="brief-icon">🎯</div>
+                    <h2>Pourquoi ?</h2>
+                    <p>Quatre objectifs : <strong>lutter contre la fraude à la TVA</strong> (20-25 Mds€/an de manque à gagner), <strong>simplifier les déclarations</strong> (pré-remplissage TVA), <strong>moderniser les échanges</strong> (gains de productivité), et <strong>piloter l'économie en temps réel</strong>.</p>
+                </section>
+
+                <section id="qui" class="content-section brief-section">
+                    <div class="brief-icon">🏢</div>
+                    <h2>Qui est concerné ?</h2>
+                    <p><strong>Toutes les entreprises assujetties à la TVA en France</strong>, sans exception : grandes entreprises, ETI, PME, TPE, micro-entreprises, indépendants, professions libérales, auto-entrepreneurs. Soit environ <strong>4,5 millions d'entreprises</strong>.</p>
+                </section>
+
+                <section id="quand" class="content-section brief-section">
+                    <div class="brief-icon">📅</div>
+                    <h2>Quand ?</h2>
+                    <div class="brief-dates">
+                        <div class="brief-date"><strong>Juillet 2025</strong> — Échanges volontaires (les entreprises prêtes peuvent commencer)</div>
+                        <div class="brief-date"><strong>1er sept. 2026</strong> — Réception obligatoire pour TOUS + Émission pour GE et ETI</div>
+                        <div class="brief-date"><strong>1er sept. 2027</strong> — Émission obligatoire pour TOUS (PME, TPE, micro)</div>
+                    </div>
+                </section>
+
+                <section id="comment" class="content-section brief-section">
+                    <div class="brief-icon">🔀</div>
+                    <h2>Comment ça marche ? Le « schéma en Y »</h2>
+                    <div class="schema-y-simple">
+                        <div class="sy-step">
+                            <span class="sy-num">1</span>
+                            <p>L'<strong>émetteur</strong> crée sa facture et la transmet à sa <strong>Plateforme Agréée d'émission</strong></p>
+                        </div>
+                        <div class="sy-step">
+                            <span class="sy-num">2</span>
+                            <p>La PA consulte l'<strong>annuaire central</strong> (PPF), valide la facture et la <strong>transmet à la PA de l'acheteur</strong></p>
+                        </div>
+                        <div class="sy-step">
+                            <span class="sy-num">3</span>
+                            <p>En parallèle, la PA <strong>extrait les données réglementaires</strong> et les transmet au PPF → DGFiP</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="acteurs" class="content-section brief-section">
+                    <div class="brief-icon">👥</div>
+                    <h2>Les acteurs clés</h2>
+                    <div class="actors-brief">
+                        <div class="actor-card-brief">
+                            <h4>PPF <span class="actor-full">Portail Public de Facturation</span></h4>
+                            <p>Le service public qui gère l'<strong>annuaire central</strong> et collecte les <strong>données fiscales</strong>. Opéré par l'AIFE. Depuis octobre 2024, il ne fait plus transiter les factures.</p>
+                        </div>
+                        <div class="actor-card-brief">
+                            <h4>PA <span class="actor-full">Plateforme Agréée</span></h4>
+                            <p>Opérateur privé <strong>immatriculé par la DGFiP</strong> qui transmet les factures entre entreprises et les données au PPF. ~129 PA immatriculées ou en cours.</p>
+                        </div>
+                        <div class="actor-card-brief">
+                            <h4>SC <span class="actor-full">Solution Compatible</span></h4>
+                            <p>Logiciel (ERP, facturation, compta…) <strong>compatible avec les formats</strong> de la réforme. Se connecte à une PA pour émettre/recevoir.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="einvoicing-ereporting" class="content-section brief-section">
+                    <div class="brief-icon">⚖️</div>
+                    <h2>E-invoicing vs. E-reporting</h2>
+                    <div class="comparison-table">
+                        <table>
+                            <thead>
+                                <tr><th></th><th>E-invoicing</th><th>E-reporting</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Quoi</strong></td><td>Factures électroniques structurées</td><td>Données de transactions et paiements</td></tr>
+                                <tr><td><strong>Opérations</strong></td><td>B2B domestique (France ↔ France)</td><td>B2B international + B2C</td></tr>
+                                <tr><td><strong>Logique</strong></td><td>Les factures circulent via les PA</td><td>Les données sont déclarées séparément</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="formats" class="content-section brief-section">
+                    <div class="brief-icon">📐</div>
+                    <h2>Les formats acceptés</h2>
+                    <p>Trois formats basés sur la <strong>norme européenne EN 16931</strong> :</p>
+                    <div class="formats-brief">
+                        <div class="format-chip"><strong>UBL 2.1</strong> — Standard OASIS (XML pur)</div>
+                        <div class="format-chip"><strong>CII D22B</strong> — Standard UN/CEFACT (XML pur)</div>
+                        <div class="format-chip"><strong>Factur-X</strong> — Hybride PDF + XML (le meilleur des deux mondes)</div>
+                    </div>
+                </section>
+
+                <section id="agir" class="content-section brief-section">
+                    <div class="brief-icon">✅</div>
+                    <h2>Que dois-je faire maintenant ?</h2>
+                    <div class="action-steps">
+                        <div class="action-step">
+                            <span class="action-num">1</span>
+                            <div><strong>Identifiez votre catégorie</strong> (GE, ETI, PME, TPE, micro) pour connaître votre échéance — et rappelez-vous que la <strong>réception est obligatoire pour tous dès sept. 2026</strong>.</div>
+                        </div>
+                        <div class="action-step">
+                            <span class="action-num">2</span>
+                            <div><strong>Contactez votre éditeur de logiciel</strong> (facturation, compta, ERP) pour savoir s'il est « Solution Compatible » et à quelle PA il est connecté.</div>
+                        </div>
+                        <div class="action-step">
+                            <span class="action-num">3</span>
+                            <div><strong>Choisissez votre Plateforme Agréée</strong> — consultez la liste officielle sur le site de la DGFiP.</div>
+                        </div>
+                        <div class="action-step">
+                            <span class="action-num">4</span>
+                            <div><strong>Testez dès que possible</strong> : les échanges volontaires sont ouverts depuis juillet 2025. Plus vous testez tôt, plus la transition sera fluide.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="glossaire" class="content-section">
+                    <h2>Mini-glossaire : les 10 termes essentiels</h2>
+                    <div class="glossary-grid">
+                        <div class="glossary-item">
+                            <dt>PPF</dt>
+                            <dd>Portail Public de Facturation. Service public qui gère l'annuaire des entreprises et collecte les données fiscales des factures. Opéré par l'AIFE pour le compte de la DGFiP.</dd>
+                        </div>
+                        <div class="glossary-item">
+                            <dt>PA</dt>
+                            <dd>Plateforme Agréée. Opérateur privé autorisé par l'État à transmettre les factures électroniques entre entreprises. Chaque entreprise doit en choisir au moins une (~129 immatriculées).</dd>
+                        </div>
+                        <div class="glossary-item">
+                            <dt>SC</dt>
+                            <dd>Solution Compatible. Logiciel (facturation, comptabilité, ERP, caisse…) capable de créer et traiter des factures aux formats de la réforme. Se connecte à une PA.</dd>
+                        </div>
+                        <div class="glossary-item">
+                            <dt>UBL</dt>
+                            <dd>Universal Business Language. Format XML de l'organisation OASIS, très utilisé en Europe (Pays-Bas, Belgique, pays nordiques).</dd>
+                        </div>
+                        <div class="glossary-item">
+                            <dt>CII</dt>
+                            <dd>Cross Industry Invoice. Format XML de l'ONU (UN/CEFACT), utilisé en France et en Allemagne.</dd>
+                        </div>
+                        <div class="glossary-item">
+                            <dt>Factur-X</dt>
+                            <dd>Format hybride franco-allemand : un PDF lisible + un XML structuré attaché. Combine le confort visuel et l'automatisation.</dd>
+                        </div>
+                        <div class="glossary-item">
+                            <dt>E-invoicing</dt>
+                            <dd>Obligation d'émettre/recevoir des factures structurées. Concerne les transactions B2B domestiques entre assujettis TVA.</dd>
+                        </div>
+                        <div class="glossary-item">
+                            <dt>E-reporting</dt>
+                            <dd>Obligation de transmettre les données des transactions hors e-invoicing : B2B international, B2C, données de paiement.</dd>
+                        </div>
+                        <div class="glossary-item">
+                            <dt>BT</dt>
+                            <dd>Business Term. Champ normalisé de la facture (ex: BT-1 = numéro de facture, BT-2 = date d'émission). Les briques du langage commun.</dd>
+                        </div>
+                        <div class="glossary-item">
+                            <dt>Schéma en Y</dt>
+                            <dd>Architecture du système français : les factures circulent entre PA (les deux branches du Y), les données fiscales convergent vers le PPF (le pied du Y).</dd>
+                        </div>
+                    </div>
+                </section>
+
+                <nav class="page-nav-bottom">
+                    <a href="./calendrier.html" class="nav-prev">
+                        <span class="nav-label">Page précédente</span>
+                        <span class="nav-title">← 📅 Calendrier</span>
+                    </a>
+                    <div class="nav-next nav-next--disabled">
+                        <span class="nav-label">Prochaine étape</span>
+                        <span class="nav-title">🟢 Niveau 2 — Bientôt disponible</span>
+                    </div>
+                </nav>
+            </article>
+        </div>
+    </main>
+
+    <footer id="main-footer"></footer>
+    <script src="./js/nav.js"></script>
+    <script src="./js/animations.js"></script>
+</body>
+</html>

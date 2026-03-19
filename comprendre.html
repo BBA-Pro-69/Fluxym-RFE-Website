@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprendre la facture électronique | E-Invoicing Academy</title>
+    <link rel="icon" href="./assets/favicon-Fluxym-V2.png" sizes="32x32" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Miriam+Libre:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/pages.css">
+</head>
+<body>
+
+    <nav id="main-nav"></nav>
+
+    <!-- PAGE HERO -->
+    <header class="page-hero">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="./index.html">Accueil</a> <span>/</span> <span>Niveau 1 — Découverte</span>
+            </div>
+            <span class="hero-badge">Niveau 1 — Découverte</span>
+            <h1>Qu'est-ce que la facture électronique ?</h1>
+            <p>Pourquoi un simple PDF ne suffit plus, et comment la France rejoint le mouvement européen de dématérialisation.</p>
+        </div>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="page-main">
+        <div class="page-container page-layout">
+
+            <!-- SIDEBAR NAVIGATION -->
+            <aside class="page-sidebar">
+                <div class="sidebar-sticky">
+                    <h4>Sur cette page</h4>
+                    <ul class="sidebar-nav">
+                        <li><a href="#pourquoi" class="sidebar-link active">Pourquoi ça vous concerne</a></li>
+                        <li><a href="#evolution" class="sidebar-link">L'évolution en 5 étapes</a></li>
+                        <li><a href="#pdf-vs-efacture" class="sidebar-link">PDF ≠ e-facture</a></li>
+                        <li><a href="#objectifs" class="sidebar-link">Les 4 objectifs</a></li>
+                        <li><a href="#europe" class="sidebar-link">Le contexte européen</a></li>
+                        <li><a href="#chiffres" class="sidebar-link">Les chiffres clés</a></li>
+                        <li><a href="#resume" class="sidebar-link">En résumé</a></li>
+                    </ul>
+                    <div class="sidebar-nav-pages">
+                        <h4>Parcours Niveau 1</h4>
+                        <a href="./comprendre.html" class="sidebar-page active">📖 Comprendre</a>
+                        <a href="./calendrier.html" class="sidebar-page">📅 Calendrier</a>
+                        <a href="./en-bref.html" class="sidebar-page">⚡ En bref</a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- CONTENU ARTICLE -->
+            <article class="page-content">
+
+                <!-- SECTION : Pourquoi -->
+                <section id="pourquoi" class="content-section">
+                    <h2>Pourquoi ce sujet vous concerne (oui, vous aussi)</h2>
+                    <p>Vous dirigez une entreprise, vous êtes indépendant, auto-entrepreneur, profession libérale ? Alors <strong>la facture électronique obligatoire vous concerne directement</strong>. À partir de septembre 2026, la façon dont les entreprises françaises s'échangent des factures va fondamentalement changer.</p>
+                    <p>Ce n'est pas une option. Ce n'est pas un « truc de grandes entreprises ». C'est une obligation légale qui touche <strong>toutes les entreprises assujetties à la TVA</strong>, de la micro-entreprise au groupe du CAC 40, soit environ <strong>4,5 millions d'entreprises</strong> en France.</p>
+                    
+                    <div class="callout callout--warning">
+                        <div class="callout-icon">⚠️</div>
+                        <div class="callout-content">
+                            <strong>Point clé :</strong> Envoyer un PDF par e-mail ne sera plus suffisant. La réforme exige des <strong>données structurées</strong> dans des formats normalisés.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION : Évolution -->
+                <section id="evolution" class="content-section">
+                    <h2>De la facture papier à la facture électronique</h2>
+                    <p>Pour comprendre ce qui change, remontons le fil de l'évolution :</p>
+
+                    <div class="evolution-timeline">
+                        <div class="evo-step" data-step="1">
+                            <div class="evo-marker">
+                                <span class="evo-number">1</span>
+                                <span class="evo-era">Avant 2000</span>
+                            </div>
+                            <div class="evo-content">
+                                <h3>📝 La facture papier</h3>
+                                <p>Le classique : une facture imprimée, envoyée par courrier, classée dans un dossier. Lent, coûteux (impression, affranchissement, archivage), et source d'erreurs.</p>
+                            </div>
+                        </div>
+
+                        <div class="evo-step" data-step="2">
+                            <div class="evo-marker">
+                                <span class="evo-number">2</span>
+                                <span class="evo-era">Années 2000</span>
+                            </div>
+                            <div class="evo-content">
+                                <h3>📷 La facture scannée</h3>
+                                <p>On scanne le papier pour l'envoyer par e-mail. C'est plus rapide, mais c'est juste une <strong>photo du papier</strong> : aucune donnée exploitable automatiquement.</p>
+                            </div>
+                        </div>
+
+                        <div class="evo-step" data-step="3">
+                            <div class="evo-marker">
+                                <span class="evo-number">3</span>
+                                <span class="evo-era">Années 2010</span>
+                            </div>
+                            <div class="evo-content">
+                                <h3>📑 La facture PDF</h3>
+                                <p>On crée un fichier PDF directement depuis un logiciel. C'est lisible par un humain, mais pour un ordinateur, c'est un document figé : il faut tout <strong>ressaisir manuellement</strong>.</p>
+                            </div>
+                        </div>
+
+                        <div class="evo-step" data-step="4">
+                            <div class="evo-marker">
+                                <span class="evo-number">4</span>
+                                <span class="evo-era">Années 2015</span>
+                            </div>
+                            <div class="evo-content">
+                                <h3>🔏 Le PDF signé</h3>
+                                <p>On ajoute une signature électronique au PDF pour garantir son authenticité. Un progrès juridique, mais le contenu reste un « bloc opaque » pour les systèmes informatiques.</p>
+                            </div>
+                        </div>
+
+                        <div class="evo-step evo-step--highlight" data-step="5">
+                            <div class="evo-marker">
+                                <span class="evo-number">5</span>
+                                <span class="evo-era">2026</span>
+                            </div>
+                            <div class="evo-content">
+                                <h3>⚡ La facture électronique structurée</h3>
+                                <p>Le grand saut : la facture devient un <strong>fichier de données structurées en XML</strong>. Chaque information (numéro, date, montants, identités…) est codée dans des champs normalisés, lisibles et exploitables <strong>automatiquement</strong> par n'importe quel logiciel compatible.</p>
+                                <div class="callout callout--info">
+                                    <div class="callout-icon">💡</div>
+                                    <div class="callout-content">
+                                        <strong>L'analogie :</strong> Imaginez la différence entre une <em>photo</em> d'un tableau Excel et le <em>fichier Excel</em> lui-même. La photo, c'est le PDF. Le fichier Excel, c'est la facture électronique structurée. L'un est juste une image, l'autre contient des données vivantes.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION : Comparatif -->
+                <section id="pdf-vs-efacture" class="content-section">
+                    <h2>Pourquoi un PDF n'est PAS une facture électronique</h2>
+                    <p>C'est <strong>LA</strong> confusion la plus fréquente. Précisons :</p>
+                    
+                    <div class="comparison-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Critère</th>
+                                    <th class="col-old">PDF classique / PDF signé</th>
+                                    <th class="col-new">Facture électronique (réforme)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Format</strong></td>
+                                    <td class="col-old">Document figé (image de texte)</td>
+                                    <td class="col-new">Données structurées en XML</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Lisibilité machine</strong></td>
+                                    <td class="col-old"><span class="status-no">✗</span> Nécessite OCR ou ressaisie</td>
+                                    <td class="col-new"><span class="status-yes">✓</span> Chaque donnée est identifiée</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Traitement automatique</strong></td>
+                                    <td class="col-old"><span class="status-no">✗</span> Intervention humaine requise</td>
+                                    <td class="col-new"><span class="status-yes">✓</span> Intégration directe en comptabilité</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Conformité réforme 2026</strong></td>
+                                    <td class="col-old"><span class="status-no">✗</span> Non accepté</td>
+                                    <td class="col-new"><span class="status-yes">✓</span> Formats UBL, CII ou Factur-X</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Transmission à l'État</strong></td>
+                                    <td class="col-old"><span class="status-no">✗</span> Non transmissible au PPF</td>
+                                    <td class="col-new"><span class="status-yes">✓</span> Données automatiquement extraites</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- SECTION : Les 4 objectifs -->
+                <section id="objectifs" class="content-section">
+                    <h2>Les 4 objectifs officiels de la réforme</h2>
+                    <p>La réforme n'est pas un caprice administratif. Elle poursuit <strong>quatre objectifs majeurs</strong> :</p>
+
+                    <div class="objectives-grid">
+                        <div class="objective-card">
+                            <div class="objective-number">01</div>
+                            <div class="objective-icon">🛡️</div>
+                            <h3>Lutter contre la fraude à la TVA</h3>
+                            <p>La fraude à la TVA coûte entre <strong>20 et 25 milliards d'euros par an</strong> à la France. Avec la facturation électronique, chaque facture est transmise en temps réel à l'administration, rendant les circuits de fraude (carrousels TVA) beaucoup plus difficiles.</p>
+                        </div>
+                        <div class="objective-card">
+                            <div class="objective-number">02</div>
+                            <div class="objective-icon">📋</div>
+                            <h3>Simplifier la vie des entreprises</h3>
+                            <p>À terme, les déclarations de TVA pourront être <strong>pré-remplies</strong> par l'administration. Fini les heures de formulaires manuels. Un gain de temps particulièrement précieux pour les TPE/PME sans service comptable dédié.</p>
+                        </div>
+                        <div class="objective-card">
+                            <div class="objective-number">03</div>
+                            <div class="objective-icon">🚀</div>
+                            <h3>Moderniser les échanges</h3>
+                            <p>Moins d'erreurs de saisie, moins de factures perdues, des délais de paiement raccourcis. Résultat : <strong>moins de charge administrative, plus de productivité</strong>, une trésorerie mieux pilotée.</p>
+                        </div>
+                        <div class="objective-card">
+                            <div class="objective-number">04</div>
+                            <div class="objective-icon">📊</div>
+                            <h3>Piloter l'économie en temps réel</h3>
+                            <p>L'État dispose d'une <strong>vision continue de l'activité économique</strong> : anticipation des crises, suivi sectoriel, ajustement des aides — sans attendre les déclarations trimestrielles.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION : Europe -->
+                <section id="europe" class="content-section">
+                    <h2>Le contexte européen : la France n'est pas seule</h2>
+                    <p>La France s'inscrit dans un mouvement européen profond :</p>
+
+                    <div class="europe-grid">
+                        <div class="europe-card">
+                            <div class="europe-flag">🇮🇹</div>
+                            <h3>Italie — Pionnière</h3>
+                            <p>E-invoicing B2B obligatoire depuis <strong>janvier 2019</strong> via le système SDI. Hausse significative des recettes TVA constatée.</p>
+                            <span class="europe-status europe-status--live">✓ En production</span>
+                        </div>
+                        <div class="europe-card">
+                            <div class="europe-flag">🇵🇱</div>
+                            <h3>Pologne — KSeF</h3>
+                            <p>Système national déployé progressivement à partir de <strong>2026-2027</strong>. Calendrier très similaire à la France.</p>
+                            <span class="europe-status europe-status--soon">En déploiement</span>
+                        </div>
+                        <div class="europe-card">
+                            <div class="europe-flag">🇪🇸</div>
+                            <h3>Espagne — VeriFactu</h3>
+                            <p>Obligation progressive entre <strong>2026 et 2028</strong> selon la taille des entreprises.</p>
+                            <span class="europe-status europe-status--soon">En préparation</span>
+                        </div>
+                        <div class="europe-card">
+                            <div class="europe-flag">🇧🇪</div>
+                            <h3>Belgique</h3>
+                            <p>E-invoicing B2B obligatoire depuis <strong>janvier 2026</strong>, via le réseau PEPPOL.</p>
+                            <span class="europe-status europe-status--live">✓ En production</span>
+                        </div>
+                        <div class="europe-card europe-card--wide">
+                            <div class="europe-flag">🇪🇺</div>
+                            <h3>Directive ViDA (VAT in the Digital Age)</h3>
+                            <p>La Commission européenne prévoit la <strong>généralisation du e-invoicing dans tous les États membres</strong>. Objectif : harmoniser les systèmes nationaux et créer un cadre commun interopérable.</p>
+                            <span class="europe-status europe-status--planned">Directive en cours</span>
+                        </div>
+                    </div>
+
+                    <div class="callout callout--info">
+                        <div class="callout-icon">🌍</div>
+                        <div class="callout-content">
+                            <strong>Ce qu'il faut retenir :</strong> La facturation électronique obligatoire est une <strong>convergence européenne</strong>. Se préparer maintenant, c'est aussi se préparer à commercer avec l'ensemble de l'UE dans un cadre numérique unifié.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION : Chiffres -->
+                <section id="chiffres" class="content-section">
+                    <h2>Les chiffres clés</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card"><div class="stat-value">~4,5M</div><div class="stat-label">Entreprises assujetties TVA en France</div></div>
+                        <div class="stat-card"><div class="stat-value">~2,5 Mds</div><div class="stat-label">Factures B2B par an en France</div></div>
+                        <div class="stat-card"><div class="stat-value">20-25 Mds€</div><div class="stat-label">Écart TVA annuel (France)</div></div>
+                        <div class="stat-card"><div class="stat-value">~60 Mds€</div><div class="stat-label">Écart TVA annuel (Europe)</div></div>
+                        <div class="stat-card"><div class="stat-value">~129</div><div class="stat-label">Plateformes Agréées immatriculées</div></div>
+                        <div class="stat-card"><div class="stat-value">3</div><div class="stat-label">Formats acceptés (UBL, CII, Factur-X)</div></div>
+                    </div>
+                </section>
+
+                <!-- SECTION : Résumé -->
+                <section id="resume" class="content-section">
+                    <h2>En résumé</h2>
+                    <div class="summary-box">
+                        <p>La facturation électronique obligatoire, c'est le passage d'un monde où les factures sont des <strong>« documents »</strong> (papier, PDF) à un monde où les factures sont des <strong>données structurées</strong>, transmises automatiquement via des plateformes agréées, et partagées en temps réel avec l'administration fiscale.</p>
+                        <p>L'objectif : <strong>moins de fraude, moins de paperasse, plus d'efficacité</strong> — pour l'État comme pour les entreprises.</p>
+                    </div>
+                </section>
+
+                <!-- NAVIGATION BAS DE PAGE -->
+                <nav class="page-nav-bottom">
+                    <div></div>
+                    <a href="./calendrier.html" class="nav-next">
+                        <span class="nav-label">Page suivante</span>
+                        <span class="nav-title">📅 Calendrier — Quand suis-je concerné ? →</span>
+                    </a>
+                </nav>
+            </article>
+        </div>
+    </main>
+
+    <footer id="main-footer"></footer>
+    <script src="./js/nav.js"></script>
+    <script src="./js/animations.js"></script>
+</body>
+</html>
