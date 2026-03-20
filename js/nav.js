@@ -74,6 +74,7 @@ const SiteNav = {
                         <li><a href="./ressources.html">📚 Liens & outils</a></li>
                     </ul>
                 </li>
+                <li><a href="./generateur.html" class="nav-link nav-cta">🧪 Générateur</a></li>
             </ul>
         </div>`;
     },
@@ -135,12 +136,14 @@ const SiteNav = {
                             <li><a href="./glossaire.html">Glossaire A→Z</a></li>
                             <li><a href="./faq.html">FAQ</a></li>
                             <li><a href="./ressources.html">Liens & outils</a></li>
+                            <li><a href="./generateur.html">🧪 Générateur UBL</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
                         <h4>Sources officielles</h4>
                         <ul>
                             <li><a href="https://www.impots.gouv.fr/professionnel/facturation-electronique" target="_blank">DGFiP ↗</a></li>
+                            <li><a href="https://norminfo.afnor.org/norme/xp-z12-012" target="_blank">AFNOR ↗</a></li>
                             <li><a href="https://chorus-pro.gouv.fr" target="_blank">Chorus Pro ↗</a></li>
                             <li><a href="https://www.fnfe-mpe.org" target="_blank">FNFE-MPE ↗</a></li>
                             <li><a href="https://piste.gouv.fr" target="_blank">PISTE ↗</a></li>

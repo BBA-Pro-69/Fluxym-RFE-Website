@@ -34,12 +34,14 @@
                     <ul class="sidebar-nav">
                         <li><a href="#intro" class="sidebar-link active">Pourquoi le e-reporting</a></li>
                         <li><a href="#difference" class="sidebar-link">vs E-invoicing</a></li>
+                        <li><a href="#simulateur" class="sidebar-link">🔍 Simulateur</a></li>
                         <li><a href="#flux101" class="sidebar-link">Flux 10.1 — B2B international</a></li>
                         <li><a href="#flux102" class="sidebar-link">Flux 10.2 — Paiements</a></li>
                         <li><a href="#flux103" class="sidebar-link">Flux 10.3 — Transactions agrégées</a></li>
                         <li><a href="#flux104" class="sidebar-link">Flux 10.4 — Paiements agrégés</a></li>
                         <li><a href="#mecanisme" class="sidebar-link">Le mécanisme</a></li>
                         <li><a href="#calendrier" class="sidebar-link">Calendrier</a></li>
+                        <li><a href="#tableau-ereporting" class="sidebar-link">📊 Tableau Art. 290</a></li>
                         <li><a href="#recap" class="sidebar-link">Récapitulatif</a></li>
                     </ul>
                     <div class="sidebar-nav-pages">
@@ -54,12 +56,14 @@
 
             <article class="page-content">
 
+                <!-- INTRO -->
                 <section id="intro" class="content-section">
                     <h2>Pourquoi le e-reporting existe</h2>
                     <p>Le e-invoicing couvre les factures B2B domestiques. Mais il reste des « trous » : ventes aux particuliers, export, paiements… Si l'État ne capte que le B2B domestique, il lui manque une part significative des données pour piloter la TVA.</p>
                     <p>Le <strong>e-reporting</strong> comble ces trous en transmettant à l'administration des <strong>données déclaratives</strong> sur toutes les opérations qui échappent au e-invoicing.</p>
                 </section>
 
+                <!-- E-INVOICING vs E-REPORTING -->
                 <section id="difference" class="content-section">
                     <h2>E-invoicing vs. E-reporting</h2>
                     <div class="comparison-table">
@@ -80,6 +84,368 @@
                     </div>
                 </section>
 
+                <!-- SIMULATEUR E-REPORTING -->
+                <section id="simulateur" class="content-section">
+                    <h2>🔍 Simulateur — Dois-je faire du e-reporting ?</h2>
+                    <p>Répondez à quelques questions pour savoir si votre opération est soumise au e-reporting, et si oui, qui doit déclarer.</p>
+
+                    <div class="erp-simulator" id="erp-simulator">
+                        <!-- STEP 1 -->
+                        <div class="erp-step" data-step="1">
+                            <div class="erp-question">
+                                <span class="erp-step-num">1</span>
+                                <h3>Qui êtes-vous ?</h3>
+                            </div>
+                            <div class="erp-options">
+                                <button class="erp-option" data-next="2a">
+                                    <span class="erp-option-icon">🇫🇷</span>
+                                    <div>
+                                        <strong>Assujetti établi en France</strong>
+                                        <span>Siège social ou établissement stable en France</span>
+                                    </div>
+                                </button>
+                                <button class="erp-option" data-next="2b">
+                                    <span class="erp-option-icon">🌍</span>
+                                    <div>
+                                        <strong>Assujetti NON établi en France</strong>
+                                        <span>Entreprise étrangère opérant en France</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2a — Établi en France -->
+                        <div class="erp-step hidden" data-step="2a">
+                            <div class="erp-question">
+                                <span class="erp-step-num">2</span>
+                                <h3>Quelle est la nature de votre opération ?</h3>
+                            </div>
+                            <div class="erp-options">
+                                <button class="erp-option" data-next="3a-b2b">
+                                    <span class="erp-option-icon">🏢</span>
+                                    <div>
+                                        <strong>Vente / Prestation à un professionnel (B2B)</strong>
+                                        <span>Votre client est assujetti à la TVA</span>
+                                    </div>
+                                </button>
+                                <button class="erp-option" data-next="3a-b2c">
+                                    <span class="erp-option-icon">👤</span>
+                                    <div>
+                                        <strong>Vente / Prestation à un particulier (B2C)</strong>
+                                        <span>Votre client n'est pas assujetti à la TVA</span>
+                                    </div>
+                                </button>
+                                <button class="erp-option" data-next="3a-acq">
+                                    <span class="erp-option-icon">📦</span>
+                                    <div>
+                                        <strong>Achat / Acquisition</strong>
+                                        <span>Vous êtes le destinataire de l'opération</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2b — Non établi en France -->
+                        <div class="erp-step hidden" data-step="2b">
+                            <div class="erp-question">
+                                <span class="erp-step-num">2</span>
+                                <h3>Réalisez-vous des opérations situées en France ?</h3>
+                            </div>
+                            <div class="erp-options">
+                                <button class="erp-option" data-result="r-290ii-b2b">
+                                    <span class="erp-option-icon">🏢</span>
+                                    <div>
+                                        <strong>Oui, vers un professionnel (B2B)</strong>
+                                        <span>Livraison ou prestation à un assujetti en France</span>
+                                    </div>
+                                </button>
+                                <button class="erp-option" data-result="r-290ii-b2c">
+                                    <span class="erp-option-icon">👤</span>
+                                    <div>
+                                        <strong>Oui, vers un particulier (B2C)</strong>
+                                        <span>Vente ou prestation à un non-assujetti en France</span>
+                                    </div>
+                                </button>
+                                <button class="erp-option" data-result="r-hors-champ">
+                                    <span class="erp-option-icon">❌</span>
+                                    <div>
+                                        <strong>Non, aucune opération en France</strong>
+                                        <span>Ou utilisation du guichet unique TVA (OSS/IOSS)</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3a-B2B — Établi FR, vend B2B -->
+                        <div class="erp-step hidden" data-step="3a-b2b">
+                            <div class="erp-question">
+                                <span class="erp-step-num">3</span>
+                                <h3>Où est établi votre client professionnel ?</h3>
+                            </div>
+                            <div class="erp-options">
+                                <button class="erp-option" data-result="r-einvoicing">
+                                    <span class="erp-option-icon">🇫🇷</span>
+                                    <div>
+                                        <strong>En France</strong>
+                                        <span>Assujetti établi en France</span>
+                                    </div>
+                                </button>
+                                <button class="erp-option" data-result="r-290i-b2b-ue">
+                                    <span class="erp-option-icon">🇪🇺</span>
+                                    <div>
+                                        <strong>Dans l'Union européenne</strong>
+                                        <span>Livraison intracommunautaire / Prestation UE</span>
+                                    </div>
+                                </button>
+                                <button class="erp-option" data-result="r-290i-b2b-hue">
+                                    <span class="erp-option-icon">🌏</span>
+                                    <div>
+                                        <strong>Hors Union européenne</strong>
+                                        <span>Exportation / Prestation hors UE</span>
+                                    </div>
+                                </button>
+                                <button class="erp-option" data-result="r-290i-monaco">
+                                    <span class="erp-option-icon">🇲🇨</span>
+                                    <div>
+                                        <strong>Monaco</strong>
+                                        <span>Régime spécifique Monaco</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3a-B2C — Établi FR, vend B2C -->
+                        <div class="erp-step hidden" data-step="3a-b2c">
+                            <div class="erp-question">
+                                <span class="erp-step-num">3</span>
+                                <h3>Où est situé votre client particulier ?</h3>
+                            </div>
+                            <div class="erp-options">
+                                <button class="erp-option" data-result="r-290i-b2c-fr">
+                                    <span class="erp-option-icon">🇫🇷</span>
+                                    <div>
+                                        <strong>En France</strong>
+                                        <span>Vente en boutique, prestation locale, e-commerce…</span>
+                                    </div>
+                                </button>
+                                <button class="erp-option" data-result="r-290i-b2c-ue">
+                                    <span class="erp-option-icon">🇪🇺</span>
+                                    <div>
+                                        <strong>Dans l'Union européenne</strong>
+                                        <span>Vente à distance intracommunautaire</span>
+                                    </div>
+                                </button>
+                                <button class="erp-option" data-result="r-290i-b2c-hue">
+                                    <span class="erp-option-icon">🌏</span>
+                                    <div>
+                                        <strong>Hors Union européenne</strong>
+                                        <span>Exportation B2C / Prestation hors UE</span>
+                                    </div>
+                                </button>
+                                <button class="erp-option" data-result="r-290i-monaco">
+                                    <span class="erp-option-icon">🇲🇨</span>
+                                    <div>
+                                        <strong>Monaco</strong>
+                                        <span>Régime spécifique Monaco</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3a-ACQ — Établi FR, achète -->
+                        <div class="erp-step hidden" data-step="3a-acq">
+                            <div class="erp-question">
+                                <span class="erp-step-num">3</span>
+                                <h3>Quelle est la nature de votre acquisition ?</h3>
+                            </div>
+                            <div class="erp-options">
+                                <button class="erp-option" data-result="r-290i-acq-ue">
+                                    <span class="erp-option-icon">📦</span>
+                                    <div>
+                                        <strong>Acquisition intracommunautaire de biens</strong>
+                                        <span>Achat de marchandises à une entreprise UE</span>
+                                    </div>
+                                </button>
+                                <button class="erp-option" data-result="r-290i-acq-biens">
+                                    <span class="erp-option-icon">🏭</span>
+                                    <div>
+                                        <strong>Achat de biens à un non-établi (autoliquidation)</strong>
+                                        <span>Fournisseur UE ou hors UE, biens situés en France</span>
+                                    </div>
+                                </button>
+                                <button class="erp-option" data-result="r-290i-acq-services">
+                                    <span class="erp-option-icon">💼</span>
+                                    <div>
+                                        <strong>Achat de prestations de services UE / hors UE</strong>
+                                        <span>Formation, conseil, IT… auprès d'un prestataire étranger</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- ======================== -->
+                        <!-- RÉSULTATS               -->
+                        <!-- ======================== -->
+
+                        <div class="erp-result hidden" data-result="r-einvoicing">
+                            <div class="erp-result-icon">📨</div>
+                            <h3>E-invoicing, pas e-reporting</h3>
+                            <p>Votre opération B2B domestique relève du <strong>e-invoicing</strong> (facturation électronique entre assujettis établis en France). Elle sera transmise via les flux F1/F2 et n'est <strong>pas soumise au e-reporting</strong>.</p>
+                            <div class="erp-result-badge erp-result-badge--info">Hors champ e-reporting</div>
+                            <div class="erp-result-detail">
+                                <strong>Flux concernés :</strong> F1 (données réglementaires) + F2 (facture complète)<br>
+                                <strong>En savoir plus :</strong> <a href="./e-invoicing.html">Page E-invoicing</a> · <a href="./flux.html">Les 14 flux</a>
+                            </div>
+                        </div>
+
+                        <div class="erp-result hidden" data-result="r-290i-b2b-ue">
+                            <div class="erp-result-icon">✅</div>
+                            <h3>E-reporting obligatoire — Fournisseur</h3>
+                            <p>Livraison intracommunautaire de biens ou prestation de services à un assujetti UE. Vous devez déclarer via <strong>e-reporting (flux F10)</strong>.</p>
+                            <div class="erp-result-badge erp-result-badge--yes">E-reporting par le fournisseur</div>
+                            <div class="erp-result-detail">
+                                <strong>Base légale :</strong> Art. 290 I 1° (biens — Art. 262 ter I) / 290 I 5° (services — Art. 259, 259 A)<br>
+                                <strong>Exemple :</strong> Vente de marchandises à une entreprise roumaine (exonérée TVA) ou prestation de conseil à une entreprise belge.<br>
+                                <strong>Flux :</strong> F10.1
+                            </div>
+                        </div>
+
+                        <div class="erp-result hidden" data-result="r-290i-b2b-hue">
+                            <div class="erp-result-icon">✅</div>
+                            <h3>E-reporting obligatoire — Fournisseur</h3>
+                            <p>Exportation de biens ou prestation de services à un assujetti hors UE. Vous devez déclarer via <strong>e-reporting (flux F10)</strong>.</p>
+                            <div class="erp-result-badge erp-result-badge--yes">E-reporting par le fournisseur</div>
+                            <div class="erp-result-detail">
+                                <strong>Base légale :</strong> Art. 290 I 1° (Art. 262 I 1°)<br>
+                                <strong>Exemple :</strong> Vente de biens et réalisation de prestations à une entreprise américaine.<br>
+                                <strong>Flux :</strong> F10.1
+                            </div>
+                        </div>
+
+                        <div class="erp-result hidden" data-result="r-290i-b2c-fr">
+                            <div class="erp-result-icon">✅</div>
+                            <h3>E-reporting obligatoire — Fournisseur</h3>
+                            <p>Vente à un particulier en France (ticket Z, facture B2C, carnet à souche). Vous devez déclarer via <strong>e-reporting (flux F10)</strong>.</p>
+                            <div class="erp-result-badge erp-result-badge--yes">E-reporting par le fournisseur</div>
+                            <div class="erp-result-detail">
+                                <strong>Base légale :</strong> Art. 290 I 3° (Art. 258) / 290 I 7° (Art. 259 2°)<br>
+                                <strong>Exemple :</strong> Commerçant, artisan — opération comptabilisée via logiciel de caisse (ticket Z), facture B2C ou carnet à souche.<br>
+                                <strong>Flux :</strong> F10.3 (transactions agrégées) + F10.4 (paiements agrégés pour prestations)
+                            </div>
+                        </div>
+
+                        <div class="erp-result hidden" data-result="r-290i-b2c-ue">
+                            <div class="erp-result-icon">✅</div>
+                            <h3>E-reporting obligatoire — Fournisseur</h3>
+                            <p>Vente à distance intracommunautaire ou prestation à un non-assujetti UE. Vous devez déclarer via <strong>e-reporting (flux F10)</strong>.</p>
+                            <div class="erp-result-badge erp-result-badge--yes">E-reporting par le fournisseur</div>
+                            <div class="erp-result-detail">
+                                <strong>Base légale :</strong> Art. 290 I 2° (Art. 258 A I 1° — ventes > 10 000€) / 290 I 3° (< 10 000€) / 290 I 6° (Art. 259 B — services)<br>
+                                <strong>Exemple :</strong> Vente d'un bien à un particulier belge. TVA de l'État-membre si > 10 000€ de ventes UE, sinon TVA française.<br>
+                                <strong>Flux :</strong> F10.1
+                            </div>
+                        </div>
+
+                        <div class="erp-result hidden" data-result="r-290i-b2c-hue">
+                            <div class="erp-result-icon">✅</div>
+                            <h3>E-reporting obligatoire — Fournisseur</h3>
+                            <p>Exportation B2C ou prestation à un non-assujetti hors UE. Vous devez déclarer via <strong>e-reporting (flux F10)</strong>.</p>
+                            <div class="erp-result-badge erp-result-badge--yes">E-reporting par le fournisseur</div>
+                            <div class="erp-result-detail">
+                                <strong>Base légale :</strong> Art. 290 I 1° (Art. 262 I 1°) / 290 I 6° (Art. 259 B — services)<br>
+                                <strong>Exemple :</strong> Prestation de droits d'auteur réalisée par une entreprise française au profit d'un particulier américain — non imposable à la TVA en France.<br>
+                                <strong>Flux :</strong> F10.1
+                            </div>
+                        </div>
+
+                        <div class="erp-result hidden" data-result="r-290i-monaco">
+                            <div class="erp-result-icon">✅</div>
+                            <h3>E-reporting obligatoire — Régime Monaco</h3>
+                            <p>Toute opération avec une entreprise ou un particulier monégasque est soumise au e-reporting (régime spécifique).</p>
+                            <div class="erp-result-badge erp-result-badge--yes">E-reporting (fournisseur ou destinataire)</div>
+                            <div class="erp-result-detail">
+                                <strong>Base légale :</strong> Art. 290 I 11°<br>
+                                <strong>Exemple :</strong> Prestation de services ou livraison de biens vers Monaco (TVA applicable). Achat à une entreprise monégasque.<br>
+                                <strong>Flux :</strong> F10.1 (fournisseur) ou F10.2 (destinataire)
+                            </div>
+                        </div>
+
+                        <div class="erp-result hidden" data-result="r-290i-acq-ue">
+                            <div class="erp-result-icon">✅</div>
+                            <h3>E-reporting obligatoire — Destinataire</h3>
+                            <p>Acquisition intracommunautaire de biens. Vous devez déclarer en tant que <strong>destinataire</strong> via e-reporting (flux F10).</p>
+                            <div class="erp-result-badge erp-result-badge--dest">E-reporting par le destinataire</div>
+                            <div class="erp-result-detail">
+                                <strong>Base légale :</strong> Art. 290 I 8° (Art. 258 C)<br>
+                                <strong>Exemple :</strong> Achat de marchandises à une entreprise allemande, belge ou italienne.<br>
+                                <strong>Flux :</strong> F10.2
+                            </div>
+                        </div>
+
+                        <div class="erp-result hidden" data-result="r-290i-acq-biens">
+                            <div class="erp-result-icon">✅</div>
+                            <h3>E-reporting obligatoire — Destinataire (autoliquidation)</h3>
+                            <p>Acquisition de biens situés en France auprès d'un fournisseur non établi. <strong>Autoliquidation</strong> par l'acquéreur.</p>
+                            <div class="erp-result-badge erp-result-badge--dest">E-reporting par le destinataire</div>
+                            <div class="erp-result-detail">
+                                <strong>Base légale :</strong> Art. 290 I 9° (Art. 283 1)<br>
+                                <strong>Exemple :</strong> Acquisition auprès d'un assujetti polonais ou chinois de marchandises situées en France.<br>
+                                <strong>Flux :</strong> F10.2
+                            </div>
+                        </div>
+
+                        <div class="erp-result hidden" data-result="r-290i-acq-services">
+                            <div class="erp-result-icon">✅</div>
+                            <h3>E-reporting obligatoire — Destinataire</h3>
+                            <p>Acquisition de prestations de services auprès d'un prestataire UE ou hors UE. Vous devez déclarer en tant que <strong>destinataire</strong>.</p>
+                            <div class="erp-result-badge erp-result-badge--dest">E-reporting par le destinataire</div>
+                            <div class="erp-result-detail">
+                                <strong>Base légale :</strong> Art. 290 I 10° (Art. 259 1° et 283 2°)<br>
+                                <strong>Exemple :</strong> Achat de prestations de formation auprès d'un assujetti allemand. Achat de prestations intellectuelles auprès d'un assujetti en Asie.<br>
+                                <strong>Flux :</strong> F10.2
+                            </div>
+                        </div>
+
+                        <div class="erp-result hidden" data-result="r-290ii-b2b">
+                            <div class="erp-result-icon">✅</div>
+                            <h3>E-reporting obligatoire — Fournisseur non établi</h3>
+                            <p>Opération domestique en France réalisée par un assujetti non établi. E-reporting obligatoire (290 II).</p>
+                            <div class="erp-result-badge erp-result-badge--yes">E-reporting par le fournisseur non établi</div>
+                            <div class="erp-result-detail">
+                                <strong>Base légale :</strong> Art. 290 II (Art. 258, 259 A, 283 1°)<br>
+                                <strong>Exemple :</strong> Vente de marchandises stockées en France par une entreprise polonaise à une société belge non identifiée TVA en France.<br>
+                                <strong>⚠️ Exception :</strong> Si l'acquéreur est identifié TVA en France → autoliquidation par le preneur, hors champ 290 II.
+                            </div>
+                        </div>
+
+                        <div class="erp-result hidden" data-result="r-290ii-b2c">
+                            <div class="erp-result-icon">✅</div>
+                            <h3>E-reporting obligatoire — Fournisseur non établi</h3>
+                            <p>Vente ou prestation à un particulier en France, réalisée par un assujetti non établi (avec représentant fiscal si hors UE).</p>
+                            <div class="erp-result-badge erp-result-badge--yes">E-reporting par le fournisseur non établi</div>
+                            <div class="erp-result-detail">
+                                <strong>Base légale :</strong> Art. 290 II (Art. 258, 259 A, 259 C, 259 D)<br>
+                                <strong>Exemples :</strong> Vente de marchandises à un particulier français par une entreprise polonaise. Travaux immobiliers en France par un artisan étranger. Prestations électroniques par une entreprise roumaine.<br>
+                                <strong>⚠️ Exclusion :</strong> Assujetti inscrit à un guichet unique TVA (OSS/IOSS) → hors champ e-reporting.
+                            </div>
+                        </div>
+
+                        <div class="erp-result hidden" data-result="r-hors-champ">
+                            <div class="erp-result-icon">❌</div>
+                            <h3>Hors champ du e-reporting</h3>
+                            <p>Votre opération n'est pas située en France ou vous bénéficiez d'un régime d'exclusion. <strong>Pas de e-reporting.</strong></p>
+                            <div class="erp-result-badge erp-result-badge--no">Hors champ</div>
+                            <div class="erp-result-detail">
+                                <strong>Cas courants :</strong> Opérations entièrement hors de France. Assujetti inscrit au guichet unique TVA (OSS/IOSS). Importations (information obtenue via documents douaniers).
+                            </div>
+                        </div>
+
+                        <!-- RESET -->
+                        <button class="erp-reset hidden" id="erp-reset">← Recommencer le simulateur</button>
+                    </div>
+                </section>
+
+                <!-- FLUX 10.1 -->
                 <section id="flux101" class="content-section">
                     <h2>📋 Flux 10.1 — Transactions B2B internationales</h2>
                     <p>Toutes les ventes (ou achats) entre un assujetti en France et une entreprise <strong>non établie en France</strong> : exports, livraisons intra-UE, prestations internationales, acquisitions intra-UE.</p>
@@ -90,6 +456,7 @@
                     </div>
                 </section>
 
+                <!-- FLUX 10.2 -->
                 <section id="flux102" class="content-section">
                     <h2>📋 Flux 10.2 — Données de paiement (individuelles)</h2>
                     <p>Informations de <strong>paiement facture par facture</strong>. Concerne les situations où la TVA est exigible à l'encaissement :</p>
@@ -101,10 +468,10 @@
                     <p>Pour chaque facture : numéro, date de paiement, montant encaissé, ventilation TVA.</p>
                 </section>
 
+                <!-- FLUX 10.3 -->
                 <section id="flux103" class="content-section">
                     <h2>📋 Flux 10.3 — Transactions agrégées (cumuls quotidiens)</h2>
                     <p>Pour les opérations <strong>B2C</strong>, il serait irréaliste de déclarer chaque ticket individuellement. Le Flux 10.3 transmet des <strong>cumuls quotidiens</strong> par catégorie :</p>
-
                     <div class="comparison-table">
                         <table>
                             <thead><tr><th>Code</th><th>Nom</th><th>Exemples</th></tr></thead>
@@ -116,13 +483,13 @@
                             </tbody>
                         </table>
                     </div>
-
                     <div class="callout callout--info">
                         <div class="callout-icon">💡</div>
                         <div class="callout-content"><strong>Exemple :</strong> une boulangerie avec 200 ventes/jour transmet un cumul : « TLB1 — 200 transactions — 1 500 € HT — 150 € TVA (5,5%) + 200 € HT — 40 € TVA (20%) ».</div>
                     </div>
                 </section>
 
+                <!-- FLUX 10.4 -->
                 <section id="flux104" class="content-section">
                     <h2>📋 Flux 10.4 — Paiements agrégés (cumuls quotidiens)</h2>
                     <p>Le pendant « paiement » du Flux 10.3. Pour les <strong>prestations de services B2C</strong> (TPS1), les encaissements sont transmis en cumuls quotidiens.</p>
@@ -132,6 +499,7 @@
                     </div>
                 </section>
 
+                <!-- MÉCANISME -->
                 <section id="mecanisme" class="content-section">
                     <h2>Le mécanisme de transmission</h2>
                     <p>Le circuit est plus simple que le e-invoicing car aucune facture ne circule entre entreprises :</p>
@@ -143,6 +511,7 @@
                     </div>
                 </section>
 
+                <!-- CALENDRIER -->
                 <section id="calendrier" class="content-section">
                     <h2>Calendrier</h2>
                     <p>Aligné sur le e-invoicing :</p>
@@ -157,6 +526,166 @@
                     </div>
                 </section>
 
+                <!-- TABLEAU DES OPÉRATIONS ART. 290 -->
+                <section id="tableau-ereporting" class="content-section">
+                    <h2>📊 Tableau des opérations — Art. 290 du CGI</h2>
+                    <p>Le tableau complet des opérations situées dans le champ du e-reporting, issu des spécifications DGFIP. Filtrez par catégorie pour trouver votre cas.</p>
+
+                    <div class="erp-filters">
+                        <button class="erp-filter active" data-filter="all">Toutes</button>
+                        <button class="erp-filter" data-filter="b2b">B2B</button>
+                        <button class="erp-filter" data-filter="b2c">B2C</button>
+                        <button class="erp-filter" data-filter="ue">UE</button>
+                        <button class="erp-filter" data-filter="hue">Hors UE</button>
+                        <button class="erp-filter" data-filter="monaco">Monaco</button>
+                        <button class="erp-filter" data-filter="fournisseur">Décl. Fournisseur</button>
+                        <button class="erp-filter" data-filter="destinataire">Décl. Destinataire</button>
+                    </div>
+
+                    <div class="erp-table-wrap">
+                        <table class="erp-table" id="erp-table">
+                            <thead>
+                                <tr>
+                                    <th>Réf.</th>
+                                    <th>Parties</th>
+                                    <th>Nature de l'opération</th>
+                                    <th>Exemple</th>
+                                    <th>Déclarant</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-tags="b2b ue fournisseur">
+                                    <td><span class="erp-ref">290 I 1°</span><span class="erp-art">Art. 262 ter I</span></td>
+                                    <td><span class="erp-tag erp-tag--b2b">B2B</span><span class="erp-tag erp-tag--intl">INTL</span></td>
+                                    <td>Livraisons intracommunautaires de biens</td>
+                                    <td class="erp-example">Vente de marchandises à une entreprise roumaine — exonérée TVA</td>
+                                    <td><span class="erp-who erp-who--four">Fournisseur 🇫🇷</span></td>
+                                </tr>
+                                <tr data-tags="b2b hue fournisseur">
+                                    <td><span class="erp-ref">290 I 1°</span><span class="erp-art">Art. 262 I 1°</span></td>
+                                    <td><span class="erp-tag erp-tag--b2b">B2B</span><span class="erp-tag erp-tag--intl">INTL</span></td>
+                                    <td>Exportations de biens et prestations liées</td>
+                                    <td class="erp-example">Vente de biens et prestations à une entreprise américaine</td>
+                                    <td><span class="erp-who erp-who--four">Fournisseur 🇫🇷</span></td>
+                                </tr>
+                                <tr data-tags="b2c hue fournisseur">
+                                    <td><span class="erp-ref">290 I 1°</span><span class="erp-art">Art. 262 I 1°</span></td>
+                                    <td><span class="erp-tag erp-tag--b2c">B2C</span><span class="erp-tag erp-tag--intl">INTL</span></td>
+                                    <td>Exportations B2C hors UE</td>
+                                    <td class="erp-example">Vente de biens et prestations à un foyer suisse</td>
+                                    <td><span class="erp-who erp-who--four">Fournisseur 🇫🇷</span></td>
+                                </tr>
+                                <tr data-tags="b2c ue fournisseur">
+                                    <td><span class="erp-ref">290 I 2°</span><span class="erp-art">Art. 258 A I 1°</span></td>
+                                    <td><span class="erp-tag erp-tag--b2c">B2C</span><span class="erp-tag erp-tag--intl">INTL</span></td>
+                                    <td>Ventes à distance intracommunautaires &gt; 10 000€</td>
+                                    <td class="erp-example">Vente d'un bien à un particulier belge — TVA de l'État-membre si seuil dépassé</td>
+                                    <td><span class="erp-who erp-who--four">Fournisseur 🇫🇷</span></td>
+                                </tr>
+                                <tr data-tags="b2c ue fournisseur">
+                                    <td><span class="erp-ref">290 I 3°</span><span class="erp-art">Art. 258</span></td>
+                                    <td><span class="erp-tag erp-tag--b2c">B2C</span><span class="erp-tag erp-tag--intl">INTL</span></td>
+                                    <td>Ventes à distance hors de France &lt; 10 000€</td>
+                                    <td class="erp-example">Vente à un particulier belge — TVA française si seuil non dépassé</td>
+                                    <td><span class="erp-who erp-who--four">Fournisseur 🇫🇷</span></td>
+                                </tr>
+                                <tr data-tags="b2b hue fournisseur">
+                                    <td><span class="erp-ref">290 I 3°</span><span class="erp-art">Art. 258</span></td>
+                                    <td><span class="erp-tag erp-tag--b2b">B2B</span><span class="erp-tag erp-tag--intl">INTL</span></td>
+                                    <td>Livraison avec montage et installation hors France</td>
+                                    <td class="erp-example">Vente d'un bien à un assujetti US avec montage et installation</td>
+                                    <td><span class="erp-who erp-who--four">Fournisseur 🇫🇷</span></td>
+                                </tr>
+                                <tr data-tags="b2c fournisseur">
+                                    <td><span class="erp-ref">290 I 3°</span><span class="erp-art">Art. 258</span></td>
+                                    <td><span class="erp-tag erp-tag--b2c">B2C</span><span class="erp-tag erp-tag--dom">DOM</span></td>
+                                    <td>Vente à un particulier en France (B2C domestique)</td>
+                                    <td class="erp-example">Commerçant — ticket Z, facture B2C, carnet à souche</td>
+                                    <td><span class="erp-who erp-who--four">Fournisseur 🇫🇷</span></td>
+                                </tr>
+                                <tr data-tags="b2c ue fournisseur">
+                                    <td><span class="erp-ref">290 I 4°</span><span class="erp-art">Art. 258 A I 2°</span></td>
+                                    <td><span class="erp-tag erp-tag--b2c">B2C</span><span class="erp-tag erp-tag--intl">INTL</span></td>
+                                    <td>Vente à distance intracommunautaire située en France</td>
+                                    <td class="erp-example">Vente depuis un entrepôt en Belgique à un particulier français</td>
+                                    <td><span class="erp-who erp-who--four">Fournisseur 🇫🇷</span></td>
+                                </tr>
+                                <tr data-tags="b2b ue hue fournisseur">
+                                    <td><span class="erp-ref">290 I 5°</span><span class="erp-art">Art. 259, 259 A</span></td>
+                                    <td><span class="erp-tag erp-tag--b2b">B2B</span><span class="erp-tag erp-tag--intl">INTL</span></td>
+                                    <td>Prestations de services intracommunautaires / hors UE</td>
+                                    <td class="erp-example">Prestation de conseil à une entreprise belge ou américaine</td>
+                                    <td><span class="erp-who erp-who--four">Fournisseur 🇫🇷</span></td>
+                                </tr>
+                                <tr data-tags="b2c hue fournisseur">
+                                    <td><span class="erp-ref">290 I 6°</span><span class="erp-art">Art. 259 B</span></td>
+                                    <td><span class="erp-tag erp-tag--b2c">B2C</span><span class="erp-tag erp-tag--intl">INTL</span></td>
+                                    <td>Prestations à un non-assujetti hors UE</td>
+                                    <td class="erp-example">Droits d'auteur, pub, conseil, musique/vidéo en ligne à un particulier américain</td>
+                                    <td><span class="erp-who erp-who--four">Fournisseur 🇫🇷</span></td>
+                                </tr>
+                                <tr data-tags="b2c fournisseur">
+                                    <td><span class="erp-ref">290 I 7°</span><span class="erp-art">Art. 259 2°</span></td>
+                                    <td><span class="erp-tag erp-tag--b2c">B2C</span></td>
+                                    <td>Prestations de services B2C (domestique ou international)</td>
+                                    <td class="erp-example">Artisan — ticket Z, facture B2C, carnet à souche</td>
+                                    <td><span class="erp-who erp-who--four">Fournisseur 🇫🇷</span></td>
+                                </tr>
+                                <tr data-tags="b2b ue destinataire">
+                                    <td><span class="erp-ref">290 I 8°</span><span class="erp-art">Art. 258 C</span></td>
+                                    <td><span class="erp-tag erp-tag--b2b">B2B</span><span class="erp-tag erp-tag--intl">INTL</span></td>
+                                    <td>Acquisitions intracommunautaires de biens</td>
+                                    <td class="erp-example">Achat de marchandises à une entreprise de l'UE</td>
+                                    <td><span class="erp-who erp-who--dest">Destinataire 🇫🇷</span></td>
+                                </tr>
+                                <tr data-tags="b2b hue destinataire">
+                                    <td><span class="erp-ref">290 I 9°</span><span class="erp-art">Art. 283 1</span></td>
+                                    <td><span class="erp-tag erp-tag--b2b">B2B</span><span class="erp-tag erp-tag--intl">INTL</span></td>
+                                    <td>Acquisition de biens — autoliquidation</td>
+                                    <td class="erp-example">Acquisition auprès d'un assujetti polonais ou chinois de marchandises situées en France</td>
+                                    <td><span class="erp-who erp-who--dest">Destinataire 🇫🇷</span></td>
+                                </tr>
+                                <tr data-tags="b2b ue hue destinataire">
+                                    <td><span class="erp-ref">290 I 10°</span><span class="erp-art">Art. 259 1°, 283 2°</span></td>
+                                    <td><span class="erp-tag erp-tag--b2b">B2B</span><span class="erp-tag erp-tag--intl">INTL</span></td>
+                                    <td>Acquisition de prestations de services UE / hors UE</td>
+                                    <td class="erp-example">Formation auprès d'un assujetti allemand. Prestations IT depuis l'Asie.</td>
+                                    <td><span class="erp-who erp-who--dest">Destinataire 🇫🇷</span></td>
+                                </tr>
+                                <tr data-tags="b2b b2c monaco fournisseur destinataire">
+                                    <td><span class="erp-ref">290 I 11°</span></td>
+                                    <td><span class="erp-tag erp-tag--b2b">B2B</span><span class="erp-tag erp-tag--b2c">B2C</span><span class="erp-tag erp-tag--mc">🇲🇨</span></td>
+                                    <td>Toute opération avec Monaco</td>
+                                    <td class="erp-example">Livraison/prestation vers Monaco. Achat à une entreprise monégasque.</td>
+                                    <td><span class="erp-who erp-who--four">Fournisseur</span> ou <span class="erp-who erp-who--dest">Destinataire</span></td>
+                                </tr>
+                                <tr data-tags="b2b hue fournisseur" class="erp-row--290ii">
+                                    <td><span class="erp-ref erp-ref--ii">290 II</span><span class="erp-art">Art. 258, 259 A</span></td>
+                                    <td><span class="erp-tag erp-tag--b2b">B2B</span><span class="erp-tag erp-tag--intl">INTL</span></td>
+                                    <td>Opération domestique par un non-établi (B2B)</td>
+                                    <td class="erp-example">Vente de marchandises en France par une entreprise polonaise à une société belge non identifiée TVA</td>
+                                    <td><span class="erp-who erp-who--ext">Fournisseur 🌍</span></td>
+                                </tr>
+                                <tr data-tags="b2c hue fournisseur" class="erp-row--290ii">
+                                    <td><span class="erp-ref erp-ref--ii">290 II</span><span class="erp-art">Art. 258, 259 C/D</span></td>
+                                    <td><span class="erp-tag erp-tag--b2c">B2C</span><span class="erp-tag erp-tag--intl">INTL</span></td>
+                                    <td>Vente/prestation en France par un non-établi (B2C)</td>
+                                    <td class="erp-example">Vente à un particulier français par une entreprise polonaise. Travaux immobiliers par un plombier étranger.</td>
+                                    <td><span class="erp-who erp-who--ext">Fournisseur 🌍</span></td>
+                                </tr>
+                                <tr data-tags="" class="erp-row--hors">
+                                    <td><span class="erp-ref erp-ref--hors">Hors champ</span><span class="erp-art">Art. 291</span></td>
+                                    <td><span class="erp-tag erp-tag--b2b">B2B</span><span class="erp-tag erp-tag--intl">INTL</span></td>
+                                    <td>Importations (hors DOM)</td>
+                                    <td class="erp-example">Achat de marchandises en Chine — information via documents douaniers</td>
+                                    <td><span class="erp-who erp-who--hors">Hors champ</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- RÉCAPITULATIF -->
                 <section id="recap" class="content-section">
                     <h2>Tableau récapitulatif des 4 sous-flux</h2>
                     <div class="comparison-table">
@@ -169,6 +698,10 @@
                                 <tr><td><strong>Flux 10.4</strong></td><td>Paiements agrégés</td><td>Cumuls quotidiens</td><td>Encaissements B2C (TPS1)</td></tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="summary-box">
+                        <p>Le e-reporting complète le e-invoicing pour donner à l'État une <strong>vision complète de la TVA</strong>. Ensemble, ces deux dispositifs couvrent <strong>100% des transactions</strong> réalisées par les assujettis en France — domestiques, internationales, B2B et B2C.</p>
                     </div>
                 </section>
 
@@ -187,7 +720,9 @@
     </main>
 
     <footer id="main-footer"></footer>
+
     <script src="./js/nav.js"></script>
     <script src="./js/animations.js"></script>
+    <script src="./js/e-reporting-ui.js"></script>
 </body>
 </html>

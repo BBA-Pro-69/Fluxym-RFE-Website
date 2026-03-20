@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les 14 flux de la réforme | E-Invoicing Academy</title>
+    <title>Les 14 flux | E-Invoicing Academy</title>
     <link rel="icon" href="./assets/favicon-Fluxym-V2.png" sizes="32x32" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
             </div>
             <span class="hero-badge">Niveau 3 — Approfondir</span>
             <h1>Les 14 flux de la réforme</h1>
-            <p>Chaque échange entre acteurs est codifié en flux numérotés. Voici le guide complet, flux par flux.</p>
+            <p>12 flux actifs entre 6 acteurs. Survolez chaque flux pour comprendre son rôle.</p>
         </div>
     </header>
 
@@ -32,17 +32,13 @@
                 <div class="sidebar-sticky">
                     <h4>Sur cette page</h4>
                     <ul class="sidebar-nav">
-                        <li><a href="#f1" class="sidebar-link active">F1 — Données réglementaires</a></li>
-                        <li><a href="#f2" class="sidebar-link">F2 — Transmission facture</a></li>
-                        <li><a href="#f3" class="sidebar-link">F3 — Mise à disposition</a></li>
-                        <li><a href="#f4f5" class="sidebar-link">F4-F5 — Inexistants</a></li>
-                        <li><a href="#f6" class="sidebar-link">F6 — Statuts CDV</a></li>
-                        <li><a href="#f7f8f9" class="sidebar-link">F7-F8-F9 — Annuaire</a></li>
-                        <li><a href="#f10" class="sidebar-link">F10 — E-reporting</a></li>
-                        <li><a href="#f11" class="sidebar-link">F11 — Retours PPF</a></li>
-                        <li><a href="#f12" class="sidebar-link">F12 — Données DGFiP</a></li>
-                        <li><a href="#f13f14" class="sidebar-link">F13-F14 — Technique</a></li>
-                        <li><a href="#recap" class="sidebar-link">Tableau récapitulatif</a></li>
+                        <li><a href="#diagram" class="sidebar-link active">🗺️ Diagramme interactif</a></li>
+                        <li><a href="#commercial" class="sidebar-link">🔵 Flux commerciaux</a></li>
+                        <li><a href="#fiscal" class="sidebar-link">🟠 Flux fiscaux</a></li>
+                        <li><a href="#lifecycle" class="sidebar-link">🟣 Cycle de vie</a></li>
+                        <li><a href="#annuaire" class="sidebar-link">🟢 Annuaire</a></li>
+                        <li><a href="#ereporting" class="sidebar-link">🟡 E-reporting</a></li>
+                        <li><a href="#tableau" class="sidebar-link">📊 Tableau récap</a></li>
                     </ul>
                     <div class="sidebar-nav-pages">
                         <h4>Parcours Niveau 3</h4>
@@ -56,213 +52,358 @@
 
             <article class="page-content">
 
-                <section id="f1" class="content-section">
-                    <h2>Flux 1 — Données réglementaires de facture</h2>
-                    <div class="flux-card">
-                        <div class="flux-meta">
-                            <span class="flux-direction">PA émettrice → PPF</span>
-                            <span class="flux-format">UBL / CII (XML)</span>
+                <!-- INTERACTIVE DIAGRAM -->
+                <section id="diagram" class="content-section">
+                    <h2>🗺️ Diagramme interactif</h2>
+                    <p>Survolez un flux dans la légende pour le mettre en évidence. <em>F4 et F5 ont été supprimés en octobre 2024.</em></p>
+
+                    <div class="flux-interactive">
+                        <div class="flux-svg-wrap" id="flux-diagram-wrap">
+                            <!-- BOUTON FULLSCREEN -->
+                            <button class="flux-expand-btn" id="flux-expand" title="Plein écran">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+                            </button>
+
+                            <svg viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg" class="flux-svg" id="flux-svg">
+
+                                <defs>
+                                    <!-- ARROW MARKERS -->
+                                    <marker id="arr-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#64748b"/></marker>
+                                    <marker id="arr-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#00a7e1"/></marker>
+                                    <marker id="arr-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#f97316"/></marker>
+                                    <marker id="arr-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#8b5cf6"/></marker>
+                                    <marker id="arr-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#10b981"/></marker>
+                                    <marker id="arr-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#f59e0b"/></marker>
+                                    <marker id="arr-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#ec4899"/></marker>
+                                    <marker id="arr-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#ef4444"/></marker>
+
+                                    <!-- GLOW FILTER -->
+                                    <filter id="glow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+
+                                    <!-- PPF GRADIENT -->
+                                    <linearGradient id="ppf-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#1a2f52"/><stop offset="100%" stop-color="#0f1a30"/>
+                                    </linearGradient>
+                                </defs>
+
+                                <!-- ACTORS -->
+                                <g class="actor" data-actor="fournisseur">
+                                    <rect x="20" y="252" width="155" height="76" rx="14" fill="#1e2d4d" stroke="#2a3f6e" stroke-width="2"/>
+                                    <text x="97" y="286" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="Inter, sans-serif">Fournisseur</text>
+                                    <text x="97" y="306" text-anchor="middle" fill="#6b82a6" font-size="11" font-family="Inter, sans-serif">(Vendeur)</text>
+                                </g>
+
+                                <g class="actor" data-actor="pa-e">
+                                    <rect x="255" y="252" width="155" height="76" rx="14" fill="#1e2d4d" stroke="#00a7e1" stroke-width="2"/>
+                                    <text x="332" y="282" text-anchor="middle" fill="#00a7e1" font-size="11" font-weight="800" font-family="Inter, sans-serif" letter-spacing="1">PA</text>
+                                    <text x="332" y="302" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="Inter, sans-serif">d'Émission</text>
+                                    <text x="332" y="318" text-anchor="middle" fill="#6b82a6" font-size="10" font-family="Inter, sans-serif">(PA-E)</text>
+                                </g>
+
+                                <g class="actor" data-actor="ppf">
+                                    <rect x="505" y="237" width="190" height="106" rx="16" fill="url(#ppf-grad)" stroke="#00a7e1" stroke-width="2.5"/>
+                                    <text x="600" y="275" text-anchor="middle" fill="#00a7e1" font-size="11" font-weight="800" font-family="Inter, sans-serif" letter-spacing="2">PORTAIL PUBLIC</text>
+                                    <text x="600" y="298" text-anchor="middle" fill="white" font-size="16" font-weight="900" font-family="Inter, sans-serif">PPF</text>
+                                    <text x="600" y="318" text-anchor="middle" fill="#6b82a6" font-size="10" font-family="Inter, sans-serif">Annuaire + Concentrateur</text>
+                                </g>
+
+                                <g class="actor" data-actor="pa-r">
+                                    <rect x="790" y="252" width="155" height="76" rx="14" fill="#1e2d4d" stroke="#00a7e1" stroke-width="2"/>
+                                    <text x="867" y="282" text-anchor="middle" fill="#00a7e1" font-size="11" font-weight="800" font-family="Inter, sans-serif" letter-spacing="1">PA</text>
+                                    <text x="867" y="302" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="Inter, sans-serif">de Réception</text>
+                                    <text x="867" y="318" text-anchor="middle" fill="#6b82a6" font-size="10" font-family="Inter, sans-serif">(PA-R)</text>
+                                </g>
+
+                                <g class="actor" data-actor="acheteur">
+                                    <rect x="1025" y="252" width="155" height="76" rx="14" fill="#1e2d4d" stroke="#2a3f6e" stroke-width="2"/>
+                                    <text x="1102" y="286" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="Inter, sans-serif">Acheteur</text>
+                                    <text x="1102" y="306" text-anchor="middle" fill="#6b82a6" font-size="11" font-family="Inter, sans-serif">(Destinataire)</text>
+                                </g>
+
+                                <g class="actor" data-actor="dgfip">
+                                    <rect x="520" y="595" width="160" height="66" rx="14" fill="#2d1a1a" stroke="#ef4444" stroke-width="2"/>
+                                    <text x="600" y="625" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="800" font-family="Inter, sans-serif" letter-spacing="2">DGFIP</text>
+                                    <text x="600" y="645" text-anchor="middle" fill="#a68080" font-size="10" font-family="Inter, sans-serif">Administration fiscale</text>
+                                </g>
+
+                                <!-- ENTRY / EXIT -->
+                                <g class="flow-group" data-flow="entry">
+                                    <path d="M175,290 L250,290" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arr-gray)" class="flow-path"/>
+                                </g>
+                                <g class="flow-group" data-flow="exit">
+                                    <path d="M945,290 L1020,290" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arr-gray)" class="flow-path"/>
+                                </g>
+
+                                <!-- F2: COMMERCIAL ARC -->
+                                <g class="flow-group" data-flow="f2">
+                                    <path d="M410,252 Q600,70 790,252" fill="none" stroke="#00a7e1" stroke-width="3" stroke-dasharray="10 5" marker-end="url(#arr-cyan)" class="flow-path flow-animated"/>
+                                    <rect x="576" y="102" width="48" height="24" rx="12" fill="#00a7e1"/>
+                                    <text x="600" y="119" text-anchor="middle" fill="white" font-size="12" font-weight="800" font-family="Inter, sans-serif">F2</text>
+                                </g>
+
+                                <!-- F1: PA-E → PPF -->
+                                <g class="flow-group" data-flow="f1">
+                                    <path d="M410,275 L500,275" fill="none" stroke="#f97316" stroke-width="2.5" stroke-dasharray="8 4" marker-end="url(#arr-orange)" class="flow-path flow-animated"/>
+                                    <rect x="434" y="258" width="36" height="20" rx="10" fill="#f97316"/>
+                                    <text x="452" y="273" text-anchor="middle" fill="white" font-size="10" font-weight="800" font-family="Inter, sans-serif">F1</text>
+                                </g>
+
+                                <!-- F3: PPF → PA-R -->
+                                <g class="flow-group" data-flow="f3">
+                                    <path d="M700,275 L785,275" fill="none" stroke="#f97316" stroke-width="2.5" stroke-dasharray="8 4" marker-end="url(#arr-orange)" class="flow-path flow-animated"/>
+                                    <rect x="722" y="258" width="36" height="20" rx="10" fill="#f97316"/>
+                                    <text x="740" y="273" text-anchor="middle" fill="white" font-size="10" font-weight="800" font-family="Inter, sans-serif">F3</text>
+                                </g>
+
+                                <!-- F6: CYCLE DE VIE BIDIR -->
+                                <g class="flow-group" data-flow="f6">
+                                    <path d="M410,300 L500,300" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#arr-purple)" class="flow-path flow-animated"/>
+                                    <path d="M500,308 L410,308" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#arr-purple)" class="flow-path flow-animated-reverse"/>
+                                    <path d="M700,300 L785,300" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#arr-purple)" class="flow-path flow-animated"/>
+                                    <path d="M785,308 L700,308" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#arr-purple)" class="flow-path flow-animated-reverse"/>
+                                    <rect x="580" y="293" width="40" height="20" rx="10" fill="#8b5cf6"/>
+                                    <text x="600" y="307" text-anchor="middle" fill="white" font-size="10" font-weight="800" font-family="Inter, sans-serif">F6</text>
+                                </g>
+
+                                <!-- F7: INSCRIPTION ANNUAIRE -->
+                                <g class="flow-group" data-flow="f7">
+                                    <path d="M355,328 C355,385 545,385 545,343" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#arr-green)" class="flow-path flow-animated"/>
+                                    <rect x="424" y="370" width="36" height="20" rx="10" fill="#10b981"/>
+                                    <text x="442" y="384" text-anchor="middle" fill="white" font-size="10" font-weight="800" font-family="Inter, sans-serif">F7</text>
+                                </g>
+
+                                <!-- F8: CONSULTATION ANNUAIRE -->
+                                <g class="flow-group" data-flow="f8">
+                                    <path d="M375,328 C375,420 530,420 530,343" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#arr-green)" class="flow-path flow-animated"/>
+                                    <rect x="425" y="406" width="36" height="20" rx="10" fill="#10b981"/>
+                                    <text x="443" y="420" text-anchor="middle" fill="white" font-size="10" font-weight="800" font-family="Inter, sans-serif">F8</text>
+                                </g>
+
+                                <!-- F9: RÉPONSE ANNUAIRE -->
+                                <g class="flow-group" data-flow="f9">
+                                    <path d="M655,343 C655,385 850,385 850,328" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#arr-green)" class="flow-path flow-animated"/>
+                                    <rect x="730" y="370" width="36" height="20" rx="10" fill="#10b981"/>
+                                    <text x="748" y="384" text-anchor="middle" fill="white" font-size="10" font-weight="800" font-family="Inter, sans-serif">F9</text>
+                                </g>
+
+                                <!-- F10: E-REPORTING -->
+                                <g class="flow-group" data-flow="f10">
+                                    <path d="M395,328 C395,460 515,460 515,343" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="8 4" marker-end="url(#arr-amber)" class="flow-path flow-animated"/>
+                                    <rect x="424" y="447" width="42" height="20" rx="10" fill="#f59e0b"/>
+                                    <text x="445" y="461" text-anchor="middle" fill="white" font-size="10" font-weight="800" font-family="Inter, sans-serif">F10</text>
+                                </g>
+
+                                <!-- F11: RETOURS PPF → PA -->
+                                <g class="flow-group" data-flow="f11">
+                                    <path d="M670,343 C670,420 840,420 840,328" fill="none" stroke="#ec4899" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#arr-pink)" class="flow-path flow-animated"/>
+                                    <rect x="728" y="407" width="42" height="20" rx="10" fill="#ec4899"/>
+                                    <text x="749" y="421" text-anchor="middle" fill="white" font-size="10" font-weight="800" font-family="Inter, sans-serif">F11</text>
+                                </g>
+
+                                <!-- F12: PPF → DGFIP -->
+                                <g class="flow-group" data-flow="f12">
+                                    <path d="M600,343 L600,590" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="10 5" marker-end="url(#arr-red)" class="flow-path flow-animated"/>
+                                    <rect x="575" y="462" width="50" height="22" rx="11" fill="#ef4444"/>
+                                    <text x="600" y="478" text-anchor="middle" fill="white" font-size="11" font-weight="800" font-family="Inter, sans-serif">F12</text>
+                                </g>
+
+                                <!-- F13: ANNUAIRE TECH PA→PPF -->
+                                <g class="flow-group" data-flow="f13">
+                                    <path d="M335,328 C335,500 560,500 560,343" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arr-green)" class="flow-path flow-animated" opacity="0.7"/>
+                                    <rect x="418" y="488" width="42" height="18" rx="9" fill="#10b981" opacity="0.8"/>
+                                    <text x="439" y="501" text-anchor="middle" fill="white" font-size="9" font-weight="800" font-family="Inter, sans-serif">F13</text>
+                                </g>
+
+                                <!-- F14: ANNUAIRE TECH PPF→PA -->
+                                <g class="flow-group" data-flow="f14">
+                                    <path d="M640,343 C640,460 865,460 865,328" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arr-green)" class="flow-path flow-animated" opacity="0.7"/>
+                                    <rect x="728" y="447" width="42" height="18" rx="9" fill="#10b981" opacity="0.8"/>
+                                    <text x="749" y="460" text-anchor="middle" fill="white" font-size="9" font-weight="800" font-family="Inter, sans-serif">F14</text>
+                                </g>
+
+                                <!-- ZONE LABELS -->
+                                <text x="600" y="55" text-anchor="middle" fill="#00a7e1" font-size="11" font-weight="700" font-family="Inter, sans-serif" opacity="0.5">── Branche commerciale ──</text>
+                                <text x="280" y="535" text-anchor="middle" fill="#f97316" font-size="11" font-weight="700" font-family="Inter, sans-serif" opacity="0.4">Flux entrants → PPF</text>
+                                <text x="920" y="535" text-anchor="middle" fill="#ec4899" font-size="11" font-weight="700" font-family="Inter, sans-serif" opacity="0.4">PPF → Flux sortants</text>
+                                <text x="600" y="555" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700" font-family="Inter, sans-serif" opacity="0.4">── Branche fiscale ──</text>
+
+                                <!-- TOOLTIP -->
+                                <g id="flux-tooltip" class="flux-tooltip" opacity="0" pointer-events="none">
+                                    <rect class="tooltip-bg" x="0" y="0" width="260" height="72" rx="12" fill="rgba(11,32,70,0.95)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                                    <text id="tooltip-num" x="16" y="28" font-size="13" font-weight="900" font-family="Inter, sans-serif" fill="#00a7e1"></text>
+                                    <text id="tooltip-name" x="60" y="28" font-size="13" font-weight="700" font-family="Inter, sans-serif" fill="white"></text>
+                                    <text id="tooltip-dir" x="16" y="50" font-size="11" font-weight="500" font-family="Inter, sans-serif" fill="rgba(255,255,255,0.5)"></text>
+                                    <text id="tooltip-desc" x="16" y="66" font-size="10" font-weight="400" font-family="Inter, sans-serif" fill="rgba(255,255,255,0.35)"></text>
+                                </g>
+
+                            </svg>
                         </div>
-                        <p>À chaque facture émise, la PA-E <strong>extrait les données réglementaires</strong> et les transmet au PPF : identifiants vendeur/acheteur (SIREN, TVA intracom), numéro et date de facture, montants HT/TVA/TTC par taux, type de document, cadre de facturation.</p>
-                        <div class="callout callout--info" style="margin-top:16px;">
-                            <div class="callout-icon">📌</div>
-                            <div class="callout-content"><strong>Trajectoire :</strong> profil « Base » en sept. 2026 (données réduites) → profil « Full » en sept. 2027 (données complètes).</div>
+
+                        <!-- INTERACTIVE LEGEND -->
+                        <div class="flux-legend" id="flux-legend">
+                            <h3>12 flux actifs</h3>
+
+                            <div class="flux-legend-cat">Commerciaux</div>
+                            <div class="flux-legend-item" data-flow="f2">
+                                <span class="flux-pill" style="background:#00a7e1;">F2</span>
+                                <div><strong>Facture complète</strong><br><span>PA-E → PA-R</span></div>
+                            </div>
+
+                            <div class="flux-legend-cat">Fiscaux</div>
+                            <div class="flux-legend-item" data-flow="f1">
+                                <span class="flux-pill" style="background:#f97316;">F1</span>
+                                <div><strong>Données réglementaires</strong><br><span>PA-E → PPF</span></div>
+                            </div>
+                            <div class="flux-legend-item" data-flow="f3">
+                                <span class="flux-pill" style="background:#f97316;">F3</span>
+                                <div><strong>Données complémentaires</strong><br><span>PPF → PA-R</span></div>
+                            </div>
+                            <div class="flux-legend-item" data-flow="f12">
+                                <span class="flux-pill" style="background:#ef4444;">F12</span>
+                                <div><strong>Données fiscales</strong><br><span>PPF → DGFIP</span></div>
+                            </div>
+
+                            <div class="flux-legend-cat">Cycle de vie</div>
+                            <div class="flux-legend-item" data-flow="f6">
+                                <span class="flux-pill" style="background:#8b5cf6;">F6</span>
+                                <div><strong>Statuts (CDAR)</strong><br><span>PA-E ↔ PPF ↔ PA-R</span></div>
+                            </div>
+
+                            <div class="flux-legend-cat">Annuaire</div>
+                            <div class="flux-legend-item" data-flow="f7">
+                                <span class="flux-pill" style="background:#10b981;">F7</span>
+                                <div><strong>Inscription annuaire</strong><br><span>PA → PPF</span></div>
+                            </div>
+                            <div class="flux-legend-item" data-flow="f8">
+                                <span class="flux-pill" style="background:#10b981;">F8</span>
+                                <div><strong>Consultation annuaire</strong><br><span>PA → PPF</span></div>
+                            </div>
+                            <div class="flux-legend-item" data-flow="f9">
+                                <span class="flux-pill" style="background:#10b981;">F9</span>
+                                <div><strong>Réponse annuaire</strong><br><span>PPF → PA</span></div>
+                            </div>
+                            <div class="flux-legend-item" data-flow="f13">
+                                <span class="flux-pill" style="background:#10b981;">F13</span>
+                                <div><strong>Annuaire technique ↑</strong><br><span>PA → PPF</span></div>
+                            </div>
+                            <div class="flux-legend-item" data-flow="f14">
+                                <span class="flux-pill" style="background:#10b981;">F14</span>
+                                <div><strong>Annuaire technique ↓</strong><br><span>PPF → PA</span></div>
+                            </div>
+
+                            <div class="flux-legend-cat">E-reporting & retours</div>
+                            <div class="flux-legend-item" data-flow="f10">
+                                <span class="flux-pill" style="background:#f59e0b;">F10</span>
+                                <div><strong>E-reporting</strong><br><span>PA → PPF</span></div>
+                            </div>
+                            <div class="flux-legend-item" data-flow="f11">
+                                <span class="flux-pill" style="background:#ec4899;">F11</span>
+                                <div><strong>Retours & acquittements</strong><br><span>PPF → PA</span></div>
+                            </div>
+
+                            <div class="flux-legend-note">
+                                <em>⚠️ F4 et F5 supprimés (oct. 2024)</em>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                <section id="f2" class="content-section">
-                    <h2>Flux 2 — Transmission de la facture</h2>
-                    <div class="flux-card">
-                        <div class="flux-meta">
-                            <span class="flux-direction">PA émettrice → PA réceptrice</span>
-                            <span class="flux-format">UBL / CII / Factur-X</span>
-                        </div>
-                        <p>La facture complète circule <strong>directement entre PA</strong>. Ce flux ne transite PAS par le PPF. Transport via convention bilatérale entre PA ou réseau Peppol.</p>
+                <!-- COMMERCIAL -->
+                <section id="commercial" class="content-section">
+                    <h2>🔵 Flux commerciaux — F2</h2>
+                    <p>Le <strong>Flux 2</strong> est la branche commerciale du schéma en Y : la facture complète transite directement de la <strong>PA d'émission vers la PA de réception</strong>, sans passer par le PPF. C'est le flux visible par les entreprises — celui qui porte le document.</p>
+                    <div class="callout callout--info"><div class="callout-icon">📨</div><div class="callout-content">Le Flux 2 transporte la facture dans son <strong>format natif</strong> (UBL, CII ou Factur-X) + la version convertie si le destinataire utilise un format différent.</div></div>
+                </section>
+
+                <!-- FISCAL -->
+                <section id="fiscal" class="content-section">
+                    <h2>🟠 Flux fiscaux — F1, F3, F12</h2>
+                    <div class="triple-grid">
+                        <div class="objective-card"><div class="objective-icon">📤</div><h3>F1 — Données réglementaires</h3><p>La PA-E extrait les données obligatoires de la facture et les transmet au PPF. C'est la branche fiscale du Y.</p></div>
+                        <div class="objective-card"><div class="objective-icon">📥</div><h3>F3 — Données complémentaires</h3><p>Le PPF transmet à la PA-R les données dont elle a besoin pour informer le destinataire (si routage indirect).</p></div>
+                        <div class="objective-card"><div class="objective-icon">🏛️</div><h3>F12 — Vers la DGFIP</h3><p>Le PPF agrège toutes les données collectées et les transmet à l'administration fiscale pour le pré-remplissage de la CA3.</p></div>
                     </div>
                 </section>
 
-                <section id="f3" class="content-section">
-                    <h2>Flux 3 — Mise à disposition au destinataire</h2>
-                    <div class="flux-card">
-                        <div class="flux-meta">
-                            <span class="flux-direction">PA réceptrice → Destinataire</span>
-                            <span class="flux-format">Format au choix du destinataire</span>
-                        </div>
-                        <p>Le « dernier kilomètre » : la PA-R met la facture à disposition du destinataire. Conversion de format possible (portail web, API, EDI, email sécurisé…).</p>
+                <!-- LIFECYCLE -->
+                <section id="lifecycle" class="content-section">
+                    <h2>🟣 Cycle de vie — F6</h2>
+                    <p>Le <strong>Flux 6</strong> transporte les <strong>messages CDAR</strong> (statuts) dans les deux sens. Chaque changement de statut est notifié via F6 :</p>
+                    <div class="comparison-table"><table>
+                        <thead><tr><th>Statut</th><th>Code</th><th>Direction</th><th>Obligatoire PPF ?</th></tr></thead>
+                        <tbody>
+                            <tr><td>Déposée</td><td>200</td><td>PA-E → PPF</td><td>✅ Oui</td></tr>
+                            <tr><td>Reçue</td><td>220</td><td>PA-R → PA-E</td><td>Non</td></tr>
+                            <tr><td>Approuvée</td><td>230</td><td>PA-R → PA-E</td><td>Non</td></tr>
+                            <tr><td>Refusée</td><td>210</td><td>PA-R → PPF + PA-E</td><td>✅ Oui</td></tr>
+                            <tr><td>Encaissée</td><td>212</td><td>PA-R → PPF + PA-E</td><td>✅ Oui</td></tr>
+                            <tr><td>Rejetée</td><td>213</td><td>PA-R → PPF + PA-E</td><td>✅ Oui</td></tr>
+                        </tbody>
+                    </table></div>
+                </section>
+
+                <!-- ANNUAIRE -->
+                <section id="annuaire" class="content-section">
+                    <h2>🟢 Annuaire — F7, F8, F9, F13, F14</h2>
+                    <p>5 flux dédiés à la gestion de l'annuaire central :</p>
+                    <div class="comparison-table"><table>
+                        <thead><tr><th>Flux</th><th>Direction</th><th>Rôle</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>F7</strong></td><td>PA → PPF</td><td>Inscrire / mettre à jour une ligne d'annuaire</td></tr>
+                            <tr><td><strong>F8</strong></td><td>PA → PPF</td><td>Consulter l'annuaire (rechercher un destinataire)</td></tr>
+                            <tr><td><strong>F9</strong></td><td>PPF → PA</td><td>Réponse de l'annuaire (adresse, PA-R, code routage)</td></tr>
+                            <tr><td><strong>F13</strong></td><td>PA → PPF</td><td>Mettre à jour l'annuaire technique (endpoints, certificats)</td></tr>
+                            <tr><td><strong>F14</strong></td><td>PPF → PA</td><td>Diffuser les données techniques aux PA</td></tr>
+                        </tbody>
+                    </table></div>
+                </section>
+
+                <!-- E-REPORTING -->
+                <section id="ereporting" class="content-section">
+                    <h2>🟡 E-reporting & retours — F10, F11</h2>
+                    <div class="role-dual">
+                        <div class="role-card"><h4>F10 — E-reporting</h4><ul>
+                            <li><strong>F10.1 :</strong> Factures émises vers l'international</li>
+                            <li><strong>F10.2 :</strong> Factures reçues de l'international</li>
+                            <li><strong>F10.3 :</strong> Transactions B2C</li>
+                            <li><strong>F10.4 :</strong> Données de paiement (TVA encaissement)</li>
+                        </ul></div>
+                        <div class="role-card"><h4>F11 — Retours PPF</h4><ul>
+                            <li>Acquittements de réception</li>
+                            <li>Notifications de rejet (IRR, REJ)</li>
+                            <li>Confirmations de traitement</li>
+                            <li>Alertes et anomalies</li>
+                        </ul></div>
                     </div>
                 </section>
 
-                <section id="f4f5" class="content-section">
-                    <h2>⚠️ Flux 4 et Flux 5 — INEXISTANTS</h2>
-                    <div class="callout callout--warning">
-                        <div class="callout-icon">⚠️</div>
-                        <div class="callout-content">
-                            <strong>Les Flux 4 et 5 n'existent pas.</strong><br><br>
-                            Dans le modèle initial, quand le PPF devait jouer le rôle de routeur central :<br>
-                            • <strong>F4</strong> = transmission PA-E → PPF (pour routage)<br>
-                            • <strong>F5</strong> = retransmission PPF → PA-R<br><br>
-                            Avec l'abandon du PPF-routeur (oct. 2024), ces flux sont caducs. <strong>La numérotation a été conservée avec ces « trous »</strong> pour ne pas casser les références existantes.
-                        </div>
-                    </div>
-                </section>
-
-                <section id="f6" class="content-section">
-                    <h2>Flux 6 — Statuts de cycle de vie</h2>
-                    <div class="flux-card">
-                        <div class="flux-meta">
-                            <span class="flux-direction">PA → PPF</span>
-                            <span class="flux-format">UN/CEFACT CDAR</span>
-                        </div>
-                        <p>À chaque changement de statut <strong>obligatoire</strong>, la PA transmet au PPF :</p>
-                        <div class="comparison-table" style="margin-top:12px;">
-                            <table>
-                                <thead><tr><th>Code</th><th>Statut</th><th>Signification fiscale</th></tr></thead>
-                                <tbody>
-                                    <tr><td><strong>200</strong></td><td>Déposée</td><td>Facture officiellement dans le circuit</td></tr>
-                                    <tr><td><strong>210</strong></td><td>Refusée</td><td>Flux 1 « annulé » fiscalement</td></tr>
-                                    <tr><td><strong>212</strong></td><td>Encaissée</td><td>Exigibilité TVA à l'encaissement</td></tr>
-                                    <tr><td><strong>213</strong></td><td>Rejetée</td><td>Facture n'entre pas dans le circuit</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="f7f8f9" class="content-section">
-                    <h2>Flux 7, 8, 9 — Annuaire</h2>
-
-                    <div class="flux-card" style="margin-bottom:16px;">
-                        <div class="flux-meta">
-                            <span class="flux-direction">F7 : PA → PPF</span>
-                            <span class="flux-format">API REST</span>
-                        </div>
-                        <p><strong>Consultation ponctuelle</strong> — vérifier l'existence du destinataire, sa PA-R, son code routage avant chaque émission.</p>
-                    </div>
-
-                    <div class="flux-card" style="margin-bottom:16px;">
-                        <div class="flux-meta">
-                            <span class="flux-direction">F8 : PA → PPF</span>
-                            <span class="flux-format">API REST</span>
-                        </div>
-                        <p><strong>Mise à jour annuaire</strong> — la PA-R crée, modifie ou clôture les lignes d'annuaire de ses clients en réception.</p>
-                    </div>
-
-                    <div class="flux-card">
-                        <div class="flux-meta">
-                            <span class="flux-direction">F9 : PA → PPF</span>
-                            <span class="flux-format">API REST</span>
-                        </div>
-                        <p><strong>Consultation étendue</strong> — vérifier ses propres données ou celles de partenaires dans l'annuaire.</p>
-                    </div>
-                </section>
-
-                <section id="f10" class="content-section">
-                    <h2>Flux 10 — E-reporting</h2>
-                    <div class="flux-card">
-                        <div class="flux-meta">
-                            <span class="flux-direction">PA → PPF</span>
-                            <span class="flux-format">XML e-reporting</span>
-                        </div>
-                        <div class="comparison-table" style="margin-top:12px;">
-                            <table>
-                                <thead><tr><th>Sous-flux</th><th>Périmètre</th><th>Type</th></tr></thead>
-                                <tbody>
-                                    <tr><td><strong>10.1</strong></td><td>B2B international</td><td>Individuel (facture par facture)</td></tr>
-                                    <tr><td><strong>10.2</strong></td><td>B2C détaillé</td><td>Individuel</td></tr>
-                                    <tr><td><strong>10.3</strong></td><td>B2C agrégé</td><td>Cumuls quotidiens (TPS1, TLB1, TNT1, TMA1)</td></tr>
-                                    <tr><td><strong>10.4</strong></td><td>Paiements B2C</td><td>Cumuls quotidiens</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <p style="margin-top:12px;">👉 <a href="./e-reporting.html" style="color:var(--cyan);font-weight:700;">Page dédiée au e-reporting →</a></p>
-                    </div>
-                </section>
-
-                <section id="f11" class="content-section">
-                    <h2>Flux 11 — Retours de contrôle PPF</h2>
-                    <div class="flux-card">
-                        <div class="flux-meta">
-                            <span class="flux-direction">PPF → PA</span>
-                            <span class="flux-format">API / EDI</span>
-                        </div>
-                        <p>Le « feedback loop » : pour chaque Flux 1, 6 ou 10, le PPF renvoie un accusé (OK) ou un rejet (KO).</p>
-                        <p><strong>5 motifs de rejet :</strong></p>
-                        <ul class="styled-list">
-                            <li><strong>REJ_INC</strong> — Incohérence dans les données</li>
-                            <li><strong>REJ_INEX</strong> — Non-conformité (données inexistantes)</li>
-                            <li><strong>REJ_RG</strong> — Règle de gestion violée</li>
-                            <li><strong>REJ_HAB</strong> — Défaut d'habilitation</li>
-                            <li><strong>REJ_ENCAISSEMENT</strong> — Montants d'encaissement non conformes</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section id="f12" class="content-section">
-                    <h2>Flux 12 — Transmission à la DGFiP</h2>
-                    <div class="flux-card">
-                        <div class="flux-meta">
-                            <span class="flux-direction">PPF → DGFiP</span>
-                            <span class="flux-format">Interne administration</span>
-                        </div>
-                        <p>Toutes les données fiscales agrégées (F1 + F6 + F10) sont transmises à l'administration fiscale. Alimente le pré-remplissage TVA. <strong>Invisible pour les entreprises.</strong></p>
-                    </div>
-                </section>
-
-                <section id="f13f14" class="content-section">
-                    <h2>Flux 13 & 14 — Gestion technique de l'annuaire</h2>
-
-                    <div class="flux-card" style="margin-bottom:16px;">
-                        <div class="flux-meta">
-                            <span class="flux-direction">F13 : PA → PPF</span>
-                            <span class="flux-format">API / EDI</span>
-                        </div>
-                        <p><strong>Actualisation en masse</strong> — quand une PA prend en charge de nouveaux clients ou qu'un client change de PA.</p>
-                    </div>
-
-                    <div class="flux-card">
-                        <div class="flux-meta">
-                            <span class="flux-direction">F14 : PPF → PA</span>
-                            <span class="flux-format">XML F14</span>
-                        </div>
-                        <p><strong>Diffusion de l'annuaire</strong> — complet (hebdomadaire) + différentiel (quotidien). Permet aux PA de synchroniser leur copie locale.</p>
-                    </div>
-                </section>
-
-                <section id="recap" class="content-section">
-                    <h2>Tableau récapitulatif complet</h2>
-                    <div class="comparison-table">
-                        <table>
-                            <thead><tr><th>N°</th><th>Nom</th><th>Direction</th><th>Format</th></tr></thead>
-                            <tbody>
-                                <tr><td><strong>F1</strong></td><td>Données réglementaires</td><td>PA-E → PPF</td><td>UBL / CII</td></tr>
-                                <tr><td><strong>F2</strong></td><td>Transmission facture</td><td>PA-E → PA-R</td><td>UBL / CII / Factur-X</td></tr>
-                                <tr><td><strong>F3</strong></td><td>Mise à disposition</td><td>PA-R → Destinataire</td><td>Variable</td></tr>
-                                <tr style="opacity:0.4;"><td><strong>F4</strong></td><td><s>Supprimé</s></td><td>—</td><td>—</td></tr>
-                                <tr style="opacity:0.4;"><td><strong>F5</strong></td><td><s>Supprimé</s></td><td>—</td><td>—</td></tr>
-                                <tr><td><strong>F6</strong></td><td>Statuts CDV</td><td>PA → PPF</td><td>CDAR</td></tr>
-                                <tr><td><strong>F7</strong></td><td>Consultation annuaire</td><td>PA → PPF</td><td>API REST</td></tr>
-                                <tr><td><strong>F8</strong></td><td>MAJ annuaire</td><td>PA → PPF</td><td>API REST</td></tr>
-                                <tr><td><strong>F9</strong></td><td>Consultation étendue</td><td>PA → PPF</td><td>API REST</td></tr>
-                                <tr><td><strong>F10</strong></td><td>E-reporting (4 sous-flux)</td><td>PA → PPF</td><td>XML e-reporting</td></tr>
-                                <tr><td><strong>F11</strong></td><td>Retours contrôle</td><td>PPF → PA</td><td>API / EDI</td></tr>
-                                <tr><td><strong>F12</strong></td><td>Données DGFiP</td><td>PPF → DGFiP</td><td>Interne</td></tr>
-                                <tr><td><strong>F13</strong></td><td>Actualisation annuaire</td><td>PA → PPF</td><td>API / EDI</td></tr>
-                                <tr><td><strong>F14</strong></td><td>Diffusion annuaire</td><td>PPF → PA</td><td>XML F14</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <!-- TABLEAU RÉCAP -->
+                <section id="tableau" class="content-section">
+                    <h2>📊 Tableau récapitulatif</h2>
+                    <div class="comparison-table"><table>
+                        <thead><tr><th>Flux</th><th>De → Vers</th><th>Contenu</th><th>Catégorie</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>F1</strong></td><td>PA-E → PPF</td><td>Données réglementaires facture</td><td>🟠 Fiscal</td></tr>
+                            <tr><td><strong>F2</strong></td><td>PA-E → PA-R</td><td>Facture complète (format natif)</td><td>🔵 Commercial</td></tr>
+                            <tr><td><strong>F3</strong></td><td>PPF → PA-R</td><td>Données complémentaires</td><td>🟠 Fiscal</td></tr>
+                            <tr><td style="color:#64748b;">F4</td><td colspan="3" style="color:#64748b;font-style:italic;">Supprimé (oct. 2024)</td></tr>
+                            <tr><td style="color:#64748b;">F5</td><td colspan="3" style="color:#64748b;font-style:italic;">Supprimé (oct. 2024)</td></tr>
+                            <tr><td><strong>F6</strong></td><td>PA ↔ PPF ↔ PA</td><td>Statuts cycle de vie (CDAR)</td><td>🟣 CDV</td></tr>
+                            <tr><td><strong>F7</strong></td><td>PA → PPF</td><td>Inscription annuaire</td><td>🟢 Annuaire</td></tr>
+                            <tr><td><strong>F8</strong></td><td>PA → PPF</td><td>Consultation annuaire</td><td>🟢 Annuaire</td></tr>
+                            <tr><td><strong>F9</strong></td><td>PPF → PA</td><td>Réponse annuaire</td><td>🟢 Annuaire</td></tr>
+                            <tr><td><strong>F10</strong></td><td>PA → PPF</td><td>E-reporting (10.1→10.4)</td><td>🟡 E-rep</td></tr>
+                            <tr><td><strong>F11</strong></td><td>PPF → PA</td><td>Retours & acquittements</td><td>🩷 Retours</td></tr>
+                            <tr><td><strong>F12</strong></td><td>PPF → DGFIP</td><td>Données fiscales agrégées</td><td>🟠 Fiscal</td></tr>
+                            <tr><td><strong>F13</strong></td><td>PA → PPF</td><td>Annuaire technique (endpoints)</td><td>🟢 Annuaire</td></tr>
+                            <tr><td><strong>F14</strong></td><td>PPF → PA</td><td>Diffusion annuaire technique</td><td>🟢 Annuaire</td></tr>
+                        </tbody>
+                    </table></div>
                 </section>
 
                 <nav class="page-nav-bottom">
-                    <a href="./schema-en-y.html" class="nav-prev">
-                        <span class="nav-label">Page précédente</span>
-                        <span class="nav-title">← 🔀 Schéma en Y</span>
-                    </a>
-                    <a href="./cycle-de-vie.html" class="nav-next">
-                        <span class="nav-label">Page suivante</span>
-                        <span class="nav-title">🔄 Cycle de vie →</span>
-                    </a>
+                    <a href="./schema-en-y.html" class="nav-prev"><span class="nav-label">Page précédente</span><span class="nav-title">← 🔀 Schéma en Y</span></a>
+                    <a href="./cycle-de-vie.html" class="nav-next"><span class="nav-label">Page suivante</span><span class="nav-title">🔄 Cycle de vie →</span></a>
                 </nav>
             </article>
         </div>
@@ -271,5 +412,262 @@
     <footer id="main-footer"></footer>
     <script src="./js/nav.js"></script>
     <script src="./js/animations.js"></script>
+
+    <!-- DIAGRAM INTERACTIVITY + FULLSCREEN -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var svg = document.getElementById('flux-svg');
+        var legend = document.getElementById('flux-legend');
+        var wrap = document.getElementById('flux-diagram-wrap');
+        var expandBtn = document.getElementById('flux-expand');
+
+        if (!svg || !legend) return;
+
+        // =====================
+        // FLOW DATA
+        // =====================
+        var flowData = {
+            f1:  { num: 'F1',  name: 'Données réglementaires',  dir: 'PA-E → PPF',           desc: 'Branche fiscale du schéma en Y' },
+            f2:  { num: 'F2',  name: 'Facture complète',         dir: 'PA-E → PA-R',           desc: 'Branche commerciale — document natif' },
+            f3:  { num: 'F3',  name: 'Données complémentaires',  dir: 'PPF → PA-R',            desc: 'Informations pour le destinataire' },
+            f6:  { num: 'F6',  name: 'Statuts (CDAR)',           dir: 'PA-E ↔ PPF ↔ PA-R',     desc: 'Cycle de vie — bidirectionnel' },
+            f7:  { num: 'F7',  name: 'Inscription annuaire',     dir: 'PA → PPF',              desc: 'Enregistrer une entrée dans l\'annuaire' },
+            f8:  { num: 'F8',  name: 'Consultation annuaire',    dir: 'PA → PPF',              desc: 'Rechercher un destinataire' },
+            f9:  { num: 'F9',  name: 'Réponse annuaire',         dir: 'PPF → PA',              desc: 'Adresse, PA-R, code routage' },
+            f10: { num: 'F10', name: 'E-reporting',              dir: 'PA → PPF',              desc: 'B2C, international, paiements (10.1→10.4)' },
+            f11: { num: 'F11', name: 'Retours & acquittements',  dir: 'PPF → PA',              desc: 'Acquittements, rejets, alertes' },
+            f12: { num: 'F12', name: 'Données fiscales',         dir: 'PPF → DGFIP',           desc: 'Agrégation pour pré-remplissage CA3' },
+            f13: { num: 'F13', name: 'Annuaire technique ↑',     dir: 'PA → PPF',              desc: 'Endpoints, certificats, capacités' },
+            f14: { num: 'F14', name: 'Annuaire technique ↓',     dir: 'PPF → PA',              desc: 'Diffusion données techniques aux PA' }
+        };
+
+        // =====================
+        // TOOLTIP
+        // =====================
+        var tooltip = document.getElementById('flux-tooltip');
+        var tooltipBg = tooltip.querySelector('.tooltip-bg');
+        var tooltipNum = document.getElementById('tooltip-num');
+        var tooltipName = document.getElementById('tooltip-name');
+        var tooltipDir = document.getElementById('tooltip-dir');
+        var tooltipDesc = document.getElementById('tooltip-desc');
+
+        function showTooltip(flowId, evt) {
+            var data = flowData[flowId];
+            if (!data || !tooltip) return;
+
+            tooltipNum.textContent = data.num;
+            tooltipName.textContent = data.name;
+            tooltipDir.textContent = data.dir;
+            tooltipDesc.textContent = data.desc;
+
+            // Position near cursor
+            var pt = svg.createSVGPoint();
+            pt.x = evt.clientX;
+            pt.y = evt.clientY;
+            var svgPt = pt.matrixTransform(svg.getScreenCTM().inverse());
+
+            // Keep tooltip within viewBox
+            var tx = Math.min(svgPt.x + 15, 920);
+            var ty = Math.max(svgPt.y - 80, 10);
+
+            tooltip.setAttribute('transform', 'translate(' + tx + ',' + ty + ')');
+            tooltip.setAttribute('opacity', '1');
+        }
+
+        function hideTooltip() {
+            if (tooltip) tooltip.setAttribute('opacity', '0');
+        }
+
+        function moveTooltip(evt) {
+            if (tooltip.getAttribute('opacity') === '0') return;
+            var pt = svg.createSVGPoint();
+            pt.x = evt.clientX;
+            pt.y = evt.clientY;
+            var svgPt = pt.matrixTransform(svg.getScreenCTM().inverse());
+            var tx = Math.min(svgPt.x + 15, 920);
+            var ty = Math.max(svgPt.y - 80, 10);
+            tooltip.setAttribute('transform', 'translate(' + tx + ',' + ty + ')');
+        }
+
+        // =====================
+        // LEGEND HOVER
+        // =====================
+        var items = legend.querySelectorAll('.flux-legend-item');
+
+        function activateFlow(flowId, targetSvg) {
+            var s = targetSvg || svg;
+            s.classList.add('flux-highlight');
+            var target = s.querySelector('[data-flow="' + flowId + '"]');
+            if (target) target.classList.add('flow-active');
+        }
+
+        function deactivateAll(targetSvg) {
+            var s = targetSvg || svg;
+            s.classList.remove('flux-highlight');
+            s.querySelectorAll('.flow-active').forEach(function(el) { el.classList.remove('flow-active'); });
+            items.forEach(function(i) { i.classList.remove('legend-active'); });
+            hideTooltip();
+        }
+
+        items.forEach(function(item) {
+            var flowId = item.dataset.flow;
+
+            item.addEventListener('mouseenter', function() {
+                activateFlow(flowId);
+                item.classList.add('legend-active');
+            });
+
+            item.addEventListener('mouseleave', function() {
+                deactivateAll();
+            });
+
+            item.addEventListener('click', function() {
+                var wasActive = item.classList.contains('legend-active');
+                deactivateAll();
+                if (!wasActive) {
+                    activateFlow(flowId);
+                    item.classList.add('legend-active');
+                }
+            });
+        });
+
+        // =====================
+        // SVG FLOW HOVER (tooltip)
+        // =====================
+        svg.querySelectorAll('.flow-group').forEach(function(group) {
+            var flowId = group.dataset.flow;
+            if (!flowData[flowId]) return;
+
+            group.style.cursor = 'pointer';
+
+            group.addEventListener('mouseenter', function(evt) {
+                svg.classList.add('flux-highlight');
+                group.classList.add('flow-active');
+                showTooltip(flowId, evt);
+            });
+
+            group.addEventListener('mousemove', moveTooltip);
+
+            group.addEventListener('mouseleave', function() {
+                svg.classList.remove('flux-highlight');
+                svg.querySelectorAll('.flow-active').forEach(function(el) { el.classList.remove('flow-active'); });
+                hideTooltip();
+            });
+        });
+
+        // =====================
+        // FULLSCREEN MODE
+        // =====================
+        var overlay = null;
+
+        function openFullscreen() {
+            var svgClone = svg.cloneNode(true);
+            svgClone.removeAttribute('id');
+
+            overlay = document.createElement('div');
+            overlay.className = 'flux-fullscreen-overlay';
+            overlay.innerHTML =
+                '<div class="flux-fs-toolbar">' +
+                    '<span class="flux-fs-title">📡 Les 14 flux — Vue plein écran</span>' +
+                    '<div class="flux-fs-controls">' +
+                        '<button class="flux-fs-btn flux-fs-btn--close" id="flux-fs-close">✕ Fermer</button>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="flux-fs-svg-container" id="flux-fs-container"></div>' +
+                '<div class="flux-fs-hint"><kbd>Échap</kbd> pour fermer · Survolez un flux pour l\'isoler</div>';
+
+            document.body.appendChild(overlay);
+            document.getElementById('flux-fs-container').appendChild(svgClone);
+            document.body.style.overflow = 'hidden';
+
+            // Tooltip elements in cloned SVG
+            var fsTooltip = svgClone.querySelector('.flux-tooltip');
+            var fsTooltipNum = svgClone.querySelector('#tooltip-num');
+            var fsTooltipName = svgClone.querySelector('#tooltip-name');
+            var fsTooltipDir = svgClone.querySelector('#tooltip-dir');
+            var fsTooltipDesc = svgClone.querySelector('#tooltip-desc');
+
+            function showFsTooltip(flowId, evt) {
+                var data = flowData[flowId];
+                if (!data || !fsTooltip) return;
+                fsTooltipNum.textContent = data.num;
+                fsTooltipName.textContent = data.name;
+                fsTooltipDir.textContent = data.dir;
+                fsTooltipDesc.textContent = data.desc;
+                var pt = svgClone.createSVGPoint();
+                pt.x = evt.clientX;
+                pt.y = evt.clientY;
+                var svgPt = pt.matrixTransform(svgClone.getScreenCTM().inverse());
+                var tx = Math.min(svgPt.x + 15, 920);
+                var ty = Math.max(svgPt.y - 80, 10);
+                fsTooltip.setAttribute('transform', 'translate(' + tx + ',' + ty + ')');
+                fsTooltip.setAttribute('opacity', '1');
+            }
+
+            function hideFsTooltip() {
+                if (fsTooltip) fsTooltip.setAttribute('opacity', '0');
+            }
+
+            // Hover on flows in fullscreen
+            svgClone.querySelectorAll('.flow-group').forEach(function(group) {
+                var flowId = group.dataset.flow;
+                if (!flowData[flowId]) return;
+                group.style.cursor = 'pointer';
+
+                group.addEventListener('mouseenter', function(evt) {
+                    svgClone.classList.add('flux-highlight');
+                    group.classList.add('flow-active');
+                    showFsTooltip(flowId, evt);
+                });
+
+                group.addEventListener('mousemove', function(evt) {
+                    if (fsTooltip.getAttribute('opacity') === '0') return;
+                    var pt = svgClone.createSVGPoint();
+                    pt.x = evt.clientX;
+                    pt.y = evt.clientY;
+                    var svgPt = pt.matrixTransform(svgClone.getScreenCTM().inverse());
+                    var tx = Math.min(svgPt.x + 15, 920);
+                    var ty = Math.max(svgPt.y - 80, 10);
+                    fsTooltip.setAttribute('transform', 'translate(' + tx + ',' + ty + ')');
+                });
+
+                group.addEventListener('mouseleave', function() {
+                    svgClone.classList.remove('flux-highlight');
+                    svgClone.querySelectorAll('.flow-active').forEach(function(el) { el.classList.remove('flow-active'); });
+                    hideFsTooltip();
+                });
+            });
+
+            // Close handlers
+            document.getElementById('flux-fs-close').addEventListener('click', closeFullscreen);
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) closeFullscreen();
+            });
+            document.addEventListener('keydown', handleEsc);
+        }
+
+        function closeFullscreen() {
+            if (!overlay) return;
+            overlay.classList.add('closing');
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', handleEsc);
+            setTimeout(function() {
+                if (overlay) overlay.remove();
+                overlay = null;
+            }, 250);
+        }
+
+        function handleEsc(e) {
+            if (e.key === 'Escape') closeFullscreen();
+        }
+
+        // Bind
+        expandBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            openFullscreen();
+        });
+        wrap.addEventListener('dblclick', openFullscreen);
+    });
+    </script>
 </body>
 </html>

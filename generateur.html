@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur UBL | E-Invoicing Academy</title>
+    <link rel="icon" href="./assets/favicon-Fluxym-V2.png" sizes="32x32" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/pages.css">
+</head>
+<body>
+
+    <nav id="main-nav"></nav>
+
+    <header class="page-hero">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="./index.html">Accueil</a> <span>/</span> <span>Outils</span>
+            </div>
+            <span class="hero-badge">Outil pratique</span>
+            <h1>Générateur de flux UBL</h1>
+            <p>Sélectionnez un cas d'usage FNFE, visualisez la fiche pédagogique et téléchargez la facture XML correspondante.</p>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <div class="page-container page-layout">
+
+            <aside class="page-sidebar">
+                <div class="sidebar-sticky">
+                    <h4>Sur cette page</h4>
+                    <ul class="sidebar-nav">
+                        <li><a href="#pedagogy" class="sidebar-link active">📚 Fiche pédagogique</a></li>
+                        <li><a href="#generator" class="sidebar-link">⚙️ Générateur</a></li>
+                    </ul>
+                    <div class="sidebar-nav-pages">
+                        <h4>Outils</h4>
+                        <a href="./generateur.html" class="sidebar-page active">🧪 Générateur UBL</a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="page-content">
+
+                <!-- SECTION 1 : FICHE PÉDAGOGIQUE -->
+                <section id="pedagogy" class="content-section">
+                    <h2>📚 Fiche pédagogique</h2>
+                    <p>La fiche se met à jour automatiquement lorsque vous changez de cas d'usage ci-dessous.</p>
+
+                    <!-- Sélecteur de cas (placé ici pour être visible en premier) -->
+                    <div class="gen-field">
+                        <label for="usecase">Cas d'usage FNFE</label>
+                        <select id="usecase"></select>
+                    </div>
+
+                    <div class="gen-pedagogy-card" id="theory-content">
+                        <div class="gen-loader">Chargement des données…</div>
+                    </div>
+
+                    <div class="gen-info-box" id="info-box">
+                        <h4>📋 Paramètres injectés</h4>
+                        <p id="info-text">Sélectionnez un cas…</p>
+                    </div>
+                </section>
+
+                <!-- SECTION 2 : GÉNÉRATEUR -->
+                <section id="generator" class="content-section">
+                    <h2>⚙️ Générateur de flux</h2>
+                    <p>Configurez les paramètres puis téléchargez la facture UBL ou le pack ZIP.</p>
+
+                    <div class="gen-form">
+                        <div class="gen-row">
+                            <div class="gen-field">
+                                <label for="trigramme">Consultant (Trigramme)</label>
+                                <input type="text" id="trigramme" placeholder="Ex: BBA" maxlength="3" value="BBA">
+                            </div>
+                            <div class="gen-field">
+                                <label for="target-platform">Plateforme cible</label>
+                                <select id="target-platform">
+                                    <option value="esker">Esker Synergy</option>
+                                    <option value="basware">Basware</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Paramètres avancés -->
+                        <details class="gen-advanced">
+                            <summary>Paramètres avancés (Tiers)</summary>
+                            <div class="gen-advanced-content" id="companies-settings">
+                                <div class="gen-loader-small">Chargement…</div>
+                            </div>
+                        </details>
+
+                        <button class="gen-btn" id="btn-generate">
+                            <span class="gen-btn-icon">📥</span>
+                            Télécharger la facture UBL
+                        </button>
+
+                        <div id="success-msg" class="gen-success hidden">
+                            <span class="gen-success-icon">✅</span>
+                            <p>Génération réussie ! Le fichier a été téléchargé.</p>
+                            <strong id="filename-display"></strong>
+                        </div>
+                    </div>
+                </section>
+
+                <nav class="page-nav-bottom">
+                    <a href="./index.html" class="nav-prev">
+                        <span class="nav-label">Retour</span>
+                        <span class="nav-title">← Accueil</span>
+                    </a>
+                    <a href="./comprendre.html" class="nav-next">
+                        <span class="nav-label">Continuer</span>
+                        <span class="nav-title">Comprendre la réforme →</span>
+                    </a>
+                </nav>
+            </article>
+        </div>
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <!-- Scripts Academy -->
+    <script src="./js/nav.js"></script>
+    <script src="./js/animations.js"></script>
+
+    <!-- JSZip (pour cas A et B) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <!-- Moteur UBL (inchangés) -->
+    <script src="./data/ubl-templates.js"></script>
+    <script src="./js/ubl-generator.js"></script>
+
+    <!-- UI Générateur (fusion app.js + ui-manager.js) -->
+    <script src="./js/generator-ui.js"></script>
+</body>
+</html>
