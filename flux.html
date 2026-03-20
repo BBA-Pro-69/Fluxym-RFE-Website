@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les 14 flux de la réforme | E-Invoicing Academy</title>
+    <link rel="icon" href="./assets/favicon-Fluxym-V2.png" sizes="32x32" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/pages.css">
+</head>
+<body>
+
+    <nav id="main-nav"></nav>
+
+    <header class="page-hero">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="./index.html">Accueil</a> <span>/</span> <span>Niveau 3 — Approfondir</span>
+            </div>
+            <span class="hero-badge">Niveau 3 — Approfondir</span>
+            <h1>Les 14 flux de la réforme</h1>
+            <p>Chaque échange entre acteurs est codifié en flux numérotés. Voici le guide complet, flux par flux.</p>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <div class="page-container page-layout">
+
+            <aside class="page-sidebar">
+                <div class="sidebar-sticky">
+                    <h4>Sur cette page</h4>
+                    <ul class="sidebar-nav">
+                        <li><a href="#f1" class="sidebar-link active">F1 — Données réglementaires</a></li>
+                        <li><a href="#f2" class="sidebar-link">F2 — Transmission facture</a></li>
+                        <li><a href="#f3" class="sidebar-link">F3 — Mise à disposition</a></li>
+                        <li><a href="#f4f5" class="sidebar-link">F4-F5 — Inexistants</a></li>
+                        <li><a href="#f6" class="sidebar-link">F6 — Statuts CDV</a></li>
+                        <li><a href="#f7f8f9" class="sidebar-link">F7-F8-F9 — Annuaire</a></li>
+                        <li><a href="#f10" class="sidebar-link">F10 — E-reporting</a></li>
+                        <li><a href="#f11" class="sidebar-link">F11 — Retours PPF</a></li>
+                        <li><a href="#f12" class="sidebar-link">F12 — Données DGFiP</a></li>
+                        <li><a href="#f13f14" class="sidebar-link">F13-F14 — Technique</a></li>
+                        <li><a href="#recap" class="sidebar-link">Tableau récapitulatif</a></li>
+                    </ul>
+                    <div class="sidebar-nav-pages">
+                        <h4>Parcours Niveau 3</h4>
+                        <a href="./schema-en-y.html" class="sidebar-page">🔀 Schéma en Y</a>
+                        <a href="./flux.html" class="sidebar-page active">📡 Les 14 flux</a>
+                        <a href="./cycle-de-vie.html" class="sidebar-page">🔄 Cycle de vie</a>
+                        <a href="./formats.html" class="sidebar-page">📐 Les formats</a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="page-content">
+
+                <section id="f1" class="content-section">
+                    <h2>Flux 1 — Données réglementaires de facture</h2>
+                    <div class="flux-card">
+                        <div class="flux-meta">
+                            <span class="flux-direction">PA émettrice → PPF</span>
+                            <span class="flux-format">UBL / CII (XML)</span>
+                        </div>
+                        <p>À chaque facture émise, la PA-E <strong>extrait les données réglementaires</strong> et les transmet au PPF : identifiants vendeur/acheteur (SIREN, TVA intracom), numéro et date de facture, montants HT/TVA/TTC par taux, type de document, cadre de facturation.</p>
+                        <div class="callout callout--info" style="margin-top:16px;">
+                            <div class="callout-icon">📌</div>
+                            <div class="callout-content"><strong>Trajectoire :</strong> profil « Base » en sept. 2026 (données réduites) → profil « Full » en sept. 2027 (données complètes).</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="f2" class="content-section">
+                    <h2>Flux 2 — Transmission de la facture</h2>
+                    <div class="flux-card">
+                        <div class="flux-meta">
+                            <span class="flux-direction">PA émettrice → PA réceptrice</span>
+                            <span class="flux-format">UBL / CII / Factur-X</span>
+                        </div>
+                        <p>La facture complète circule <strong>directement entre PA</strong>. Ce flux ne transite PAS par le PPF. Transport via convention bilatérale entre PA ou réseau Peppol.</p>
+                    </div>
+                </section>
+
+                <section id="f3" class="content-section">
+                    <h2>Flux 3 — Mise à disposition au destinataire</h2>
+                    <div class="flux-card">
+                        <div class="flux-meta">
+                            <span class="flux-direction">PA réceptrice → Destinataire</span>
+                            <span class="flux-format">Format au choix du destinataire</span>
+                        </div>
+                        <p>Le « dernier kilomètre » : la PA-R met la facture à disposition du destinataire. Conversion de format possible (portail web, API, EDI, email sécurisé…).</p>
+                    </div>
+                </section>
+
+                <section id="f4f5" class="content-section">
+                    <h2>⚠️ Flux 4 et Flux 5 — INEXISTANTS</h2>
+                    <div class="callout callout--warning">
+                        <div class="callout-icon">⚠️</div>
+                        <div class="callout-content">
+                            <strong>Les Flux 4 et 5 n'existent pas.</strong><br><br>
+                            Dans le modèle initial, quand le PPF devait jouer le rôle de routeur central :<br>
+                            • <strong>F4</strong> = transmission PA-E → PPF (pour routage)<br>
+                            • <strong>F5</strong> = retransmission PPF → PA-R<br><br>
+                            Avec l'abandon du PPF-routeur (oct. 2024), ces flux sont caducs. <strong>La numérotation a été conservée avec ces « trous »</strong> pour ne pas casser les références existantes.
+                        </div>
+                    </div>
+                </section>
+
+                <section id="f6" class="content-section">
+                    <h2>Flux 6 — Statuts de cycle de vie</h2>
+                    <div class="flux-card">
+                        <div class="flux-meta">
+                            <span class="flux-direction">PA → PPF</span>
+                            <span class="flux-format">UN/CEFACT CDAR</span>
+                        </div>
+                        <p>À chaque changement de statut <strong>obligatoire</strong>, la PA transmet au PPF :</p>
+                        <div class="comparison-table" style="margin-top:12px;">
+                            <table>
+                                <thead><tr><th>Code</th><th>Statut</th><th>Signification fiscale</th></tr></thead>
+                                <tbody>
+                                    <tr><td><strong>200</strong></td><td>Déposée</td><td>Facture officiellement dans le circuit</td></tr>
+                                    <tr><td><strong>210</strong></td><td>Refusée</td><td>Flux 1 « annulé » fiscalement</td></tr>
+                                    <tr><td><strong>212</strong></td><td>Encaissée</td><td>Exigibilité TVA à l'encaissement</td></tr>
+                                    <tr><td><strong>213</strong></td><td>Rejetée</td><td>Facture n'entre pas dans le circuit</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="f7f8f9" class="content-section">
+                    <h2>Flux 7, 8, 9 — Annuaire</h2>
+
+                    <div class="flux-card" style="margin-bottom:16px;">
+                        <div class="flux-meta">
+                            <span class="flux-direction">F7 : PA → PPF</span>
+                            <span class="flux-format">API REST</span>
+                        </div>
+                        <p><strong>Consultation ponctuelle</strong> — vérifier l'existence du destinataire, sa PA-R, son code routage avant chaque émission.</p>
+                    </div>
+
+                    <div class="flux-card" style="margin-bottom:16px;">
+                        <div class="flux-meta">
+                            <span class="flux-direction">F8 : PA → PPF</span>
+                            <span class="flux-format">API REST</span>
+                        </div>
+                        <p><strong>Mise à jour annuaire</strong> — la PA-R crée, modifie ou clôture les lignes d'annuaire de ses clients en réception.</p>
+                    </div>
+
+                    <div class="flux-card">
+                        <div class="flux-meta">
+                            <span class="flux-direction">F9 : PA → PPF</span>
+                            <span class="flux-format">API REST</span>
+                        </div>
+                        <p><strong>Consultation étendue</strong> — vérifier ses propres données ou celles de partenaires dans l'annuaire.</p>
+                    </div>
+                </section>
+
+                <section id="f10" class="content-section">
+                    <h2>Flux 10 — E-reporting</h2>
+                    <div class="flux-card">
+                        <div class="flux-meta">
+                            <span class="flux-direction">PA → PPF</span>
+                            <span class="flux-format">XML e-reporting</span>
+                        </div>
+                        <div class="comparison-table" style="margin-top:12px;">
+                            <table>
+                                <thead><tr><th>Sous-flux</th><th>Périmètre</th><th>Type</th></tr></thead>
+                                <tbody>
+                                    <tr><td><strong>10.1</strong></td><td>B2B international</td><td>Individuel (facture par facture)</td></tr>
+                                    <tr><td><strong>10.2</strong></td><td>B2C détaillé</td><td>Individuel</td></tr>
+                                    <tr><td><strong>10.3</strong></td><td>B2C agrégé</td><td>Cumuls quotidiens (TPS1, TLB1, TNT1, TMA1)</td></tr>
+                                    <tr><td><strong>10.4</strong></td><td>Paiements B2C</td><td>Cumuls quotidiens</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="margin-top:12px;">👉 <a href="./e-reporting.html" style="color:var(--cyan);font-weight:700;">Page dédiée au e-reporting →</a></p>
+                    </div>
+                </section>
+
+                <section id="f11" class="content-section">
+                    <h2>Flux 11 — Retours de contrôle PPF</h2>
+                    <div class="flux-card">
+                        <div class="flux-meta">
+                            <span class="flux-direction">PPF → PA</span>
+                            <span class="flux-format">API / EDI</span>
+                        </div>
+                        <p>Le « feedback loop » : pour chaque Flux 1, 6 ou 10, le PPF renvoie un accusé (OK) ou un rejet (KO).</p>
+                        <p><strong>5 motifs de rejet :</strong></p>
+                        <ul class="styled-list">
+                            <li><strong>REJ_INC</strong> — Incohérence dans les données</li>
+                            <li><strong>REJ_INEX</strong> — Non-conformité (données inexistantes)</li>
+                            <li><strong>REJ_RG</strong> — Règle de gestion violée</li>
+                            <li><strong>REJ_HAB</strong> — Défaut d'habilitation</li>
+                            <li><strong>REJ_ENCAISSEMENT</strong> — Montants d'encaissement non conformes</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="f12" class="content-section">
+                    <h2>Flux 12 — Transmission à la DGFiP</h2>
+                    <div class="flux-card">
+                        <div class="flux-meta">
+                            <span class="flux-direction">PPF → DGFiP</span>
+                            <span class="flux-format">Interne administration</span>
+                        </div>
+                        <p>Toutes les données fiscales agrégées (F1 + F6 + F10) sont transmises à l'administration fiscale. Alimente le pré-remplissage TVA. <strong>Invisible pour les entreprises.</strong></p>
+                    </div>
+                </section>
+
+                <section id="f13f14" class="content-section">
+                    <h2>Flux 13 & 14 — Gestion technique de l'annuaire</h2>
+
+                    <div class="flux-card" style="margin-bottom:16px;">
+                        <div class="flux-meta">
+                            <span class="flux-direction">F13 : PA → PPF</span>
+                            <span class="flux-format">API / EDI</span>
+                        </div>
+                        <p><strong>Actualisation en masse</strong> — quand une PA prend en charge de nouveaux clients ou qu'un client change de PA.</p>
+                    </div>
+
+                    <div class="flux-card">
+                        <div class="flux-meta">
+                            <span class="flux-direction">F14 : PPF → PA</span>
+                            <span class="flux-format">XML F14</span>
+                        </div>
+                        <p><strong>Diffusion de l'annuaire</strong> — complet (hebdomadaire) + différentiel (quotidien). Permet aux PA de synchroniser leur copie locale.</p>
+                    </div>
+                </section>
+
+                <section id="recap" class="content-section">
+                    <h2>Tableau récapitulatif complet</h2>
+                    <div class="comparison-table">
+                        <table>
+                            <thead><tr><th>N°</th><th>Nom</th><th>Direction</th><th>Format</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>F1</strong></td><td>Données réglementaires</td><td>PA-E → PPF</td><td>UBL / CII</td></tr>
+                                <tr><td><strong>F2</strong></td><td>Transmission facture</td><td>PA-E → PA-R</td><td>UBL / CII / Factur-X</td></tr>
+                                <tr><td><strong>F3</strong></td><td>Mise à disposition</td><td>PA-R → Destinataire</td><td>Variable</td></tr>
+                                <tr style="opacity:0.4;"><td><strong>F4</strong></td><td><s>Supprimé</s></td><td>—</td><td>—</td></tr>
+                                <tr style="opacity:0.4;"><td><strong>F5</strong></td><td><s>Supprimé</s></td><td>—</td><td>—</td></tr>
+                                <tr><td><strong>F6</strong></td><td>Statuts CDV</td><td>PA → PPF</td><td>CDAR</td></tr>
+                                <tr><td><strong>F7</strong></td><td>Consultation annuaire</td><td>PA → PPF</td><td>API REST</td></tr>
+                                <tr><td><strong>F8</strong></td><td>MAJ annuaire</td><td>PA → PPF</td><td>API REST</td></tr>
+                                <tr><td><strong>F9</strong></td><td>Consultation étendue</td><td>PA → PPF</td><td>API REST</td></tr>
+                                <tr><td><strong>F10</strong></td><td>E-reporting (4 sous-flux)</td><td>PA → PPF</td><td>XML e-reporting</td></tr>
+                                <tr><td><strong>F11</strong></td><td>Retours contrôle</td><td>PPF → PA</td><td>API / EDI</td></tr>
+                                <tr><td><strong>F12</strong></td><td>Données DGFiP</td><td>PPF → DGFiP</td><td>Interne</td></tr>
+                                <tr><td><strong>F13</strong></td><td>Actualisation annuaire</td><td>PA → PPF</td><td>API / EDI</td></tr>
+                                <tr><td><strong>F14</strong></td><td>Diffusion annuaire</td><td>PPF → PA</td><td>XML F14</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <nav class="page-nav-bottom">
+                    <a href="./schema-en-y.html" class="nav-prev">
+                        <span class="nav-label">Page précédente</span>
+                        <span class="nav-title">← 🔀 Schéma en Y</span>
+                    </a>
+                    <a href="./cycle-de-vie.html" class="nav-next">
+                        <span class="nav-label">Page suivante</span>
+                        <span class="nav-title">🔄 Cycle de vie →</span>
+                    </a>
+                </nav>
+            </article>
+        </div>
+    </main>
+
+    <footer id="main-footer"></footer>
+    <script src="./js/nav.js"></script>
+    <script src="./js/animations.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2G : la sphère publique | E-Invoicing Academy</title>
+    <link rel="icon" href="./assets/favicon-Fluxym-V2.png" sizes="32x32" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/pages.css">
+</head>
+<body>
+
+    <nav id="main-nav"></nav>
+
+    <header class="page-hero">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="./index.html">Accueil</a> <span>/</span> <span>Niveau 2 — Écosystème</span>
+            </div>
+            <span class="hero-badge">Niveau 2 — Écosystème</span>
+            <h1>La sphère publique : B2G et G2B</h1>
+            <p>Le secteur public a été le premier à passer à la facturation électronique. Voici comment tout s'articule.</p>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <div class="page-container page-layout">
+
+            <aside class="page-sidebar">
+                <div class="sidebar-sticky">
+                    <h4>Sur cette page</h4>
+                    <ul class="sidebar-nav">
+                        <li><a href="#intro" class="sidebar-link active">Introduction</a></li>
+                        <li><a href="#b2g" class="sidebar-link">B2G détaillé</a></li>
+                        <li><a href="#circuit" class="sidebar-link">Circuit dans le schéma en Y</a></li>
+                        <li><a href="#g2b" class="sidebar-link">G2B</a></li>
+                        <li><a href="#g2g" class="sidebar-link">G2G</a></li>
+                        <li><a href="#calendrier" class="sidebar-link">Calendrier</a></li>
+                        <li><a href="#vs-b2b" class="sidebar-link">B2G vs B2B</a></li>
+                        <li><a href="#conseils" class="sidebar-link">Conseils pratiques</a></li>
+                    </ul>
+                    <div class="sidebar-nav-pages">
+                        <h4>Parcours Niveau 2</h4>
+                        <a href="./acteurs.html" class="sidebar-page">👥 Les acteurs</a>
+                        <a href="./e-invoicing.html" class="sidebar-page">📨 E-invoicing</a>
+                        <a href="./e-reporting.html" class="sidebar-page">📊 E-reporting</a>
+                        <a href="./chorus-pro.html" class="sidebar-page">🏛️ Chorus Pro</a>
+                        <a href="./b2g.html" class="sidebar-page active">🏗️ B2G / G2B</a>
+                        <a href="./tva-preremplie.html" class="sidebar-page">💶 TVA pré-remplie</a>
+                        <a href="./peppol.html" class="sidebar-page">🌍 Peppol</a>
+                        <a href="./sanctions.html" class="sidebar-page">⚖️ Sanctions</a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="page-content">
+
+                <section id="intro" class="content-section">
+                    <h2>Le secteur public, pionnier de la facture électronique</h2>
+                    <p>Avant la réforme B2B, <strong>le secteur public avait déjà franchi le pas</strong>. Depuis 2017, toutes les factures destinées aux administrations publiques doivent être transmises via <strong>Chorus Pro</strong>. Cette obligation, déployée entre 2017 et 2020, a constitué le premier grand chantier de facturation électronique en France.</p>
+                    <div class="callout callout--info">
+                        <div class="callout-icon">💡</div>
+                        <div class="callout-content">Si vous êtes déjà fournisseur du secteur public, vous avez une longueur d'avance ! Vous connaissez Chorus Pro et ses mécanismes.</div>
+                    </div>
+                </section>
+
+                <section id="b2g" class="content-section">
+                    <h2>B2G : quand une entreprise facture une administration</h2>
+                    <p><strong>B2G</strong> = Business-to-Government. Vous vendez à une mairie, un hôpital, un ministère ? Vous émettez une facture B2G.</p>
+
+                    <h3>Quelles entités publiques ?</h3>
+                    <div class="comparison-table">
+                        <table>
+                            <thead><tr><th>Catégorie</th><th>Exemples</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>État et budgets annexes</strong></td><td>Ministères, préfectures, services déconcentrés</td></tr>
+                                <tr><td><strong>Collectivités territoriales</strong></td><td>Communes, EPCI, départements, régions</td></tr>
+                                <tr><td><strong>EPA</strong></td><td>Universités, CNRS, Pôle emploi, ARS</td></tr>
+                                <tr><td><strong>EPIC</strong></td><td>SNCF Réseau, ADEME, ONF</td></tr>
+                                <tr><td><strong>Établissements de santé</strong></td><td>CHU, CH, EHPAD publics</td></tr>
+                                <tr><td><strong>Autres</strong></td><td>Offices HLM publics, chambres consulaires</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="circuit" class="content-section">
+                    <h2>Le circuit B2G dans le schéma en Y</h2>
+
+                    <h3>Circuit standard (via PA privée)</h3>
+                    <div class="numbered-blocks">
+                        <div class="nb-item"><span class="nb-num">1</span><div><strong>L'entreprise</strong> crée sa facture au format structuré (CII ou UBL 2.1) et la dépose sur sa PA.</div></div>
+                        <div class="nb-item"><span class="nb-num">2</span><div><strong>La PA</strong> vérifie la conformité, extrait les données pour le PPF (Flux 1), et transmet à <strong>Chorus Pro</strong>.</div></div>
+                        <div class="nb-item"><span class="nb-num">3</span><div><strong>Chorus Pro</strong> réceptionne et route vers l'entité publique destinataire.</div></div>
+                        <div class="nb-item"><span class="nb-num">4</span><div><strong>L'entité publique</strong> traite la facture (validation service fait, mise en paiement).</div></div>
+                        <div class="nb-item"><span class="nb-num">5</span><div><strong>Les statuts</strong> remontent à chaque étape (Déposée → Transmise → Reçue → Mise en paiement).</div></div>
+                    </div>
+
+                    <h3>Circuit historique (dépôt direct maintenu)</h3>
+                    <div class="callout callout--warning">
+                        <div class="callout-icon">⚠️</div>
+                        <div class="callout-content">Les entreprises peuvent <strong>continuer transitoirement</strong> à déposer directement sur Chorus Pro (portail web, API, EDI) sans passer par une PA privée. Ce circuit sera maintenu pendant une période transitoire.</div>
+                    </div>
+
+                    <h3>Formats acceptés en B2G</h3>
+                    <div class="role-dual">
+                        <div class="role-card">
+                            <h4>✅ Formats réforme (cible)</h4>
+                            <ul>
+                                <li><strong>CII</strong> — profil AFNOR minimum</li>
+                                <li><strong>UBL 2.1</strong> — profil AFNOR minimum</li>
+                            </ul>
+                        </div>
+                        <div class="role-card">
+                            <h4>🔄 Formats historiques (transitoire)</h4>
+                            <ul>
+                                <li>Factur-X (PDF/A-3 + XML)</li>
+                                <li>UBL historique Chorus Pro</li>
+                                <li>PES V2 (secteur public local)</li>
+                                <li>CPP (format pivot Chorus Pro)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="g2b" class="content-section">
+                    <h2>G2B : quand une administration facture une entreprise</h2>
+                    <p>Moins fréquent que le B2G, mais cela existe : hôpital qui facture une prestation, collectivité qui facture un loyer commercial, établissement public qui facture une redevance.</p>
+                    <div class="numbered-blocks">
+                        <div class="nb-item"><span class="nb-num">1</span><div>L'<strong>entité publique</strong> crée et dépose la facture dans Chorus Pro.</div></div>
+                        <div class="nb-item"><span class="nb-num">2</span><div><strong>Chorus Pro</strong> identifie la PA de l'entreprise via l'annuaire PPF.</div></div>
+                        <div class="nb-item"><span class="nb-num">3</span><div>La facture est <strong>transmise à la PA</strong> de l'entreprise.</div></div>
+                        <div class="nb-item"><span class="nb-num">4</span><div>L'<strong>entreprise</strong> la réceptionne et la traite dans son ERP.</div></div>
+                    </div>
+                    <div class="callout callout--info">
+                        <div class="callout-icon">💡</div>
+                        <div class="callout-content">En G2B, l'entreprise réceptrice doit avoir déclaré sa PA dans l'annuaire PPF. Sinon, la facture reçoit le statut « NON_TRANSMISE ».</div>
+                    </div>
+                </section>
+
+                <section id="g2g" class="content-section">
+                    <h2>G2G : facturation entre entités publiques</h2>
+                    <p>CHU qui facture une commune, ministère qui refacture un EPA… <strong>En G2G, tout reste dans Chorus Pro.</strong> Pas de PA privée impliquée. C'est le circuit le plus simple de l'écosystème.</p>
+                </section>
+
+                <section id="calendrier" class="content-section">
+                    <h2>Calendrier spécifique B2G</h2>
+                    <div class="legal-timeline">
+                        <div class="lt-item"><div class="lt-year">Jan. 2017</div><div class="lt-content"><h4>Lancement Chorus Pro</h4><p>Obligation émission B2G pour les grandes entreprises.</p></div></div>
+                        <div class="lt-item"><div class="lt-year">2018</div><div class="lt-content"><h4>ETI</h4><p>Obligation B2G étendue aux ETI.</p></div></div>
+                        <div class="lt-item"><div class="lt-year">2019</div><div class="lt-content"><h4>PME</h4><p>Obligation B2G étendue aux PME.</p></div></div>
+                        <div class="lt-item lt-item--success"><div class="lt-year">2020</div><div class="lt-content"><h4>100% B2G opérationnel</h4><p>Toutes entreprises (TPE/micro incluses).</p></div></div>
+                        <div class="lt-item lt-item--alert"><div class="lt-year">Sept. 2026</div><div class="lt-content"><h4>Intégration schéma en Y</h4><p>GE/ETI au format réforme. Réception pour tous.</p></div></div>
+                        <div class="lt-item lt-item--alert"><div class="lt-year">Sept. 2027</div><div class="lt-content"><h4>Émission universelle</h4><p>PME/TPE/micro au format réforme.</p></div></div>
+                    </div>
+                </section>
+
+                <section id="vs-b2b" class="content-section">
+                    <h2>B2G vs B2B dans la réforme</h2>
+                    <div class="comparison-table">
+                        <table>
+                            <thead><tr><th>Critère</th><th>B2G</th><th>B2B</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>PA du destinataire</strong></td><td>Toujours <strong>Chorus Pro</strong></td><td>PA privée au choix</td></tr>
+                                <tr><td><strong>En vigueur depuis</strong></td><td>2017-2020 (déjà en place)</td><td>Septembre 2026 (nouveau)</td></tr>
+                                <tr><td><strong>Formats historiques</strong></td><td>Maintenus transitoirement</td><td>Directement formats réforme</td></tr>
+                                <tr><td><strong>Cycle de vie</strong></td><td>Statuts spécifiques (« Service fait », « Mise en paiement »)</td><td>Statuts standards</td></tr>
+                                <tr><td><strong>Annuaire</strong></td><td>Entités pré-enregistrées dans Chorus Pro</td><td>Déclaration dans l'annuaire PPF</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="conseils" class="content-section">
+                    <h2>6 conseils pour les fournisseurs du public</h2>
+                    <div class="numbered-blocks">
+                        <div class="nb-item"><span class="nb-num">1</span><div><strong>Capitalisez sur votre expérience Chorus Pro</strong> — Vous connaissez déjà la plateforme. Le schéma en Y ne bouleversera pas vos habitudes.</div></div>
+                        <div class="nb-item"><span class="nb-num">2</span><div><strong>Choisissez une PA compatible B2G</strong> — Vérifiez qu'elle gère la transmission vers Chorus Pro et les statuts spécifiques du public.</div></div>
+                        <div class="nb-item"><span class="nb-num">3</span><div><strong>Soignez les données d'adressage</strong> — Les entités publiques utilisent des codes de routage spécifiques (code service, numéro d'engagement).</div></div>
+                        <div class="nb-item"><span class="nb-num">4</span><div><strong>Anticipez la transition des formats</strong> — Planifiez votre migration vers CII ou UBL 2.1. Les formats historiques ne dureront pas.</div></div>
+                        <div class="nb-item"><span class="nb-num">5</span><div><strong>Testez en qualification</strong> — Chorus Pro met à disposition un environnement sandbox. Utilisez-le systématiquement.</div></div>
+                        <div class="nb-item"><span class="nb-num">6</span><div><strong>Surveillez les statuts</strong> — En B2G, le suivi est crucial pour savoir si votre facture a été « service fait » et mise en paiement.</div></div>
+                    </div>
+                </section>
+
+                <nav class="page-nav-bottom">
+                    <a href="./chorus-pro.html" class="nav-prev">
+                        <span class="nav-label">Page précédente</span>
+                        <span class="nav-title">← 🏛️ Chorus Pro</span>
+                    </a>
+                    <a href="./tva-preremplie.html" class="nav-next">
+                        <span class="nav-label">Page suivante</span>
+                        <span class="nav-title">💶 TVA pré-remplie →</span>
+                    </a>
+                </nav>
+            </article>
+        </div>
+    </main>
+
+    <footer id="main-footer"></footer>
+    <script src="./js/nav.js"></script>
+    <script src="./js/animations.js"></script>
+</body>
+</html>

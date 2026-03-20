@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TVA pré-remplie : le modèle CTC | E-Invoicing Academy</title>
+    <link rel="icon" href="./assets/favicon-Fluxym-V2.png" sizes="32x32" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/pages.css">
+</head>
+<body>
+
+    <nav id="main-nav"></nav>
+
+    <header class="page-hero">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="./index.html">Accueil</a> <span>/</span> <span>Niveau 2 — Écosystème</span>
+            </div>
+            <span class="hero-badge">Niveau 2 — Écosystème</span>
+            <h1>La TVA pré-remplie</h1>
+            <p>Le modèle CTC français : comment vos données de facturation permettront de pré-remplir votre déclaration de TVA.</p>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <div class="page-container page-layout">
+
+            <aside class="page-sidebar">
+                <div class="sidebar-sticky">
+                    <h4>Sur cette page</h4>
+                    <ul class="sidebar-nav">
+                        <li><a href="#ctc" class="sidebar-link active">Le modèle CTC</a></li>
+                        <li><a href="#pourquoi" class="sidebar-link">Pourquoi ce modèle</a></li>
+                        <li><a href="#mecanisme" class="sidebar-link">Le mécanisme</a></li>
+                        <li><a href="#objectifs" class="sidebar-link">Objectifs chiffrés</a></li>
+                        <li><a href="#calendrier" class="sidebar-link">Calendrier</a></li>
+                        <li><a href="#europe" class="sidebar-link">Comparaison Europe</a></li>
+                        <li><a href="#avantages" class="sidebar-link">Avantages</a></li>
+                        <li><a href="#limites" class="sidebar-link">Limites</a></li>
+                    </ul>
+                    <div class="sidebar-nav-pages">
+                        <h4>Parcours Niveau 2</h4>
+                        <a href="./acteurs.html" class="sidebar-page">👥 Les acteurs</a>
+                        <a href="./e-invoicing.html" class="sidebar-page">📨 E-invoicing</a>
+                        <a href="./e-reporting.html" class="sidebar-page">📊 E-reporting</a>
+                        <a href="./chorus-pro.html" class="sidebar-page">🏛️ Chorus Pro</a>
+                        <a href="./b2g.html" class="sidebar-page">🏗️ B2G / G2B</a>
+                        <a href="./tva-preremplie.html" class="sidebar-page active">💶 TVA pré-remplie</a>
+                        <a href="./peppol.html" class="sidebar-page">🌍 Peppol</a>
+                        <a href="./sanctions.html" class="sidebar-page">⚖️ Sanctions</a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="page-content">
+
+                <section id="ctc" class="content-section">
+                    <h2>Qu'est-ce qu'un modèle CTC ?</h2>
+                    <p><strong>CTC</strong> = Continuous Transaction Controls. L'administration reçoit les données de facturation <strong>en temps réel</strong>, facture par facture, au lieu d'une déclaration agrégée a posteriori.</p>
+                    <div class="callout callout--info">
+                        <div class="callout-icon">💡</div>
+                        <div class="callout-content"><strong>Analogie :</strong> la différence entre un médecin qui vous voit une fois par an (post-audit) et un monitoring continu de vos constantes vitales (CTC). Le second détecte les anomalies en temps réel.</div>
+                    </div>
+                </section>
+
+                <section id="pourquoi" class="content-section">
+                    <h2>Pourquoi la France a choisi ce modèle</h2>
+                    <div class="triple-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="objective-card">
+                            <div class="objective-number">01</div>
+                            <h3>Lutter contre la fraude TVA</h3>
+                            <p>Écart de TVA estimé à <strong>~20 Mds€/an</strong>. Un réseau de fausses factures est repérable par croisement automatique émetteur/récepteur.</p>
+                        </div>
+                        <div class="objective-card">
+                            <div class="objective-number">02</div>
+                            <h3>Vision en temps réel</h3>
+                            <p>E-invoicing + e-reporting = couverture quasi complète. Pilotage économique plus fin, prévisions budgétaires plus précises.</p>
+                        </div>
+                        <div class="objective-card">
+                            <div class="objective-number">03</div>
+                            <h3>Simplifier les déclarations</h3>
+                            <p><strong>Pré-remplissage de la CA3</strong> : si l'État connaît déjà vos factures, pourquoi les retaper dans une déclaration ?</p>
+                        </div>
+                        <div class="objective-card">
+                            <div class="objective-number">04</div>
+                            <h3>Renforcer la compétitivité</h3>
+                            <p>Réduction des coûts de traitement, diminution des délais de paiement, gains de productivité.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="mecanisme" class="content-section">
+                    <h2>Le mécanisme de pré-remplissage</h2>
+
+                    <div class="schema-y-visual">
+                        <div class="sy-branch sy-branch--left">
+                            <div class="sy-branch-label">📨 E-invoicing</div>
+                            <div class="sy-flow">Factures B2B domestiques → identités, montants HT, TVA, taux → Flux 1 au PPF</div>
+                        </div>
+                        <div class="sy-branch sy-branch--right">
+                            <div class="sy-branch-label">📊 E-reporting</div>
+                            <div class="sy-flow">B2B international + B2C + paiements → Flux 10 au PPF</div>
+                        </div>
+                        <div class="sy-stem">
+                            <div class="sy-branch-label">= VISION COMPLÈTE TVA → PRÉ-REMPLISSAGE CA3</div>
+                            <div class="sy-flow">PPF concentre tout → agrège par entreprise et par période → propose une déclaration pré-remplie</div>
+                        </div>
+                    </div>
+
+                    <h3>Les 4 étapes concrètes</h3>
+                    <div class="numbered-blocks">
+                        <div class="nb-item"><span class="nb-num">1</span><div><strong>Collecte continue</strong> — Tout au long du mois, le PPF reçoit les données e-invoicing + e-reporting + paiements.</div></div>
+                        <div class="nb-item"><span class="nb-num">2</span><div><strong>Agrégation</strong> — TVA collectée (ventes) + TVA déductible (achats), ventilées par taux (0%, 5,5%, 10%, 20%).</div></div>
+                        <div class="nb-item"><span class="nb-num">3</span><div><strong>Proposition</strong> — La CA3 est pré-remplie avec les montants calculés. L'entreprise voit le solde (TVA à payer ou crédit).</div></div>
+                        <div class="nb-item"><span class="nb-num">4</span><div><strong>Validation</strong> — L'entreprise <strong>vérifie, corrige si nécessaire, et valide</strong>. Elle reste juridiquement responsable.</div></div>
+                    </div>
+
+                    <div class="callout callout--warning">
+                        <div class="callout-icon">⚠️</div>
+                        <div class="callout-content">Le pré-remplissage est une <strong>aide</strong>, pas une obligation. L'entreprise reste <strong>juridiquement responsable</strong> de sa déclaration de TVA.</div>
+                    </div>
+                </section>
+
+                <section id="objectifs" class="content-section">
+                    <h2>Les objectifs chiffrés</h2>
+                    <div class="counters-grid" style="margin:24px 0;">
+                        <div class="counter-card">
+                            <div class="counter-icon">💸</div>
+                            <div class="counter-value">~20 Mds€</div>
+                            <div class="counter-label">Écart de TVA annuel</div>
+                            <div class="counter-detail">Estimation Commission européenne</div>
+                        </div>
+                        <div class="counter-card">
+                            <div class="counter-icon">📄</div>
+                            <div class="counter-value">~4M</div>
+                            <div class="counter-label">Déclarations CA3/an</div>
+                            <div class="counter-detail">Concernées par le pré-remplissage</div>
+                        </div>
+                        <div class="counter-card">
+                            <div class="counter-icon">💰</div>
+                            <div class="counter-value">4,5 Mds€</div>
+                            <div class="counter-label">Économies estimées/an</div>
+                            <div class="counter-detail">Pour l'ensemble des entreprises (DGFIP/AIFE)</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="calendrier" class="content-section">
+                    <h2>Calendrier de la TVA pré-remplie</h2>
+                    <div class="legal-timeline">
+                        <div class="lt-item lt-item--alert"><div class="lt-year">Sept. 2026</div><div class="lt-content"><h4>Début de la collecte</h4><p>E-invoicing GE/ETI + e-reporting + réception toutes entreprises.</p></div></div>
+                        <div class="lt-item lt-item--alert"><div class="lt-year">Sept. 2027</div><div class="lt-content"><h4>Collecte complète</h4><p>Toutes les entreprises émettent.</p></div></div>
+                        <div class="lt-item"><div class="lt-year">Post-2027</div><div class="lt-content"><h4>Expérimentation</h4><p>Panel d'entreprises volontaires testent le pré-remplissage.</p></div></div>
+                        <div class="lt-item lt-item--success"><div class="lt-year">~2028-2029</div><div class="lt-content"><h4>Déploiement progressif</h4><p>Pré-remplissage CA3 pour toutes les entreprises.</p></div></div>
+                    </div>
+                    <div class="callout callout--info">
+                        <div class="callout-icon">💡</div>
+                        <div class="callout-content">L'administration a besoin d'une <strong>période de stabilisation</strong> des données avant de proposer un pré-remplissage fiable. Un pré-remplissage basé sur des données erronées serait contre-productif.</div>
+                    </div>
+                </section>
+
+                <section id="europe" class="content-section">
+                    <h2>Comparaison européenne</h2>
+                    <div class="comparison-table">
+                        <table>
+                            <thead><tr><th>Pays</th><th>Modèle</th><th>Depuis</th><th>Particularités</th></tr></thead>
+                            <tbody>
+                                <tr><td>🇮🇹 <strong>Italie</strong></td><td>Clearance (SDI)</td><td>2019</td><td>Toutes factures transitent par le SDI de l'État. Le plus contraignant.</td></tr>
+                                <tr><td>🇪🇸 <strong>Espagne</strong></td><td>SII</td><td>2017</td><td>Registres transmis sous 4 jours. Extension VeriFactu en cours.</td></tr>
+                                <tr><td>🇵🇹 <strong>Portugal</strong></td><td>SAF-T</td><td>2013</td><td>Fichier d'audit mensuel. Moins granulaire.</td></tr>
+                                <tr><td>🇩🇪 <strong>Allemagne</strong></td><td>En cours</td><td>2025</td><td>Réception obligatoire jan. 2025. Émission 2027-2028.</td></tr>
+                                <tr><td>🇧🇪 <strong>Belgique</strong></td><td>Peppol</td><td>2026</td><td>B2B obligatoire jan. 2026 via Peppol.</td></tr>
+                                <tr><td>🇫🇷 <strong>France</strong></td><td>Schéma en Y (CTC)</td><td>2026</td><td>Hybride : État concentre les données, PA gèrent la transmission.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="callout callout--info">
+                        <div class="callout-icon">💡</div>
+                        <div class="callout-content">Le modèle français = « <strong>clearance décentralisé</strong> ». Contrairement à l'Italie (tout passe par l'État), en France la facture va directement de PA à PA. Seules les <strong>données</strong> remontent au PPF.</div>
+                    </div>
+                </section>
+
+                <section id="avantages" class="content-section">
+                    <h2>Les avantages pour les entreprises</h2>
+                    <div class="numbered-blocks">
+                        <div class="nb-item"><span class="nb-num">1</span><div><strong>Simplification</strong> — Plus besoin de reconstituer manuellement la TVA collectée/déductible.</div></div>
+                        <div class="nb-item"><span class="nb-num">2</span><div><strong>Réduction des erreurs</strong> — Erreurs de saisie, oublis, doublons diminuent mécaniquement.</div></div>
+                        <div class="nb-item"><span class="nb-num">3</span><div><strong>Gain de temps</strong> — La CA3 peut représenter plusieurs heures/mois pour une PME.</div></div>
+                        <div class="nb-item"><span class="nb-num">4</span><div><strong>Détection précoce des écarts</strong> — Si la CA3 pré-remplie diffère de vos calculs = signal d'alerte.</div></div>
+                        <div class="nb-item"><span class="nb-num">5</span><div><strong>Moins de contrôles</strong> — Entreprises « transparentes » = allègement de la pression de contrôle.</div></div>
+                    </div>
+                </section>
+
+                <section id="limites" class="content-section">
+                    <h2>Limites et points d'attention</h2>
+                    <div class="numbered-blocks">
+                        <div class="nb-item"><span class="nb-num">1</span><div><strong>Qualité des données cruciale</strong> — Erreurs en entrée = pré-remplissage faux. GIGO (Garbage In, Garbage Out).</div></div>
+                        <div class="nb-item"><span class="nb-num">2</span><div><strong>Opérations non couvertes</strong> — Régularisations, crédits anciens, certaines opérations spécifiques restent manuelles.</div></div>
+                        <div class="nb-item"><span class="nb-num">3</span><div><strong>Période transitoire</strong> — Données incomplètes entre 2026 et 2028-2029.</div></div>
+                        <div class="nb-item"><span class="nb-num">4</span><div><strong>Responsabilité inchangée</strong> — Valider une CA3 pré-remplie erronée reste une erreur déclarative imputable à l'entreprise.</div></div>
+                        <div class="nb-item"><span class="nb-num">5</span><div><strong>Adaptation des processus</strong> — Passer de « je reconstitue ma TVA » à « je vérifie la proposition de l'État ».</div></div>
+                    </div>
+                </section>
+
+                <nav class="page-nav-bottom">
+                    <a href="./b2g.html" class="nav-prev">
+                        <span class="nav-label">Page précédente</span>
+                        <span class="nav-title">← 🏗️ B2G / G2B</span>
+                    </a>
+                    <a href="./peppol.html" class="nav-next">
+                        <span class="nav-label">Page suivante</span>
+                        <span class="nav-title">🌍 Peppol →</span>
+                    </a>
+                </nav>
+            </article>
+        </div>
+    </main>
+
+    <footer id="main-footer"></footer>
+    <script src="./js/nav.js"></script>
+    <script src="./js/animations.js"></script>
+</body>
+</html>

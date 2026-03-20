@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cycle de vie d'une facture | E-Invoicing Academy</title>
+    <link rel="icon" href="./assets/favicon-Fluxym-V2.png" sizes="32x32" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/pages.css">
+</head>
+<body>
+
+    <nav id="main-nav"></nav>
+
+    <header class="page-hero">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="./index.html">Accueil</a> <span>/</span> <span>Niveau 3 — Approfondir</span>
+            </div>
+            <span class="hero-badge">Niveau 3 — Approfondir</span>
+            <h1>Le cycle de vie d'une facture</h1>
+            <p>14 statuts, 4 obligatoires, 5 use cases : chaque facture est suivie de bout en bout.</p>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <div class="page-container page-layout">
+
+            <aside class="page-sidebar">
+                <div class="sidebar-sticky">
+                    <h4>Sur cette page</h4>
+                    <ul class="sidebar-nav">
+                        <li><a href="#intro" class="sidebar-link active">Pourquoi un cycle de vie</a></li>
+                        <li><a href="#obligatoires" class="sidebar-link">4 statuts obligatoires</a></li>
+                        <li><a href="#facultatifs" class="sidebar-link">10 statuts facultatifs</a></li>
+                        <li><a href="#transitions" class="sidebar-link">Diagramme d'états</a></li>
+                        <li><a href="#b2g" class="sidebar-link">Statuts B2G</a></li>
+                        <li><a href="#delais" class="sidebar-link">Délais</a></li>
+                        <li><a href="#uc" class="sidebar-link">Use cases UC1→UC5</a></li>
+                        <li><a href="#tva" class="sidebar-link">Impact TVA</a></li>
+                    </ul>
+                    <div class="sidebar-nav-pages">
+                        <h4>Parcours Niveau 3</h4>
+                        <a href="./schema-en-y.html" class="sidebar-page">🔀 Schéma en Y</a>
+                        <a href="./flux.html" class="sidebar-page">📡 Les 14 flux</a>
+                        <a href="./cycle-de-vie.html" class="sidebar-page active">🔄 Cycle de vie</a>
+                        <a href="./formats.html" class="sidebar-page">📐 Les formats</a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="page-content">
+
+                <section id="intro" class="content-section">
+                    <h2>Pourquoi un cycle de vie ?</h2>
+                    <p>Une facture papier disparaît dans une boîte noire. La réforme change ça : chaque facture est <strong>suivie de bout en bout</strong> par un système de statuts.</p>
+                    <ul class="styled-list">
+                        <li><strong>Traçabilité</strong> — savoir à tout moment où en est chaque facture</li>
+                        <li><strong>Obligation légale</strong> — certains statuts déclenchent des effets fiscaux (TVA)</li>
+                        <li><strong>Pré-remplissage TVA</strong> — l'État sait quelles factures sont acceptées ou annulées</li>
+                        <li><strong>Réduction des délais</strong> — la visibilité accélère les processus</li>
+                    </ul>
+                </section>
+
+                <section id="obligatoires" class="content-section">
+                    <h2>Les 4 statuts obligatoires (transmis au PPF)</h2>
+                    <div class="comparison-table">
+                        <table>
+                            <thead><tr><th>Code</th><th>Nom</th><th>Créé par</th><th>Description</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>200</strong></td><td>Déposée</td><td>PA-E</td><td>La PA émettrice a validé et accepté la facture. Acte de naissance officiel.</td></tr>
+                                <tr><td><strong>210</strong></td><td>Refusée</td><td>Destinataire</td><td>Le destinataire refuse la facture. <strong>Statut terminal</strong> : le Flux 1 est annulé fiscalement.</td></tr>
+                                <tr><td><strong>212</strong></td><td>Encaissée</td><td>Vendeur</td><td>Le vendeur confirme l'encaissement. <strong>Obligatoire si TVA à l'encaissement.</strong></td></tr>
+                                <tr><td><strong>213</strong></td><td>Rejetée</td><td>PA</td><td>Anomalie détectée lors des contrôles. La facture n'entre pas dans le circuit.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="facultatifs" class="content-section">
+                    <h2>Les 10 statuts facultatifs (entre PA uniquement)</h2>
+                    <div class="comparison-table">
+                        <table>
+                            <thead><tr><th>Code</th><th>Nom</th><th>Créé par</th></tr></thead>
+                            <tbody>
+                                <tr><td>201</td><td>Émise</td><td>PA-E</td></tr>
+                                <tr><td>202</td><td>Reçue</td><td>PA-R</td></tr>
+                                <tr><td>203</td><td>Mise à disposition</td><td>PA-R</td></tr>
+                                <tr><td>204</td><td>Prise en charge</td><td>Destinataire</td></tr>
+                                <tr><td>205</td><td>Approuvée</td><td>Destinataire</td></tr>
+                                <tr><td>206</td><td>Approuvée partiellement</td><td>Destinataire</td></tr>
+                                <tr><td>207</td><td>En litige</td><td>Destinataire</td></tr>
+                                <tr><td>208</td><td>Suspendue</td><td>Destinataire</td></tr>
+                                <tr><td>209</td><td>Complétée</td><td>Vendeur</td></tr>
+                                <tr><td>211</td><td>Paiement transmis</td><td>Destinataire</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="transitions" class="content-section">
+                    <h2>Diagramme d'états</h2>
+
+                    <h3>Phase de transmission</h3>
+                    <div class="code-block">
+[Facture créée]
+       │
+       ▼
+   200 DÉPOSÉE ──────────────┐
+       │                      │
+       ▼                      ▼
+   201 ÉMISE             213 REJETÉE ■
+       │
+       ▼
+   202 REÇUE ────────────────┐
+       │                      │
+       ▼                      ▼
+   203 MISE À DISPOSITION  213 REJETÉE ■
+       │
+       ▼
+   [Phase de traitement]
+                    </div>
+
+                    <h3>Phase de traitement</h3>
+                    <div class="code-block">
+   203 MISE À DISPOSITION
+       │
+       ├─▶ 204 PRISE EN CHARGE
+       │        │
+       │        ├─▶ 205 APPROUVÉE ───▶ 211 PAIEMENT TRANSMIS ───▶ 212 ENCAISSÉE ●
+       │        ├─▶ 206 APPROUVÉE PARTIELLEMENT ───▶ ...
+       │        ├─▶ 207 EN LITIGE ───▶ (retour 205, 208 ou 210)
+       │        ├─▶ 208 SUSPENDUE ───▶ 209 COMPLÉTÉE ───▶ (retour)
+       │        └─▶ 210 REFUSÉE ■
+       │
+       └─▶ 210 REFUSÉE ■ (possible directement)
+
+■ = terminal (transmis au PPF)    ● = obligatoire si TVA encaissement
+                    </div>
+
+                    <h3>Règles clés</h3>
+                    <div class="numbered-blocks">
+                        <div class="nb-item"><span class="nb-num">1</span><div><strong>Refusée (210) est terminal</strong> côté PPF — aucun statut obligatoire ne peut suivre</div></div>
+                        <div class="nb-item"><span class="nb-num">2</span><div><strong>Rejetée (213) est terminal</strong> — la facture n'est jamais entrée dans le circuit</div></div>
+                        <div class="nb-item"><span class="nb-num">3</span><div><strong>Encaissée (212)</strong> peut être posé plusieurs fois (encaissements partiels)</div></div>
+                        <div class="nb-item"><span class="nb-num">4</span><div><strong>L'ordre des facultatifs est flexible</strong> — on peut payer avant d'approuver (prélèvement auto)</div></div>
+                        <div class="nb-item"><span class="nb-num">5</span><div><strong>Refusée ≠ En litige</strong> — un simple désaccord = « En litige » (207), pas « Refusée » (210)</div></div>
+                    </div>
+                </section>
+
+                <section id="b2g" class="content-section">
+                    <h2>Statuts spécifiques B2G</h2>
+                    <div class="comparison-table">
+                        <table>
+                            <thead><tr><th>Statut B2G</th><th>Description</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Service fait</strong></td><td>L'ordonnateur confirme la réalisation de la prestation</td></tr>
+                                <tr><td><strong>Mise en paiement</strong></td><td>Le comptable public a validé et initié le paiement</td></tr>
+                                <tr><td><strong>Comptabilisée</strong></td><td>Enregistrée dans la comptabilité publique</td></tr>
+                                <tr><td><strong>Mandatée</strong></td><td>Le mandat de paiement a été émis</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="delais" class="content-section">
+                    <h2>Les délais</h2>
+                    <div class="comparison-table">
+                        <table>
+                            <thead><tr><th>Type</th><th>Délai</th><th>Base légale</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Paiement B2B</strong></td><td>60 jours date de facture (ou 45j fin de mois)</td><td>Art. L441-10 Code commerce</td></tr>
+                                <tr><td><strong>Paiement B2G</strong></td><td>30 jours (50j santé publique)</td><td>Décret 2013-269</td></tr>
+                                <tr><td><strong>Statuts obligatoires → PPF</strong></td><td>Sans délai après création</td><td>Spec. DGFiP v3.1</td></tr>
+                                <tr><td><strong>Flux 1 → PPF</strong></td><td>Simultanément au Flux 2</td><td>Spec. DGFiP v3.1</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="uc" class="content-section">
+                    <h2>Les 5 use cases (UC1 → UC5)</h2>
+
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <h4>UC1 — Facture standard acceptée (cas nominal)</h4>
+                            <p>Vendeur crée → PA-E : Déposée (200) → Flux 1 + Flux 2 → PA-R : Reçue (202) → Mise à dispo (203) → Acheteur : Prise en charge (204) → Approuvée (205) → Paiement transmis (211) → Vendeur : <strong>Encaissée (212)</strong></p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>UC2 — Rejet par la PA</h4>
+                            <p>Vendeur crée → PA-E : Déposée (200) → contrôle KO → <strong>Rejetée (213)</strong> avec motif → le vendeur doit corriger et réémettre.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>UC3 — Refus par le destinataire</h4>
+                            <p>Circuit normal jusqu'à mise à dispo → Acheteur : <strong>Refusée (210)</strong> avec motif obligatoire (DOUBLON, TVA_ERR, ART_ERR, QTE_ERR…) → Flux 1 neutralisé.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>UC4 — Auto-facturation</h4>
+                            <p>L'acheteur crée la facture (auto-facturation). Sa PA agit comme PA-E. Le vendeur reçoit via sa PA-R. Cadre de facturation BT-23 identifie l'auto-facturation.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>UC5 — TVA à l'encaissement</h4>
+                            <p>Circuit normal + le vendeur pose <strong>Encaissée (212)</strong> à chaque paiement partiel ou total. Chaque 212 est transmis au PPF et <strong>déclenche l'exigibilité TVA</strong>.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="tva" class="content-section">
+                    <h2>Impact sur la TVA</h2>
+                    <div class="role-dual">
+                        <div class="role-card">
+                            <h4>TVA sur les débits (livraisons de biens)</h4>
+                            <ul>
+                                <li>Exigibilité = livraison / émission de la facture</li>
+                                <li>Statut <strong>Déposée (200)</strong> + Flux 1 suffisent</li>
+                                <li>Statut <strong>Refusée (210)</strong> annule l'impact TVA</li>
+                            </ul>
+                        </div>
+                        <div class="role-card">
+                            <h4>TVA à l'encaissement (services)</h4>
+                            <ul>
+                                <li>Exigibilité = <strong>encaissement du prix</strong></li>
+                                <li>Statut <strong>Encaissée (212)</strong> obligatoire</li>
+                                <li>Chaque encaissement partiel = un statut 212</li>
+                                <li>Déclenche l'inscription dans la CA3 pré-remplie</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="callout callout--warning">
+                        <div class="callout-icon">⚠️</div>
+                        <div class="callout-content">Ne pas transmettre le statut « Encaissée » pour une prestation de services avec TVA à l'encaissement peut entraîner un <strong>décalage dans le pré-remplissage TVA</strong> et un éventuel contrôle fiscal.</div>
+                    </div>
+                </section>
+
+                <nav class="page-nav-bottom">
+                    <a href="./flux.html" class="nav-prev">
+                        <span class="nav-label">Page précédente</span>
+                        <span class="nav-title">← 📡 Les 14 flux</span>
+                    </a>
+                    <a href="./formats.html" class="nav-next">
+                        <span class="nav-label">Page suivante</span>
+                        <span class="nav-title">📐 Les formats →</span>
+                    </a>
+                </nav>
+            </article>
+        </div>
+    </main>
+
+    <footer id="main-footer"></footer>
+    <script src="./js/nav.js"></script>
+    <script src="./js/animations.js"></script>
+</body>
+</html>

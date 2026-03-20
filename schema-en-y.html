@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le schéma en Y | E-Invoicing Academy</title>
+    <link rel="icon" href="./assets/favicon-Fluxym-V2.png" sizes="32x32" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/pages.css">
+</head>
+<body>
+
+    <nav id="main-nav"></nav>
+
+    <header class="page-hero">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="./index.html">Accueil</a> <span>/</span> <span>Niveau 3 — Approfondir</span>
+            </div>
+            <span class="hero-badge">Niveau 3 — Approfondir</span>
+            <h1>Le schéma en Y</h1>
+            <p>L'architecture complète de la réforme : comment la facture et les données suivent deux chemins distincts.</p>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <div class="page-container page-layout">
+
+            <aside class="page-sidebar">
+                <div class="sidebar-sticky">
+                    <h4>Sur cette page</h4>
+                    <ul class="sidebar-nav">
+                        <li><a href="#intro" class="sidebar-link active">Pourquoi « en Y »</a></li>
+                        <li><a href="#branche-gauche" class="sidebar-link">Branche gauche : la facture</a></li>
+                        <li><a href="#branche-droite" class="sidebar-link">Branche droite : les données</a></li>
+                        <li><a href="#pied" class="sidebar-link">Le pied : le PPF</a></li>
+                        <li><a href="#cas-particuliers" class="sidebar-link">Cas particuliers</a></li>
+                        <li><a href="#avant-apres" class="sidebar-link">Avant / Après oct. 2024</a></li>
+                    </ul>
+                    <div class="sidebar-nav-pages">
+                        <h4>Parcours Niveau 3</h4>
+                        <a href="./schema-en-y.html" class="sidebar-page active">🔀 Schéma en Y</a>
+                        <a href="./flux.html" class="sidebar-page">📡 Les 14 flux</a>
+                        <a href="./cycle-de-vie.html" class="sidebar-page">🔄 Cycle de vie</a>
+                        <a href="./formats.html" class="sidebar-page">📐 Les formats</a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="page-content">
+
+                <section id="intro" class="content-section">
+                    <h2>Pourquoi « en Y » ?</h2>
+                    <p>Imaginez la lettre <strong>Y</strong>. Deux branches partent du haut et convergent vers un pied commun en bas :</p>
+                    <div class="schema-y-visual">
+                        <div class="sy-branch sy-branch--left">
+                            <div class="sy-branch-label">🔀 Branche gauche</div>
+                            <div class="sy-flow"><strong>Le circuit de la facture</strong><br>Le document circule de l'émetteur au récepteur, en passant par les Plateformes Agréées.</div>
+                        </div>
+                        <div class="sy-branch sy-branch--right">
+                            <div class="sy-branch-label">📊 Branche droite</div>
+                            <div class="sy-flow"><strong>Le circuit des données fiscales</strong><br>Les données réglementaires, statuts et e-reporting remontent vers l'État.</div>
+                        </div>
+                        <div class="sy-stem">
+                            <div class="sy-branch-label">🏛️ Le pied du Y — PPF</div>
+                            <div class="sy-flow">Concentre toutes les données fiscales → DGFiP</div>
+                        </div>
+                    </div>
+                    <div class="callout callout--info">
+                        <div class="callout-icon">🔑</div>
+                        <div class="callout-content"><strong>Le point clé :</strong> le PPF ne voit jamais vos factures. Il ne reçoit que les données réglementaires extraites (Flux 1) et les statuts de traitement (Flux 6). La facture circule exclusivement entre Plateformes Agréées.</div>
+                    </div>
+                </section>
+
+                <section id="branche-gauche" class="content-section">
+                    <h2>Branche gauche : le circuit de la facture</h2>
+                    <p>Le parcours complet d'une facture électronique :</p>
+                    <div class="code-block">Émetteur → [SC émettrice] → PA émettrice → PA réceptrice → [SC réceptrice] → Récepteur</div>
+                    <p>Les crochets <code>[ ]</code> indiquent des intermédiaires optionnels : les <strong>Solutions Compatibles (SC)</strong>.</p>
+
+                    <h3>Étape 1 — L'émetteur crée la facture</h3>
+                    <div class="nb-item" style="border-bottom:none;"><span class="nb-num">1</span><div>Le fournisseur crée la facture dans son SI (ERP, logiciel de facturation). Elle contient toutes les <strong>mentions légales obligatoires</strong> (art. 242 nonies A du CGI) et les données nécessaires au Flux 1.</div></div>
+
+                    <h3>Étape 2 — La SC de l'émetteur (optionnel)</h3>
+                    <div class="nb-item" style="border-bottom:none;"><span class="nb-num">2</span><div>La SC convertit la facture vers l'un des <strong>3 formats du socle</strong> (UBL, CII, Factur-X), enrichit si besoin, effectue des pré-contrôles, et transmet à la PA émettrice.</div></div>
+
+                    <h3>Étape 3 — La PA émettrice : le nœud critique</h3>
+                    <div class="nb-item" style="border-bottom:none;"><span class="nb-num">3</span><div>La PA-E effectue <strong>6 niveaux de contrôles</strong>, extrait les données → PPF (Flux 1), consulte l'annuaire, et transmet à la PA réceptrice (Flux 2).</div></div>
+
+                    <p><strong>Les 6 contrôles de la PA émettrice :</strong></p>
+                    <div class="numbered-blocks">
+                        <div class="nb-item"><span class="nb-num">①</span><div><strong>Syntaxiques</strong> — fichier XML bien formé, conforme au schéma XSD</div></div>
+                        <div class="nb-item"><span class="nb-num">②</span><div><strong>Sémantiques</strong> — Business Terms obligatoires présents et valides</div></div>
+                        <div class="nb-item"><span class="nb-num">③</span><div><strong>Règles EN 16931</strong> — calculs européens (BR-CO-10 à BR-CO-26…)</div></div>
+                        <div class="nb-item"><span class="nb-num">④</span><div><strong>Règles BR-France</strong> — SIREN actif (BR-FR-10), cohérence SIRET/SIREN (BR-FR-07), pas d'antidatage (BR-FR-CO-01)…</div></div>
+                        <div class="nb-item"><span class="nb-num">⑤</span><div><strong>Doublons</strong> — unicité du numéro de facture</div></div>
+                        <div class="nb-item"><span class="nb-num">⑥</span><div><strong>Annuaire</strong> — le destinataire existe-t-il ? A-t-il une PA de réception active ?</div></div>
+                    </div>
+
+                    <div class="callout callout--warning">
+                        <div class="callout-icon">⚠️</div>
+                        <div class="callout-content"><strong>Si un contrôle échoue :</strong> la PA-E crée un statut <strong>« Rejetée » (213)</strong> avec un motif de rejet. Ce statut est transmis au PPF. La facture n'entre PAS dans le circuit. Le vendeur doit corriger et réémettre.</div>
+                    </div>
+
+                    <h3>Étape 4 — La PA réceptrice</h3>
+                    <div class="nb-item" style="border-bottom:none;"><span class="nb-num">4</span><div>La PA-R reçoit la facture, effectue ses propres contrôles, peut <strong>convertir le format</strong> (CII → UBL, etc.) et met la facture à disposition du destinataire.</div></div>
+
+                    <h3>Étape 5 — Le récepteur traite la facture</h3>
+                    <div class="nb-item" style="border-bottom:none;"><span class="nb-num">5</span><div>Le destinataire vérifie, rapproche avec les bons de commande, et pose des <strong>statuts de cycle de vie</strong> : Approuvée, Refusée, En litige, Encaissée…</div></div>
+                </section>
+
+                <section id="branche-droite" class="content-section">
+                    <h2>Branche droite : le circuit des données fiscales</h2>
+                    <p>Pendant que la facture voyage entre les PA, des <strong>données fiscales remontent en parallèle vers le PPF</strong>.</p>
+
+                    <div class="triple-grid">
+                        <div class="objective-card">
+                            <div class="objective-icon">📄</div>
+                            <h3>Flux 1</h3>
+                            <p><strong>PA-E → PPF</strong><br>Données réglementaires extraites de la facture (SIREN, montants, TVA, type…)</p>
+                        </div>
+                        <div class="objective-card">
+                            <div class="objective-icon">🔄</div>
+                            <h3>Flux 6</h3>
+                            <p><strong>PA → PPF</strong><br>Statuts obligatoires : Déposée (200), Refusée (210), Encaissée (212), Rejetée (213)</p>
+                        </div>
+                        <div class="objective-card">
+                            <div class="objective-icon">📊</div>
+                            <h3>Flux 10</h3>
+                            <p><strong>PA → PPF</strong><br>E-reporting : B2B international, B2C, paiements</p>
+                        </div>
+                    </div>
+
+                    <div class="callout callout--info">
+                        <div class="callout-icon">📌</div>
+                        <div class="callout-content">La PA-E ne transmet <strong>PAS</strong> la facture elle-même au PPF. Seulement les données réglementaires. L'administration ne voit jamais la facture complète.</div>
+                    </div>
+                </section>
+
+                <section id="pied" class="content-section">
+                    <h2>Le pied du Y : le PPF comme concentrateur</h2>
+                    <div class="comparison-table">
+                        <table>
+                            <thead><tr><th>Flux reçu</th><th>Source</th><th>Contenu</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Flux 1</strong></td><td>PA-E → PPF</td><td>Données réglementaires de la facture</td></tr>
+                                <tr><td><strong>Flux 6</strong></td><td>PA → PPF</td><td>Statuts obligatoires (200, 210, 212, 213)</td></tr>
+                                <tr><td><strong>Flux 10</strong></td><td>PA → PPF</td><td>Données e-reporting (B2Bi, B2C, paiements)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>Ce que le PPF en fait :</strong></p>
+                    <div class="numbered-blocks">
+                        <div class="nb-item"><span class="nb-num">1</span><div><strong>Contrôle</strong> la cohérence des données reçues</div></div>
+                        <div class="nb-item"><span class="nb-num">2</span><div><strong>Concentre</strong> toutes les données fiscales de toutes les PA</div></div>
+                        <div class="nb-item"><span class="nb-num">3</span><div><strong>Transmet à la DGFiP</strong> (Flux 12) pour le pré-remplissage TVA</div></div>
+                        <div class="nb-item"><span class="nb-num">4</span><div><strong>Gère l'annuaire central</strong> des entreprises assujetties</div></div>
+                    </div>
+                </section>
+
+                <section id="cas-particuliers" class="content-section">
+                    <h2>Cas particuliers dans le schéma en Y</h2>
+
+                    <h3>🏛️ B2G : quand Chorus Pro entre en jeu</h3>
+                    <p>Pour les factures B2G, <strong>Chorus Pro joue le rôle de PA réceptrice</strong>. La PA-E du fournisseur transmet la facture à Chorus Pro comme elle le ferait vers n'importe quelle PA-R.</p>
+
+                    <h3>🔄 Auto-facturation</h3>
+                    <p>L'<strong>acheteur</strong> émet la facture pour le compte du vendeur. Sa PA agit comme PA-E, le vendeur reçoit via sa PA-R. Le cadre de facturation (BT-23) identifie l'auto-facturation.</p>
+
+                    <h3>👥 Multi-destinataires et tiers</h3>
+                    <ul class="styled-list">
+                        <li><strong>Tiers payeur</strong> — le paiement vient d'un tiers, circuit normal</li>
+                        <li><strong>Affacturage</strong> — le factor intervient comme bénéficiaire</li>
+                        <li><strong>Sous-traitance paiement direct</strong> — le maître d'ouvrage paie le sous-traitant</li>
+                    </ul>
+                </section>
+
+                <section id="avant-apres" class="content-section">
+                    <h2>Avant / Après octobre 2024</h2>
+                    <div class="role-dual">
+                        <div class="role-card" style="border-top-color: var(--danger);">
+                            <h4>❌ Modèle initial (abandonné)</h4>
+                            <ul>
+                                <li>Le PPF était un <strong>routeur central</strong></li>
+                                <li>Toutes les factures transitaient par le PPF</li>
+                                <li>Architecture en étoile</li>
+                                <li>Problèmes : goulet d'étranglement, point unique de défaillance</li>
+                            </ul>
+                        </div>
+                        <div class="role-card" style="border-top-color: var(--success);">
+                            <h4>✅ Modèle actuel (depuis oct. 2024)</h4>
+                            <ul>
+                                <li>Les factures circulent <strong>PA à PA</strong></li>
+                                <li>Le PPF est un <strong>concentrateur de données</strong></li>
+                                <li>Architecture décentralisée</li>
+                                <li>Meilleure résilience, performance, scalabilité</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <nav class="page-nav-bottom">
+                    <a href="./sanctions.html" class="nav-prev">
+                        <span class="nav-label">Niveau 2</span>
+                        <span class="nav-title">← ⚖️ Sanctions</span>
+                    </a>
+                    <a href="./flux.html" class="nav-next">
+                        <span class="nav-label">Page suivante</span>
+                        <span class="nav-title">📡 Les 14 flux →</span>
+                    </a>
+                </nav>
+            </article>
+        </div>
+    </main>
+
+    <footer id="main-footer"></footer>
+    <script src="./js/nav.js"></script>
+    <script src="./js/animations.js"></script>
+</body>
+</html>

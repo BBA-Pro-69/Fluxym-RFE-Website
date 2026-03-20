@@ -42,15 +42,21 @@ const SiteNav = {
                         <li><a href="./e-invoicing.html">📨 E-invoicing</a></li>
                         <li><a href="./e-reporting.html">📊 E-reporting</a></li>
                         <li><a href="./chorus-pro.html">🏛️ Chorus Pro</a></li>
+                        <li><a href="./b2g.html">🏗️ B2G / G2B</a></li>
+                        <li><a href="./tva-preremplie.html">💶 TVA pré-remplie</a></li>
+                        <li><a href="./peppol.html">🌍 Peppol</a></li>
+                        <li><a href="./sanctions.html">⚖️ Sanctions</a></li>
                     </ul>
                 </li>
                 <li class="nav-dropdown">
-                    <a href="#" class="nav-link nav-link--dropdown nav-link--disabled">Approfondir <span class="nav-arrow">▾</span></a>
+                    <a href="#" class="nav-link nav-link--dropdown">Approfondir <span class="nav-arrow">▾</span></a>
                     <ul class="nav-submenu">
-                        <li><span class="nav-coming">Bientôt disponible</span></li>
+                        <li><a href="./schema-en-y.html">🔀 Schéma en Y</a></li>
+                        <li><a href="./flux.html">📡 Les 14 flux</a></li>
+                        <li><a href="./cycle-de-vie.html">🔄 Cycle de vie</a></li>
+                        <li><a href="./formats.html">📐 Les formats</a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="nav-link nav-link--disabled">Cas d'usage</a></li>
             </ul>
         </div>`;
     },

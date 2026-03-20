@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UBL, CII, Factur-X : les formats | E-Invoicing Academy</title>
+    <link rel="icon" href="./assets/favicon-Fluxym-V2.png" sizes="32x32" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/pages.css">
+</head>
+<body>
+
+    <nav id="main-nav"></nav>
+
+    <header class="page-hero">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="./index.html">Accueil</a> <span>/</span> <span>Niveau 3 — Approfondir</span>
+            </div>
+            <span class="hero-badge">Niveau 3 — Approfondir</span>
+            <h1>UBL, CII, Factur-X</h1>
+            <p>Les 3 formats en profondeur : structure technique, profils, règles de validation et arbre de décision.</p>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <div class="page-container page-layout">
+
+            <aside class="page-sidebar">
+                <div class="sidebar-sticky">
+                    <h4>Sur cette page</h4>
+                    <ul class="sidebar-nav">
+                        <li><a href="#intro" class="sidebar-link active">Pourquoi 3 formats</a></li>
+                        <li><a href="#ubl" class="sidebar-link">UBL 2.1</a></li>
+                        <li><a href="#cii" class="sidebar-link">CII D22B</a></li>
+                        <li><a href="#facturx" class="sidebar-link">Factur-X</a></li>
+                        <li><a href="#en16931" class="sidebar-link">EN 16931</a></li>
+                        <li><a href="#regles" class="sidebar-link">Règles BR-France</a></li>
+                        <li><a href="#comparatif" class="sidebar-link">Tableau comparatif</a></li>
+                        <li><a href="#choix" class="sidebar-link">Comment choisir</a></li>
+                    </ul>
+                    <div class="sidebar-nav-pages">
+                        <h4>Parcours Niveau 3</h4>
+                        <a href="./schema-en-y.html" class="sidebar-page">🔀 Schéma en Y</a>
+                        <a href="./flux.html" class="sidebar-page">📡 Les 14 flux</a>
+                        <a href="./cycle-de-vie.html" class="sidebar-page">🔄 Cycle de vie</a>
+                        <a href="./formats.html" class="sidebar-page active">📐 Les formats</a>
+                    </div>
+                </div>
+            </aside>
+
+            <article class="page-content">
+
+                <section id="intro" class="content-section">
+                    <h2>Pourquoi 3 formats ?</h2>
+                    <div class="numbered-blocks">
+                        <div class="nb-item"><span class="nb-num">1</span><div><strong>Interopérabilité européenne</strong> — la norme EN 16931 impose un modèle commun mais laisse le choix de la syntaxe (UBL ou CII)</div></div>
+                        <div class="nb-item"><span class="nb-num">2</span><div><strong>Héritage franco-allemand</strong> — Factur-X existait déjà et était largement adopté</div></div>
+                        <div class="nb-item"><span class="nb-num">3</span><div><strong>Diversité des entreprises</strong> — une PME et un grand groupe n'ont pas les mêmes besoins techniques</div></div>
+                    </div>
+                </section>
+
+                <!-- UBL -->
+                <section id="ubl" class="content-section">
+                    <h2>📘 UBL 2.1 — Le standard Peppol</h2>
+                    <p><strong>OASIS Universal Business Language</strong>. Version 2.1 (2013). Format de référence du réseau Peppol, massivement utilisé dans les pays nordiques, au UK, en Australie.</p>
+
+                    <h3>Structure technique</h3>
+                    <p>Deux schémas XML distincts : <code>Invoice</code> (factures) et <code>CreditNote</code> (avoirs).</p>
+                    <div class="code-block">&lt;Invoice xmlns="urn:oasis:names:specification:ubl:schema:module:invoice:2"&gt;
+  &lt;cbc:ID&gt;FAC-2026-001&lt;/cbc:ID&gt;                &lt;!-- BT-1 --&gt;
+  &lt;cbc:IssueDate&gt;2026-09-15&lt;/cbc:IssueDate&gt;    &lt;!-- BT-2 --&gt;
+  &lt;cbc:InvoiceTypeCode&gt;380&lt;/cbc:InvoiceTypeCode&gt; &lt;!-- BT-3 --&gt;
+  &lt;cac:AccountingSupplierParty&gt;...&lt;/cac:AccountingSupplierParty&gt;
+  &lt;cac:AccountingCustomerParty&gt;...&lt;/cac:AccountingCustomerParty&gt;
+  &lt;cac:TaxTotal&gt;...&lt;/cac:TaxTotal&gt;
+  &lt;cac:InvoiceLine&gt;...&lt;/cac:InvoiceLine&gt;
+&lt;/Invoice&gt;</div>
+
+                    <div class="role-dual">
+                        <div class="role-card" style="border-top-color: var(--success);">
+                            <h4>✅ Avantages</h4>
+                            <ul>
+                                <li>Standard international le plus répandu (Peppol)</li>
+                                <li>Grande communauté + outils open source</li>
+                                <li>Séparation claire Invoice / CreditNote</li>
+                                <li>Format natif Peppol</li>
+                            </ul>
+                        </div>
+                        <div class="role-card" style="border-top-color: var(--danger);">
+                            <h4>❌ Inconvénients</h4>
+                            <ul>
+                                <li>Structure XML verbeuse</li>
+                                <li>Deux schémas à gérer</li>
+                                <li>Namespace et préfixes complexes (cbc, cac…)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CII -->
+                <section id="cii" class="content-section">
+                    <h2>📗 CII D22B — Le format franco-allemand</h2>
+                    <p><strong>UN/CEFACT CrossIndustryInvoice</strong>. Directory 22B (2022). Historiquement utilisé en France et en Allemagne.</p>
+
+                    <h3>Structure technique</h3>
+                    <p>Un <strong>schéma unique</strong> <code>CrossIndustryInvoice</code> pour factures ET avoirs.</p>
+                    <div class="code-block">&lt;rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:..."&gt;
+  &lt;rsm:ExchangedDocument&gt;
+    &lt;ram:ID&gt;FAC-2026-001&lt;/ram:ID&gt;        &lt;!-- BT-1 --&gt;
+    &lt;ram:TypeCode&gt;380&lt;/ram:TypeCode&gt;      &lt;!-- BT-3 --&gt;
+  &lt;/rsm:ExchangedDocument&gt;
+  &lt;rsm:SupplyChainTradeTransaction&gt;
+    &lt;ram:ApplicableHeaderTradeAgreement&gt;
+      &lt;ram:SellerTradeParty&gt;...&lt;/ram:SellerTradeParty&gt;
+      &lt;ram:BuyerTradeParty&gt;...&lt;/ram:BuyerTradeParty&gt;
+    &lt;/ram:ApplicableHeaderTradeAgreement&gt;
+  &lt;/rsm:SupplyChainTradeTransaction&gt;
+&lt;/rsm:CrossIndustryInvoice&gt;</div>
+
+                    <div class="role-dual">
+                        <div class="role-card" style="border-top-color: var(--success);">
+                            <h4>✅ Avantages</h4>
+                            <ul>
+                                <li>Schéma unique pour factures et avoirs</li>
+                                <li>Format natif de Factur-X</li>
+                                <li>Bien adopté en France/Allemagne</li>
+                            </ul>
+                        </div>
+                        <div class="role-card" style="border-top-color: var(--danger);">
+                            <h4>❌ Inconvénients</h4>
+                            <ul>
+                                <li>Nesting plus profond (4-6 niveaux)</li>
+                                <li>Noms d'éléments très longs</li>
+                                <li>Moins d'outils open source qu'UBL</li>
+                                <li>Format de dates non standard XML</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FACTUR-X -->
+                <section id="facturx" class="content-section">
+                    <h2>📙 Factur-X — Le format hybride</h2>
+                    <p>Le meilleur des deux mondes : un <strong>PDF/A-3</strong> lisible par un humain + un <strong>XML CII</strong> embarqué lisible par une machine. Identique à <strong>ZUGFeRD</strong> côté allemand.</p>
+
+                    <h3>Les 6 profils</h3>
+                    <div class="comparison-table">
+                        <table>
+                            <thead><tr><th>Profil</th><th>Données</th><th>RFE ?</th><th>Description</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>MINIMUM</strong></td><td>~15 champs</td><td><span class="status-no">❌ NON</span></td><td>Pas assez de données pour la réforme</td></tr>
+                                <tr><td><strong>BASIC WL</strong></td><td>~40 champs</td><td><span class="status-yes">⚠️ Jusqu'à sept. 2027</span></td><td>Sans lignes — toléré en démarrage</td></tr>
+                                <tr><td><strong>BASIC</strong></td><td>~60 champs</td><td><span class="status-yes">✅</span></td><td>Sous-ensemble de EN16931</td></tr>
+                                <tr><td><strong>EN16931</strong></td><td>Norme complète</td><td><span class="status-yes">✅ Recommandé</span></td><td>Conformité européenne totale</td></tr>
+                                <tr><td><strong>EXTENDED</strong></td><td>EN16931 +</td><td><span class="status-yes">✅</span></td><td>Données additionnelles</td></tr>
+                                <tr><td><strong>EXTENDED-CTC-FR</strong></td><td>Extension FR</td><td><span class="status-yes">✅ Avancé</span></td><td>Extension française (Chorus Pro, sous-traitance…)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="role-dual">
+                        <div class="role-card" style="border-top-color: var(--success);">
+                            <h4>✅ Avantages</h4>
+                            <ul>
+                                <li>Lisible par TOUS (PDF)</li>
+                                <li>Traitable par machine (XML)</li>
+                                <li>Transition douce pour les non-automatisés</li>
+                                <li>Archivage natif (PDF/A-3)</li>
+                                <li>Le PDF peut contenir plans, photos…</li>
+                            </ul>
+                        </div>
+                        <div class="role-card" style="border-top-color: var(--danger);">
+                            <h4>❌ Inconvénients</h4>
+                            <ul>
+                                <li>Plus lourd (100 Ko→1 Mo vs 5-50 Ko)</li>
+                                <li>Double production (PDF + XML)</li>
+                                <li>Risque de divergence PDF ≠ XML</li>
+                                <li>Pas natif Peppol</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- EN 16931 -->
+                <section id="en16931" class="content-section">
+                    <h2>EN 16931 : le socle commun européen</h2>
+                    <p>Le <strong>modèle sémantique</strong> qui garantit la traduction entre les 3 formats :</p>
+                    <ul class="styled-list">
+                        <li><strong>Business Terms (BT)</strong> — chaque donnée a un code unique (BT-1 = n° facture, BT-2 = date…)</li>
+                        <li><strong>Business Groups (BG)</strong> — regroupements logiques (BG-4 = vendeur, BG-7 = acheteur, BG-25 = ligne…)</li>
+                        <li><strong>Business Rules (BR)</strong> — règles de validation de cohérence</li>
+                    </ul>
+
+                    <h3>Exemple de mapping</h3>
+                    <div class="comparison-table">
+                        <table>
+                            <thead><tr><th>BT</th><th>UBL</th><th>CII</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>BT-1</strong> N° facture</td><td><code>/Invoice/cbc:ID</code></td><td><code>.../ExchangedDocument/ram:ID</code></td></tr>
+                                <tr><td><strong>BT-2</strong> Date</td><td><code>/Invoice/cbc:IssueDate</code></td><td><code>.../ram:IssueDateTime</code></td></tr>
+                                <tr><td><strong>BT-30</strong> SIREN</td><td><code>.../PartyLegalEntity/cbc:CompanyID</code></td><td><code>.../SpecifiedLegalOrganization/ram:ID</code></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>Pour <strong>Factur-X</strong>, le mapping est identique à CII (le XML embarqué EST du CII).</p>
+                </section>
+
+                <!-- REGLES -->
+                <section id="regles" class="content-section">
+                    <h2>Les règles de validation françaises</h2>
+                    <div class="comparison-table">
+                        <table>
+                            <thead><tr><th>Préfixe</th><th>Origine</th><th>Exemple</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>BR-xx</strong></td><td>Règles EN 16931</td><td>BR-1 : une facture DOIT avoir un BT-24</td></tr>
+                                <tr><td><strong>BR-CO-xx</strong></td><td>Calcul européen</td><td>BR-CO-10 : total TVA = somme sous-totaux</td></tr>
+                                <tr><td><strong>BR-FR-xx</strong></td><td>Règles françaises CTC</td><td>BR-FR-10 : SIREN vendeur actif dans l'annuaire</td></tr>
+                                <tr><td><strong>BR-FR-CO-xx</strong></td><td>Calcul français</td><td>BR-FR-CO-01 : pas d'antidatage futur</td></tr>
+                                <tr><td><strong>BR-FR-CDV-xx</strong></td><td>Cycle de vie FR</td><td>BR-FR-CDV-12 : code statut obligatoire</td></tr>
+                                <tr><td><strong>BR-FR-MAP-xx</strong></td><td>Mapping Flux 1</td><td>BR-FR-MAP-13 : mapping adresse livraison</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- COMPARATIF -->
+                <section id="comparatif" class="content-section">
+                    <h2>Tableau comparatif complet</h2>
+                    <div class="comparison-table">
+                        <table>
+                            <thead><tr><th>Critère</th><th>UBL 2.1</th><th>CII D22B</th><th>Factur-X</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Organisme</strong></td><td>OASIS</td><td>UN/CEFACT</td><td>FNFE + FeRD</td></tr>
+                                <tr><td><strong>Type de fichier</strong></td><td>XML</td><td>XML</td><td>PDF/A-3 + XML</td></tr>
+                                <tr><td><strong>Schémas</strong></td><td>2</td><td>1</td><td>1 PDF + 1 XML</td></tr>
+                                <tr><td><strong>Poids typique</strong></td><td>5-50 Ko</td><td>5-50 Ko</td><td>100 Ko — 1 Mo</td></tr>
+                                <tr><td><strong>Lisible humain</strong></td><td><span class="status-no">✗</span></td><td><span class="status-no">✗</span></td><td><span class="status-yes">✓ (PDF)</span></td></tr>
+                                <tr><td><strong>Peppol natif</strong></td><td><span class="status-yes">✓</span></td><td>Supporté</td><td>Extraction XML</td></tr>
+                                <tr><td><strong>Adoption</strong></td><td>🌍 Internationale</td><td>🇫🇷🇩🇪</td><td>🇫🇷🇩🇪</td></tr>
+                                <tr><td><strong>Archivage natif</strong></td><td><span class="status-no">✗</span></td><td><span class="status-no">✗</span></td><td><span class="status-yes">✓ (PDF/A-3)</span></td></tr>
+                                <tr><td><strong>Idéal pour</strong></td><td>Grands volumes, Peppol</td><td>Continuité Factur-X</td><td>PME, transition</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- CHOIX -->
+                <section id="choix" class="content-section">
+                    <h2>🌳 Comment choisir ? L'arbre de décision</h2>
+
+                    <div class="decision-tree">
+                        <div class="dt-question">
+                            <strong>❶ Vos destinataires sont-ils tous équipés pour traiter du XML ?</strong>
+                            <div class="dt-answers">
+                                <div class="dt-answer dt-no">❌ Non → <strong>Factur-X</strong> (ils liront le PDF)</div>
+                                <div class="dt-answer dt-yes">✅ Oui → Question ❷</div>
+                            </div>
+                        </div>
+                        <div class="dt-question">
+                            <strong>❷ Faites-vous du commerce international via Peppol ?</strong>
+                            <div class="dt-answers">
+                                <div class="dt-answer dt-yes">✅ Oui → <strong>UBL 2.1</strong></div>
+                                <div class="dt-answer dt-no">❌ Non → Question ❸</div>
+                            </div>
+                        </div>
+                        <div class="dt-question">
+                            <strong>❸ Votre ERP/PA a-t-il un format natif ?</strong>
+                            <div class="dt-answers">
+                                <div class="dt-answer dt-yes">UBL natif → <strong>UBL 2.1</strong></div>
+                                <div class="dt-answer dt-yes">CII natif → <strong>CII D22B</strong></div>
+                                <div class="dt-answer dt-no">Aucun → Question ❹</div>
+                            </div>
+                        </div>
+                        <div class="dt-question">
+                            <strong>❹ Quel volume de factures ?</strong>
+                            <div class="dt-answers">
+                                <div class="dt-answer dt-yes">&gt; 10 000/mois → <strong>UBL ou CII</strong> (XML pur, plus léger)</div>
+                                <div class="dt-answer dt-no">&lt; 10 000/mois → <strong>Factur-X</strong> (ou UBL/CII, au choix)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="callout callout--info">
+                        <div class="callout-icon">💡</div>
+                        <div class="callout-content"><strong>En pratique :</strong> la plupart des PA acceptent les 3 formats en entrée et peuvent convertir en sortie. Le choix est surtout une question d'<strong>optimisation</strong> (performance, poids, compatibilité ERP) plutôt qu'une contrainte absolue.</div>
+                    </div>
+                </section>
+
+                <nav class="page-nav-bottom">
+                    <a href="./cycle-de-vie.html" class="nav-prev">
+                        <span class="nav-label">Page précédente</span>
+                        <span class="nav-title">← 🔄 Cycle de vie</span>
+                    </a>
+                    <div class="nav-next nav-next--disabled">
+                        <span class="nav-label">Prochaine étape</span>
+                        <span class="nav-title">🟡 Niveau 4 — Bientôt disponible</span>
+                    </div>
+                </nav>
+            </article>
+        </div>
+    </main>
+
+    <footer id="main-footer"></footer>
+    <script src="./js/nav.js"></script>
+    <script src="./js/animations.js"></script>
+</body>
+</html>

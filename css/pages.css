@@ -2082,6 +2082,8 @@ body {
 
 .nb-item strong { color: var(--gray-900); }
 
+
+
 /* === STAT HIGHLIGHT === */
 .stat-highlight {
     display: flex;
@@ -2108,7 +2110,10 @@ body {
     font-size: 16px;
     line-height: 1.6;
 }
-
+.stat-desc strong {
+    color: #ffffff;
+    font-weight: 800;
+}
 /* === NOT LIST === */
 .not-list { margin: 16px 0; }
 
@@ -2222,6 +2227,13 @@ body {
     line-height: 1.7;
 }
 
+.discover-card--purple {
+    border-top: 4px solid var(--purple);
+}
+.discover-card--purple:hover {
+    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.15);
+}
+
 
 /* ==========================================================================
    SCROLL ANIMATIONS
@@ -2249,6 +2261,110 @@ body {
 .objectives-grid .reveal-on-scroll:nth-child(2) { transition-delay: 0.1s; }
 .objectives-grid .reveal-on-scroll:nth-child(3) { transition-delay: 0.2s; }
 .objectives-grid .reveal-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+
+
+/* === FLUX CARDS === */
+.flux-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    border: 1px solid var(--gray-100);
+    box-shadow: var(--shadow-sm);
+    margin: 16px 0;
+}
+
+.flux-meta {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.flux-direction, .flux-format {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.flux-direction {
+    background: linear-gradient(135deg, var(--cyan), var(--navy));
+    color: white;
+}
+
+.flux-format {
+    background: var(--gray-50);
+    color: var(--gray-600);
+    border: 1px solid var(--gray-200);
+}
+
+/* === CODE BLOCKS === */
+.code-block {
+    background: var(--navy);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 20px 24px;
+    border-radius: var(--radius-lg);
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-x: auto;
+    white-space: pre;
+    margin: 16px 0;
+    box-shadow: var(--shadow-navy);
+}
+
+/* === DECISION TREE === */
+.decision-tree { margin: 24px 0; }
+
+.dt-question {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-100);
+    box-shadow: var(--shadow-sm);
+    padding: 20px 24px;
+    margin-bottom: 12px;
+}
+
+.dt-question strong {
+    display: block;
+    font-size: 15px;
+    color: var(--gray-900);
+    margin-bottom: 12px;
+}
+
+.dt-answers {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dt-answer {
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.dt-yes {
+    background: rgba(16, 185, 129, 0.08);
+    color: var(--success);
+    border-left: 3px solid var(--success);
+}
+
+.dt-no {
+    background: rgba(0, 167, 225, 0.06);
+    color: var(--cyan);
+    border-left: 3px solid var(--cyan);
+}
+
+.discover-card--teal {
+    border-top: 4px solid #14b8a6;
+}
+.discover-card--teal:hover {
+    box-shadow: 0 12px 40px rgba(20, 184, 166, 0.15);
+}
 
 /* ==========================================================================
    FOOTER
