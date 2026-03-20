@@ -43,6 +43,17 @@
     box-sizing: border-box;
 }
 
+img, video, picture, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     color: var(--gray-900);
@@ -50,6 +61,22 @@ body {
     overflow-x: hidden;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+}
+
+.section-header h2 {
+    font-size: clamp(1.7rem, 4vw, 3rem);
+}
+
+.content-section h2 {
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
 }
 
 /* ==========================================================================
@@ -1836,6 +1863,79 @@ body {
 .actor-card-brief:hover {
     transform: translateX(5px);
     border-left-width: 6px;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (3 classes de tailles)
+   - large desktop: > 1200px (preset principal)
+   - desktop/tablette: <= 1200px
+   - tablette: <= 900px
+   - mobile: <= 600px
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+    /* Conteneurs plus souples */
+    .nav-container,
+    .discover-section,
+    .tool-section,
+    .counters-section,
+    .page-main {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .hero { padding: 100px 24px 60px; }
+    .page-hero { padding: 110px 24px 50px; }
+
+    .tool-banner { gap: 40px; }
+    .counters-grid { grid-template-columns: repeat(2, 1fr); max-width: 1000px; }
+    .discover-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+    /* Navigation mobile + conversion layout */
+    .nav-links { width: 100%; }
+    .nav-link { font-size: 16px; padding: 10px 0; }
+
+    .hero { padding: 90px 18px 50px; }
+    .hero h1 { font-size: 42px; letter-spacing: -1.5px; }
+    .hero-subtitle { font-size: 17px; }
+
+    .tool-banner { grid-template-columns: 1fr; gap: 30px; }
+    .page-layout { grid-template-columns: 1fr; gap: 20px; }
+    .page-sidebar { display: none; }
+    .counters-grid { grid-template-columns: 1fr; }
+    .discover-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .objectives-grid { grid-template-columns: 1fr; }
+    .europe-grid { grid-template-columns: 1fr; }
+    .countdown-grid { grid-template-columns: 1fr; }
+    .main-timeline .mt-block { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+    /* Petite résolution smartphone */
+    .hero h1 { font-size: 34px; }
+    .hero-subtitle { font-size: 15px; }
+    .hero-ctas .btn-hero-primary,
+    .hero-ctas .btn-hero-secondary { width: 100%; padding-left: 16px; padding-right: 16px; }
+
+    .section-header h2 { font-size: 28px; }
+    .section-header p { font-size: 15px; }
+
+    .page-main { padding: 30px 15px 40px; }
+    .page-nav-bottom { flex-direction: column; }
+    .nav-prev, .nav-next { max-width: 100%; width: 100%; }
+
+    .countdown-card { padding: 28px; }
+    .cd-number { font-size: 40px; }
+
+    .mt-year-big { font-size: 40px; }
+    .breadcrumb { font-size: 12px; }
+
+    .content-section h2 { font-size: 28px; }
+    .content-section p { font-size: 15px; }
 }
 
 .actor-card-brief h4 {
