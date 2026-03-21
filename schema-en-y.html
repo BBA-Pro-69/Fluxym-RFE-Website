@@ -51,165 +51,372 @@
 
             <article class="page-content">
 
+                <!-- INTRO -->
                 <section id="intro" class="content-section">
                     <h2>Pourquoi « en Y » ?</h2>
-                    <p>Imaginez la lettre <strong>Y</strong>. Deux branches partent du haut et convergent vers un pied commun en bas :</p>
-                    <div class="schema-y-visual">
-                        <div class="sy-branch sy-branch--left">
-                            <div class="sy-branch-label">🔀 Branche gauche</div>
-                            <div class="sy-flow"><strong>Le circuit de la facture</strong><br>Le document circule de l'émetteur au récepteur, en passant par les Plateformes Agréées.</div>
-                        </div>
-                        <div class="sy-branch sy-branch--right">
-                            <div class="sy-branch-label">📊 Branche droite</div>
-                            <div class="sy-flow"><strong>Le circuit des données fiscales</strong><br>Les données réglementaires, statuts et e-reporting remontent vers l'État.</div>
-                        </div>
-                        <div class="sy-stem">
-                            <div class="sy-branch-label">🏛️ Le pied du Y — PPF</div>
-                            <div class="sy-flow">Concentre toutes les données fiscales → DGFiP</div>
-                        </div>
-                    </div>
+                    <p>La réforme sépare <strong>deux circuits distincts</strong> : la facture (branche commerciale) et les données fiscales (branche réglementaire). Ces deux chemins convergent vers le PPF, qui concentre tout pour la DGFiP.</p>
+
                     <div class="callout callout--info">
                         <div class="callout-icon">🔑</div>
-                        <div class="callout-content"><strong>Le point clé :</strong> le PPF ne voit jamais vos factures. Il ne reçoit que les données réglementaires extraites (Flux 1) et les statuts de traitement (Flux 6). La facture circule exclusivement entre Plateformes Agréées.</div>
+                        <div class="callout-content"><strong>Le point clé :</strong> le PPF ne voit <em>jamais</em> vos factures. Il ne reçoit que les données réglementaires extraites (F1) et les statuts (F6). La facture circule exclusivement entre Plateformes Agréées (F2).</div>
                     </div>
                 </section>
 
+                <!-- DIAGRAMME INTERACTIF -->
+                <section id="schema" class="content-section">
+                    <h2>🔀 Le schéma en Y — Diagramme interactif</h2>
+                    <p>Survolez chaque élément pour comprendre son rôle. Cliquez sur un flux pour le figer.</p>
+
+                    <div class="sy-interactive">
+                        <div class="sy-svg-wrap" id="sy-diagram-wrap">
+                            <!-- FULLSCREEN -->
+                            <button class="flux-expand-btn" id="sy-expand" title="Plein écran">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+                            </button>
+
+                            <svg viewBox="0 0 1100 700" xmlns="http://www.w3.org/2000/svg" class="sy-svg" id="sy-svg">
+                                <defs>
+                                    <marker id="sy-arr-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#00a7e1"/></marker>
+                                    <marker id="sy-arr-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#f97316"/></marker>
+                                    <marker id="sy-arr-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#8b5cf6"/></marker>
+                                    <marker id="sy-arr-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#ef4444"/></marker>
+                                    <marker id="sy-arr-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#10b981"/></marker>
+                                    <marker id="sy-arr-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#f59e0b"/></marker>
+                                    <marker id="sy-arr-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#64748b"/></marker>
+
+                                    <linearGradient id="sy-ppf-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#1a2f52"/><stop offset="100%" stop-color="#0f1a30"/>
+                                    </linearGradient>
+
+                                    <filter id="sy-glow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                                </defs>
+
+                                <!-- ═══ ZONE LABELS ═══ -->
+                                <text x="300" y="42" text-anchor="middle" fill="#00a7e1" font-size="12" font-weight="800" font-family="Inter, sans-serif" opacity="0.4" letter-spacing="2">BRANCHE COMMERCIALE</text>
+                                <text x="800" y="42" text-anchor="middle" fill="#f97316" font-size="12" font-weight="800" font-family="Inter, sans-serif" opacity="0.4" letter-spacing="2">BRANCHE FISCALE</text>
+                                <text x="550" y="680" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700" font-family="Inter, sans-serif" opacity="0.4">── PIED DU Y : Concentration fiscale ──</text>
+
+                                <!-- Y SHAPE BACKGROUND (subtle) -->
+                                <path d="M300,120 L300,320 Q300,400 550,450 Q800,400 800,320 L800,120" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="80" stroke-linecap="round"/>
+                                <path d="M550,450 L550,590" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="80" stroke-linecap="round"/>
+
+                                <!-- ═══ ACTORS ═══ -->
+                                <!-- Fournisseur -->
+                                <g class="sy-actor" data-actor="fournisseur">
+                                    <rect x="30" y="215" width="150" height="70" rx="14" fill="#1e2d4d" stroke="#2a3f6e" stroke-width="2"/>
+                                    <text x="105" y="248" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="Inter, sans-serif">Fournisseur</text>
+                                    <text x="105" y="268" text-anchor="middle" fill="#6b82a6" font-size="10" font-family="Inter, sans-serif">(Émetteur)</text>
+                                </g>
+
+                                <!-- PA-E -->
+                                <g class="sy-actor" data-actor="pa-e">
+                                    <rect x="240" y="200" width="150" height="100" rx="14" fill="#1e2d4d" stroke="#00a7e1" stroke-width="2"/>
+                                    <text x="315" y="233" text-anchor="middle" fill="#00a7e1" font-size="11" font-weight="800" font-family="Inter, sans-serif" letter-spacing="1">PA</text>
+                                    <text x="315" y="253" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="Inter, sans-serif">d'Émission</text>
+                                    <text x="315" y="273" text-anchor="middle" fill="#6b82a6" font-size="10" font-family="Inter, sans-serif">Contrôles + Extraction</text>
+                                    <text x="315" y="289" text-anchor="middle" fill="#6b82a6" font-size="9" font-family="Inter, sans-serif">F1 ↗ · F2 → · F6 ↔</text>
+                                </g>
+
+                                <!-- PA-R -->
+                                <g class="sy-actor" data-actor="pa-r">
+                                    <rect x="640" y="200" width="150" height="100" rx="14" fill="#1e2d4d" stroke="#00a7e1" stroke-width="2"/>
+                                    <text x="715" y="233" text-anchor="middle" fill="#00a7e1" font-size="11" font-weight="800" font-family="Inter, sans-serif" letter-spacing="1">PA</text>
+                                    <text x="715" y="253" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="Inter, sans-serif">de Réception</text>
+                                    <text x="715" y="273" text-anchor="middle" fill="#6b82a6" font-size="10" font-family="Inter, sans-serif">Conversion + Diffusion</text>
+                                    <text x="715" y="289" text-anchor="middle" fill="#6b82a6" font-size="9" font-family="Inter, sans-serif">← F2 · F6 ↔ · F3 ←</text>
+                                </g>
+
+                                <!-- Acheteur -->
+                                <g class="sy-actor" data-actor="acheteur">
+                                    <rect x="850" y="215" width="150" height="70" rx="14" fill="#1e2d4d" stroke="#2a3f6e" stroke-width="2"/>
+                                    <text x="925" y="248" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="Inter, sans-serif">Acheteur</text>
+                                    <text x="925" y="268" text-anchor="middle" fill="#6b82a6" font-size="10" font-family="Inter, sans-serif">(Destinataire)</text>
+                                </g>
+
+                                <!-- PPF -->
+                                <g class="sy-actor" data-actor="ppf">
+                                    <rect x="460" y="420" width="190" height="110" rx="16" fill="url(#sy-ppf-grad)" stroke="#00a7e1" stroke-width="2.5"/>
+                                    <text x="555" y="452" text-anchor="middle" fill="#00a7e1" font-size="10" font-weight="800" font-family="Inter, sans-serif" letter-spacing="2">PORTAIL PUBLIC</text>
+                                    <text x="555" y="478" text-anchor="middle" fill="white" font-size="18" font-weight="900" font-family="Inter, sans-serif">PPF</text>
+                                    <text x="555" y="498" text-anchor="middle" fill="#6b82a6" font-size="10" font-family="Inter, sans-serif">Concentrateur + Annuaire</text>
+                                    <text x="555" y="516" text-anchor="middle" fill="#6b82a6" font-size="9" font-family="Inter, sans-serif">← F1 · F6 ↔ · F10 ← · F12 →</text>
+                                </g>
+
+                                <!-- DGFIP -->
+                                <g class="sy-actor" data-actor="dgfip">
+                                    <rect x="475" y="610" width="160" height="66" rx="14" fill="#2d1a1a" stroke="#ef4444" stroke-width="2"/>
+                                    <text x="555" y="640" text-anchor="middle" fill="#ef4444" font-size="12" font-weight="800" font-family="Inter, sans-serif" letter-spacing="2">DGFiP</text>
+                                    <text x="555" y="658" text-anchor="middle" fill="#a68080" font-size="10" font-family="Inter, sans-serif">Pré-remplissage CA3</text>
+                                </g>
+
+                                <!-- ═══ FLOWS ═══ -->
+
+                                <!-- Entrée : Fournisseur → PA-E -->
+                                <g class="sy-flow-group" data-flow="entry">
+                                    <path d="M180,250 L235,250" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#sy-arr-gray)" class="sy-flow-path"/>
+                                    <text x="207" y="240" text-anchor="middle" fill="#64748b" font-size="9" font-family="Inter, sans-serif">ERP</text>
+                                </g>
+
+                                <!-- F2 : PA-E → PA-R (BRANCHE COMMERCIALE — arc supérieur) -->
+                                <g class="sy-flow-group" data-flow="f2">
+                                    <path d="M390,220 Q550,80 640,220" fill="none" stroke="#00a7e1" stroke-width="3.5" marker-end="url(#sy-arr-blue)" class="sy-flow-path sy-animated"/>
+                                    <rect x="491" y="108" width="48" height="26" rx="13" fill="#00a7e1"/>
+                                    <text x="515" y="126" text-anchor="middle" fill="white" font-size="13" font-weight="800" font-family="Inter, sans-serif">F2</text>
+                                    <text x="515" y="95" text-anchor="middle" fill="#00a7e1" font-size="10" font-weight="600" font-family="Inter, sans-serif" opacity="0.7">Facture complète</text>
+                                </g>
+
+                                <!-- F1 : PA-E → PPF (BRANCHE FISCALE — diagonale) -->
+                                <g class="sy-flow-group" data-flow="f1">
+                                    <path d="M340,300 Q380,380 460,440" fill="none" stroke="#f97316" stroke-width="3" stroke-dasharray="8 4" marker-end="url(#sy-arr-orange)" class="sy-flow-path sy-animated"/>
+                                    <rect x="355" y="365" width="36" height="22" rx="11" fill="#f97316"/>
+                                    <text x="373" y="381" text-anchor="middle" fill="white" font-size="11" font-weight="800" font-family="Inter, sans-serif">F1</text>
+                                    <text x="340" y="400" text-anchor="end" fill="#f97316" font-size="9" font-weight="600" font-family="Inter, sans-serif" opacity="0.7">Données réglementaires</text>
+                                </g>
+
+                                <!-- F3 : PPF → PA-R -->
+                                <g class="sy-flow-group" data-flow="f3">
+                                    <path d="M650,440 Q710,380 730,300" fill="none" stroke="#f97316" stroke-width="2.5" stroke-dasharray="8 4" marker-end="url(#sy-arr-orange)" class="sy-flow-path sy-animated"/>
+                                    <rect x="690" y="365" width="36" height="22" rx="11" fill="#f97316"/>
+                                    <text x="708" y="381" text-anchor="middle" fill="white" font-size="11" font-weight="800" font-family="Inter, sans-serif">F3</text>
+                                    <text x="745" y="400" text-anchor="start" fill="#f97316" font-size="9" font-weight="600" font-family="Inter, sans-serif" opacity="0.7">Données complémentaires</text>
+                                </g>
+
+                                <!-- F6 : PA-E ↔ PPF (bidirectionnel) -->
+                                <g class="sy-flow-group" data-flow="f6">
+                                    <path d="M295,300 Q295,420 460,460" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#sy-arr-purple)" class="sy-flow-path sy-animated"/>
+                                    <path d="M460,475 Q295,435 295,315" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#sy-arr-purple)" class="sy-flow-path sy-animated-reverse"/>
+                                    <path d="M650,460 Q735,420 735,300" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#sy-arr-purple)" class="sy-flow-path sy-animated"/>
+                                    <path d="M735,315 Q735,435 650,475" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#sy-arr-purple)" class="sy-flow-path sy-animated-reverse"/>
+                                    <rect x="240" y="380" width="36" height="22" rx="11" fill="#8b5cf6"/>
+                                    <text x="258" y="396" text-anchor="middle" fill="white" font-size="11" font-weight="800" font-family="Inter, sans-serif">F6</text>
+                                    <rect x="755" y="380" width="36" height="22" rx="11" fill="#8b5cf6"/>
+                                    <text x="773" y="396" text-anchor="middle" fill="white" font-size="11" font-weight="800" font-family="Inter, sans-serif">F6</text>
+                                </g>
+
+                                <!-- F10 : E-reporting PA-E → PPF -->
+                                <g class="sy-flow-group" data-flow="f10">
+                                    <path d="M270,300 Q230,470 460,485" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="7 4" marker-end="url(#sy-arr-amber)" class="sy-flow-path sy-animated"/>
+                                    <rect x="200" y="440" width="42" height="22" rx="11" fill="#f59e0b"/>
+                                    <text x="221" y="456" text-anchor="middle" fill="white" font-size="10" font-weight="800" font-family="Inter, sans-serif">F10</text>
+                                    <text x="195" y="475" text-anchor="end" fill="#f59e0b" font-size="9" font-weight="600" font-family="Inter, sans-serif" opacity="0.7">E-reporting</text>
+                                </g>
+
+                                <!-- F12 : PPF → DGFIP (PIED DU Y) -->
+                                <g class="sy-flow-group" data-flow="f12">
+                                    <path d="M555,530 L555,605" fill="none" stroke="#ef4444" stroke-width="3.5" stroke-dasharray="10 5" marker-end="url(#sy-arr-red)" class="sy-flow-path sy-animated"/>
+                                    <rect x="530" y="558" width="50" height="24" rx="12" fill="#ef4444"/>
+                                    <text x="555" y="575" text-anchor="middle" fill="white" font-size="12" font-weight="800" font-family="Inter, sans-serif">F12</text>
+                                </g>
+
+                                <!-- Sortie : PA-R → Acheteur -->
+                                <g class="sy-flow-group" data-flow="exit">
+                                    <path d="M790,250 L845,250" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#sy-arr-gray)" class="sy-flow-path"/>
+                                    <text x="817" y="240" text-anchor="middle" fill="#64748b" font-size="9" font-family="Inter, sans-serif">SI</text>
+                                </g>
+
+                                <!-- ═══ Y SHAPE HIGHLIGHT ═══ -->
+                                <!-- Left branch label -->
+                                <g class="sy-branch-label-group" data-branch="commercial">
+                                    <rect x="150" y="130" width="180" height="36" rx="18" fill="rgba(0,167,225,0.1)" stroke="rgba(0,167,225,0.3)" stroke-width="1"/>
+                                    <text x="240" y="153" text-anchor="middle" fill="#00a7e1" font-size="11" font-weight="700" font-family="Inter, sans-serif">📄 Circuit de la facture</text>
+                                </g>
+
+                                <!-- Right branch label -->
+                                <g class="sy-branch-label-group" data-branch="fiscal">
+                                    <rect x="140" y="340" width="190" height="36" rx="18" fill="rgba(249,115,22,0.1)" stroke="rgba(249,115,22,0.3)" stroke-width="1"/>
+                                    <text x="235" y="363" text-anchor="middle" fill="#f97316" font-size="11" font-weight="700" font-family="Inter, sans-serif">📊 Circuit des données</text>
+                                </g>
+
+                                <!-- Stem label -->
+                                <g class="sy-branch-label-group" data-branch="stem">
+                                    <rect x="620" y="558" width="170" height="36" rx="18" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
+                                    <text x="705" y="581" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700" font-family="Inter, sans-serif">🏛️ Pied du Y → DGFiP</text>
+                                </g>
+
+                                <!-- TOOLTIP -->
+                                <g id="sy-tooltip" class="flux-tooltip" opacity="0" pointer-events="none">
+                                    <rect class="tooltip-bg" x="0" y="0" width="280" height="72" rx="12" fill="rgba(11,32,70,0.95)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                                    <text id="sy-tooltip-num" x="16" y="28" font-size="13" font-weight="900" font-family="Inter, sans-serif" fill="#00a7e1"></text>
+                                    <text id="sy-tooltip-name" x="60" y="28" font-size="13" font-weight="700" font-family="Inter, sans-serif" fill="white"></text>
+                                    <text id="sy-tooltip-dir" x="16" y="50" font-size="11" font-weight="500" font-family="Inter, sans-serif" fill="rgba(255,255,255,0.5)"></text>
+                                    <text id="sy-tooltip-desc" x="16" y="66" font-size="10" font-weight="400" font-family="Inter, sans-serif" fill="rgba(255,255,255,0.35)"></text>
+                                </g>
+
+                            </svg>
+                        </div>
+
+                        <!-- LÉGENDE -->
+                        <div class="sy-legend" id="sy-legend">
+                            <h3>Les deux branches</h3>
+
+                            <div class="flux-legend-cat">📄 Branche commerciale</div>
+                            <div class="flux-legend-item" data-flow="f2">
+                                <span class="flux-pill" style="background:#00a7e1;">F2</span>
+                                <div><strong>Facture complète</strong><br><span>PA-E → PA-R (document natif)</span></div>
+                            </div>
+
+                            <div class="flux-legend-cat">📊 Branche fiscale</div>
+                            <div class="flux-legend-item" data-flow="f1">
+                                <span class="flux-pill" style="background:#f97316;">F1</span>
+                                <div><strong>Données réglementaires</strong><br><span>PA-E → PPF</span></div>
+                            </div>
+                            <div class="flux-legend-item" data-flow="f3">
+                                <span class="flux-pill" style="background:#f97316;">F3</span>
+                                <div><strong>Données complémentaires</strong><br><span>PPF → PA-R</span></div>
+                            </div>
+                            <div class="flux-legend-item" data-flow="f6">
+                                <span class="flux-pill" style="background:#8b5cf6;">F6</span>
+                                <div><strong>Statuts (CDAR)</strong><br><span>PA ↔ PPF ↔ PA (bidirectionnel)</span></div>
+                            </div>
+                            <div class="flux-legend-item" data-flow="f10">
+                                <span class="flux-pill" style="background:#f59e0b;">F10</span>
+                                <div><strong>E-reporting</strong><br><span>PA → PPF (B2Bi, B2C, paiements)</span></div>
+                            </div>
+
+                            <div class="flux-legend-cat">🏛️ Pied du Y</div>
+                            <div class="flux-legend-item" data-flow="f12">
+                                <span class="flux-pill" style="background:#ef4444;">F12</span>
+                                <div><strong>Données fiscales</strong><br><span>PPF → DGFiP (CA3)</span></div>
+                            </div>
+
+                            <div class="flux-legend-note">
+                                <em>Le PPF ne voit jamais la facture.<br>Seules les données transitent.</em>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- BRANCHE GAUCHE -->
                 <section id="branche-gauche" class="content-section">
-                    <h2>Branche gauche : le circuit de la facture</h2>
-                    <p>Le parcours complet d'une facture électronique :</p>
-                    <div class="code-block">Émetteur → [SC émettrice] → PA émettrice → PA réceptrice → [SC réceptrice] → Récepteur</div>
-                    <p>Les crochets <code>[ ]</code> indiquent des intermédiaires optionnels : les <strong>Solutions Compatibles (SC)</strong>.</p>
+                    <h2>📄 Branche gauche : le circuit de la facture</h2>
+                    <p>Le parcours complet d'une facture électronique en <strong>5 étapes</strong> :</p>
 
-                    <h3>Étape 1 — L'émetteur crée la facture</h3>
-                    <div class="nb-item" style="border-bottom:none;"><span class="nb-num">1</span><div>Le fournisseur crée la facture dans son SI (ERP, logiciel de facturation). Elle contient toutes les <strong>mentions légales obligatoires</strong> (art. 242 nonies A du CGI) et les données nécessaires au Flux 1.</div></div>
-
-                    <h3>Étape 2 — La SC de l'émetteur (optionnel)</h3>
-                    <div class="nb-item" style="border-bottom:none;"><span class="nb-num">2</span><div>La SC convertit la facture vers l'un des <strong>3 formats du socle</strong> (UBL, CII, Factur-X), enrichit si besoin, effectue des pré-contrôles, et transmet à la PA émettrice.</div></div>
-
-                    <h3>Étape 3 — La PA émettrice : le nœud critique</h3>
-                    <div class="nb-item" style="border-bottom:none;"><span class="nb-num">3</span><div>La PA-E effectue <strong>6 niveaux de contrôles</strong>, extrait les données → PPF (Flux 1), consulte l'annuaire, et transmet à la PA réceptrice (Flux 2).</div></div>
-
-                    <p><strong>Les 6 contrôles de la PA émettrice :</strong></p>
-                    <div class="numbered-blocks">
-                        <div class="nb-item"><span class="nb-num">①</span><div><strong>Syntaxiques</strong> — fichier XML bien formé, conforme au schéma XSD</div></div>
-                        <div class="nb-item"><span class="nb-num">②</span><div><strong>Sémantiques</strong> — Business Terms obligatoires présents et valides</div></div>
-                        <div class="nb-item"><span class="nb-num">③</span><div><strong>Règles EN 16931</strong> — calculs européens (BR-CO-10 à BR-CO-26…)</div></div>
-                        <div class="nb-item"><span class="nb-num">④</span><div><strong>Règles BR-France</strong> — SIREN actif (BR-FR-10), cohérence SIRET/SIREN (BR-FR-07), pas d'antidatage (BR-FR-CO-01)…</div></div>
-                        <div class="nb-item"><span class="nb-num">⑤</span><div><strong>Doublons</strong> — unicité du numéro de facture</div></div>
-                        <div class="nb-item"><span class="nb-num">⑥</span><div><strong>Annuaire</strong> — le destinataire existe-t-il ? A-t-il une PA de réception active ?</div></div>
+                    <div class="sy-steps">
+                        <div class="sy-step">
+                            <div class="sy-step-num">1</div>
+                            <div class="sy-step-content">
+                                <h4>L'émetteur crée la facture</h4>
+                                <p>Le fournisseur crée la facture dans son SI (ERP). Elle contient les mentions légales obligatoires (art. 242 nonies A du CGI) et les données nécessaires au Flux 1.</p>
+                            </div>
+                        </div>
+                        <div class="sy-step">
+                            <div class="sy-step-num">2</div>
+                            <div class="sy-step-content">
+                                <h4>La SC de l'émetteur <span class="sy-step-tag">optionnel</span></h4>
+                                <p>La Solution Compatible convertit vers UBL/CII/Factur-X, enrichit si besoin, effectue des pré-contrôles, et transmet à la PA émettrice.</p>
+                            </div>
+                        </div>
+                        <div class="sy-step sy-step--critical">
+                            <div class="sy-step-num">3</div>
+                            <div class="sy-step-content">
+                                <h4>La PA émettrice <span class="sy-step-tag sy-step-tag--red">nœud critique</span></h4>
+                                <p>La PA-E effectue <strong>6 niveaux de contrôles</strong>, extrait les données → PPF (F1), consulte l'annuaire (F8), et transmet la facture à la PA-R (F2).</p>
+                                <div class="sy-controls-grid">
+                                    <div class="sy-control"><span>①</span> Syntaxiques — XML bien formé, XSD</div>
+                                    <div class="sy-control"><span>②</span> Sémantiques — BT obligatoires</div>
+                                    <div class="sy-control"><span>③</span> Règles EN 16931 — calculs EU</div>
+                                    <div class="sy-control"><span>④</span> Règles BR-FR — SIREN, cohérence</div>
+                                    <div class="sy-control"><span>⑤</span> Doublons — unicité numéro</div>
+                                    <div class="sy-control"><span>⑥</span> Annuaire — destinataire existe ?</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sy-step">
+                            <div class="sy-step-num">4</div>
+                            <div class="sy-step-content">
+                                <h4>La PA réceptrice</h4>
+                                <p>Reçoit la facture (F2), peut convertir le format (CII → UBL…), et met à disposition du destinataire.</p>
+                            </div>
+                        </div>
+                        <div class="sy-step">
+                            <div class="sy-step-num">5</div>
+                            <div class="sy-step-content">
+                                <h4>Le récepteur traite la facture</h4>
+                                <p>Vérifie, rapproche avec les bons de commande, et pose des statuts : Approuvée, Refusée, Encaissée… (F6).</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="callout callout--warning">
                         <div class="callout-icon">⚠️</div>
-                        <div class="callout-content"><strong>Si un contrôle échoue :</strong> la PA-E crée un statut <strong>« Rejetée » (213)</strong> avec un motif de rejet. Ce statut est transmis au PPF. La facture n'entre PAS dans le circuit. Le vendeur doit corriger et réémettre.</div>
+                        <div class="callout-content"><strong>Si un contrôle échoue :</strong> la PA-E crée un statut « Rejetée » (213) avec un motif. La facture n'entre PAS dans le circuit. Le vendeur doit corriger et réémettre.</div>
                     </div>
-
-                    <h3>Étape 4 — La PA réceptrice</h3>
-                    <div class="nb-item" style="border-bottom:none;"><span class="nb-num">4</span><div>La PA-R reçoit la facture, effectue ses propres contrôles, peut <strong>convertir le format</strong> (CII → UBL, etc.) et met la facture à disposition du destinataire.</div></div>
-
-                    <h3>Étape 5 — Le récepteur traite la facture</h3>
-                    <div class="nb-item" style="border-bottom:none;"><span class="nb-num">5</span><div>Le destinataire vérifie, rapproche avec les bons de commande, et pose des <strong>statuts de cycle de vie</strong> : Approuvée, Refusée, En litige, Encaissée…</div></div>
                 </section>
 
+                <!-- BRANCHE DROITE -->
                 <section id="branche-droite" class="content-section">
-                    <h2>Branche droite : le circuit des données fiscales</h2>
-                    <p>Pendant que la facture voyage entre les PA, des <strong>données fiscales remontent en parallèle vers le PPF</strong>.</p>
+                    <h2>📊 Branche droite : le circuit des données fiscales</h2>
+                    <p>Pendant que la facture voyage entre les PA, des données fiscales remontent <strong>en parallèle</strong> vers le PPF.</p>
 
                     <div class="triple-grid">
-                        <div class="objective-card">
-                            <div class="objective-icon">📄</div>
-                            <h3>Flux 1</h3>
-                            <p><strong>PA-E → PPF</strong><br>Données réglementaires extraites de la facture (SIREN, montants, TVA, type…)</p>
-                        </div>
-                        <div class="objective-card">
-                            <div class="objective-icon">🔄</div>
-                            <h3>Flux 6</h3>
-                            <p><strong>PA → PPF</strong><br>Statuts obligatoires : Déposée (200), Refusée (210), Encaissée (212), Rejetée (213)</p>
-                        </div>
-                        <div class="objective-card">
-                            <div class="objective-icon">📊</div>
-                            <h3>Flux 10</h3>
-                            <p><strong>PA → PPF</strong><br>E-reporting : B2B international, B2C, paiements</p>
-                        </div>
+                        <div class="objective-card"><div class="objective-icon">📄</div><h3>Flux 1</h3><p><strong>PA-E → PPF</strong><br>Données réglementaires extraites (SIREN, montants, TVA, type…)</p></div>
+                        <div class="objective-card"><div class="objective-icon">🔄</div><h3>Flux 6</h3><p><strong>PA ↔ PPF</strong><br>Statuts obligatoires : Déposée (200), Refusée (210), Encaissée (212), Rejetée (213)</p></div>
+                        <div class="objective-card"><div class="objective-icon">📊</div><h3>Flux 10</h3><p><strong>PA → PPF</strong><br>E-reporting : B2Bi, B2C, paiements</p></div>
                     </div>
 
                     <div class="callout callout--info">
                         <div class="callout-icon">📌</div>
-                        <div class="callout-content">La PA-E ne transmet <strong>PAS</strong> la facture elle-même au PPF. Seulement les données réglementaires. L'administration ne voit jamais la facture complète.</div>
+                        <div class="callout-content">La PA-E ne transmet <strong>PAS</strong> la facture au PPF. Seulement les données réglementaires. L'administration ne voit jamais la facture complète.</div>
                     </div>
                 </section>
 
+                <!-- PIED DU Y -->
                 <section id="pied" class="content-section">
-                    <h2>Le pied du Y : le PPF comme concentrateur</h2>
-                    <div class="comparison-table">
-                        <table>
-                            <thead><tr><th>Flux reçu</th><th>Source</th><th>Contenu</th></tr></thead>
-                            <tbody>
-                                <tr><td><strong>Flux 1</strong></td><td>PA-E → PPF</td><td>Données réglementaires de la facture</td></tr>
-                                <tr><td><strong>Flux 6</strong></td><td>PA → PPF</td><td>Statuts obligatoires (200, 210, 212, 213)</td></tr>
-                                <tr><td><strong>Flux 10</strong></td><td>PA → PPF</td><td>Données e-reporting (B2Bi, B2C, paiements)</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p><strong>Ce que le PPF en fait :</strong></p>
-                    <div class="numbered-blocks">
-                        <div class="nb-item"><span class="nb-num">1</span><div><strong>Contrôle</strong> la cohérence des données reçues</div></div>
-                        <div class="nb-item"><span class="nb-num">2</span><div><strong>Concentre</strong> toutes les données fiscales de toutes les PA</div></div>
-                        <div class="nb-item"><span class="nb-num">3</span><div><strong>Transmet à la DGFiP</strong> (Flux 12) pour le pré-remplissage TVA</div></div>
-                        <div class="nb-item"><span class="nb-num">4</span><div><strong>Gère l'annuaire central</strong> des entreprises assujetties</div></div>
+                    <h2>🏛️ Le pied du Y : le PPF concentrateur</h2>
+
+                    <div class="comparison-table"><table>
+                        <thead><tr><th>Flux reçu</th><th>Source</th><th>Contenu</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>F1</strong></td><td>PA-E → PPF</td><td>Données réglementaires de la facture</td></tr>
+                            <tr><td><strong>F6</strong></td><td>PA → PPF</td><td>Statuts obligatoires (200, 210, 212, 213)</td></tr>
+                            <tr><td><strong>F10</strong></td><td>PA → PPF</td><td>E-reporting (B2Bi, B2C, paiements)</td></tr>
+                        </tbody>
+                    </table></div>
+
+                    <div class="sy-steps" style="margin-top:1.5rem;">
+                        <div class="sy-step"><div class="sy-step-num">1</div><div class="sy-step-content"><h4>Contrôle</h4><p>Cohérence des données reçues de toutes les PA</p></div></div>
+                        <div class="sy-step"><div class="sy-step-num">2</div><div class="sy-step-content"><h4>Concentre</h4><p>Agrège toutes les données fiscales de toutes les PA</p></div></div>
+                        <div class="sy-step"><div class="sy-step-num">3</div><div class="sy-step-content"><h4>Transmet (F12)</h4><p>Envoie à la DGFiP pour le pré-remplissage TVA (CA3)</p></div></div>
+                        <div class="sy-step"><div class="sy-step-num">4</div><div class="sy-step-content"><h4>Gère l'annuaire</h4><p>Annuaire central des entreprises assujetties (F7/F8/F9)</p></div></div>
                     </div>
                 </section>
 
+                <!-- CAS PARTICULIERS -->
                 <section id="cas-particuliers" class="content-section">
-                    <h2>Cas particuliers dans le schéma en Y</h2>
-
-                    <h3>🏛️ B2G : quand Chorus Pro entre en jeu</h3>
-                    <p>Pour les factures B2G, <strong>Chorus Pro joue le rôle de PA réceptrice</strong>. La PA-E du fournisseur transmet la facture à Chorus Pro comme elle le ferait vers n'importe quelle PA-R.</p>
-
-                    <h3>🔄 Auto-facturation</h3>
-                    <p>L'<strong>acheteur</strong> émet la facture pour le compte du vendeur. Sa PA agit comme PA-E, le vendeur reçoit via sa PA-R. Le cadre de facturation (BT-23) identifie l'auto-facturation.</p>
-
-                    <h3>👥 Multi-destinataires et tiers</h3>
-                    <ul class="styled-list">
-                        <li><strong>Tiers payeur</strong> — le paiement vient d'un tiers, circuit normal</li>
-                        <li><strong>Affacturage</strong> — le factor intervient comme bénéficiaire</li>
-                        <li><strong>Sous-traitance paiement direct</strong> — le maître d'ouvrage paie le sous-traitant</li>
-                    </ul>
+                    <h2>🔀 Cas particuliers</h2>
+                    <div class="triple-grid">
+                        <div class="objective-card"><div class="objective-icon">🏛️</div><h3>B2G</h3><p>Chorus Pro joue le rôle de <strong>PA réceptrice</strong>. La PA-E transmet normalement.</p></div>
+                        <div class="objective-card"><div class="objective-icon">🔄</div><h3>Auto-facturation</h3><p>L'acheteur émet pour le compte du vendeur. Sa PA agit comme PA-E.</p></div>
+                        <div class="objective-card"><div class="objective-icon">👥</div><h3>Affacturage</h3><p>Le factor intervient comme bénéficiaire. Circuit normal, cadre spécifique.</p></div>
+                    </div>
                 </section>
 
+                <!-- AVANT / APRÈS -->
                 <section id="avant-apres" class="content-section">
-                    <h2>Avant / Après octobre 2024</h2>
+                    <h2>📅 Avant / Après octobre 2024</h2>
                     <div class="role-dual">
                         <div class="role-card" style="border-top-color: var(--danger);">
                             <h4>❌ Modèle initial (abandonné)</h4>
                             <ul>
                                 <li>Le PPF était un <strong>routeur central</strong></li>
                                 <li>Toutes les factures transitaient par le PPF</li>
-                                <li>Architecture en étoile</li>
-                                <li>Problèmes : goulet d'étranglement, point unique de défaillance</li>
+                                <li>Architecture en étoile → goulet d'étranglement</li>
                             </ul>
                         </div>
                         <div class="role-card" style="border-top-color: var(--success);">
-                            <h4>✅ Modèle actuel (depuis oct. 2024)</h4>
+                            <h4>✅ Modèle actuel (oct. 2024)</h4>
                             <ul>
-                                <li>Les factures circulent <strong>PA à PA</strong></li>
+                                <li>Les factures circulent <strong>PA à PA</strong> (F2)</li>
                                 <li>Le PPF est un <strong>concentrateur de données</strong></li>
-                                <li>Architecture décentralisée</li>
-                                <li>Meilleure résilience, performance, scalabilité</li>
+                                <li>Architecture décentralisée → résiliente</li>
                             </ul>
                         </div>
                     </div>
                 </section>
 
                 <nav class="page-nav-bottom">
-                    <a href="./sanctions.html" class="nav-prev">
-                        <span class="nav-label">Niveau 2</span>
-                        <span class="nav-title">← ⚖️ Sanctions</span>
-                    </a>
-                    <a href="./flux.html" class="nav-next">
-                        <span class="nav-label">Page suivante</span>
-                        <span class="nav-title">📡 Les 14 flux →</span>
-                    </a>
+                    <a href="./sanctions.html" class="nav-prev"><span class="nav-label">Niveau 2</span><span class="nav-title">← ⚖️ Sanctions</span></a>
+                    <a href="./flux.html" class="nav-next"><span class="nav-label">Page suivante</span><span class="nav-title">📡 Les 14 flux →</span></a>
                 </nav>
             </article>
         </div>
@@ -218,5 +425,210 @@
     <footer id="main-footer"></footer>
     <script src="./js/nav.js"></script>
     <script src="./js/animations.js"></script>
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var svg = document.getElementById('sy-svg');
+        var legend = document.getElementById('sy-legend');
+        var wrap = document.getElementById('sy-diagram-wrap');
+        var expandBtn = document.getElementById('sy-expand');
+        if (!svg || !legend) return;
+
+        // ═══ DATA ═══
+        var flowData = {
+            entry: { num: '→',   name: 'Émission',                 dir: 'Fournisseur → PA-E',  desc: 'Le SI de l\'émetteur transmet la facture à sa PA' },
+            f1:    { num: 'F1',  name: 'Données réglementaires',   dir: 'PA-E → PPF',          desc: 'Extraction des données fiscales (SIREN, TVA, montants…)' },
+            f2:    { num: 'F2',  name: 'Facture complète',          dir: 'PA-E → PA-R',         desc: 'Document natif (UBL/CII/Factur-X) — branche commerciale' },
+            f3:    { num: 'F3',  name: 'Données complémentaires',   dir: 'PPF → PA-R',          desc: 'Informations supplémentaires pour le destinataire' },
+            f6:    { num: 'F6',  name: 'Statuts (CDAR)',            dir: 'PA ↔ PPF ↔ PA',       desc: 'Cycle de vie bidirectionnel (200, 210, 212, 213…)' },
+            f10:   { num: 'F10', name: 'E-reporting',               dir: 'PA → PPF',            desc: 'B2Bi (10.1/10.2), B2C (10.3), paiements (10.4)' },
+            f12:   { num: 'F12', name: 'Données fiscales',          dir: 'PPF → DGFiP',         desc: 'Pied du Y — agrégation pour pré-remplissage CA3' },
+            exit:  { num: '→',   name: 'Réception',                 dir: 'PA-R → Acheteur',     desc: 'Mise à disposition dans le SI du destinataire' }
+        };
+
+        var actorData = {
+            fournisseur: { num: '👤',  name: 'Fournisseur (Émetteur)',     dir: 'Crée la facture dans son SI',         desc: 'ERP / logiciel de facturation → transmet à sa PA-E' },
+            'pa-e':      { num: '🔷',  name: 'PA d\'Émission (PA-E)',      dir: '6 contrôles + extraction F1 + envoi F2', desc: 'Nœud critique : valide, extrait, route la facture' },
+            ppf:         { num: '🏛️', name: 'PPF — Portail Public',       dir: 'Concentrateur fiscal + Annuaire',     desc: 'Ne voit JAMAIS la facture. Reçoit F1, F6, F10 → F12 DGFiP' },
+            'pa-r':      { num: '🔷',  name: 'PA de Réception (PA-R)',     dir: 'Reçoit F2 + convertit si besoin',     desc: 'Met la facture à disposition du destinataire' },
+            acheteur:    { num: '👤',  name: 'Acheteur (Destinataire)',     dir: 'Vérifie + rapproche + statuts',       desc: 'Approuve, refuse ou met en litige via F6' },
+            dgfip:       { num: '🏛️', name: 'DGFiP',                      dir: 'Reçoit F12 du PPF',                   desc: 'Pré-remplissage déclaration TVA (CA3)' }
+        };
+
+        // ═══ TOOLTIP ═══
+        var tooltip = document.getElementById('sy-tooltip');
+        var tNum = document.getElementById('sy-tooltip-num');
+        var tName = document.getElementById('sy-tooltip-name');
+        var tDir = document.getElementById('sy-tooltip-dir');
+        var tDesc = document.getElementById('sy-tooltip-desc');
+
+        function showTip(data, e) {
+            if (!data) return;
+            tNum.textContent = data.num;
+            tName.textContent = data.name;
+            tDir.textContent = data.dir;
+            tDesc.textContent = data.desc;
+
+            var pt = svg.createSVGPoint();
+            pt.x = e.clientX; pt.y = e.clientY;
+            var sp = pt.matrixTransform(svg.getScreenCTM().inverse());
+            var tx = Math.min(sp.x + 15, 800);
+            var ty = Math.max(sp.y - 80, 10);
+            tooltip.setAttribute('transform', 'translate(' + tx + ',' + ty + ')');
+            tooltip.setAttribute('opacity', '1');
+        }
+
+        function hideTip() { tooltip.setAttribute('opacity', '0'); }
+
+        function moveTip(e) {
+            if (tooltip.getAttribute('opacity') === '0') return;
+            var pt = svg.createSVGPoint();
+            pt.x = e.clientX; pt.y = e.clientY;
+            var sp = pt.matrixTransform(svg.getScreenCTM().inverse());
+            tooltip.setAttribute('transform', 'translate(' + Math.min(sp.x + 15, 800) + ',' + Math.max(sp.y - 80, 10) + ')');
+        }
+
+        // ═══ FLOW HOVER (SVG) ═══
+        svg.querySelectorAll('.sy-flow-group').forEach(function(g) {
+            var fid = g.dataset.flow;
+            var data = flowData[fid];
+            if (!data) return;
+            g.style.cursor = 'pointer';
+
+            g.addEventListener('mouseenter', function(e) {
+                svg.classList.add('flux-highlight');
+                g.classList.add('flow-active');
+                showTip(data, e);
+            });
+            g.addEventListener('mousemove', moveTip);
+            g.addEventListener('mouseleave', function() {
+                svg.classList.remove('flux-highlight');
+                svg.querySelectorAll('.flow-active').forEach(function(el) { el.classList.remove('flow-active'); });
+                hideTip();
+            });
+        });
+
+        // ═══ ACTOR HOVER (SVG) ═══
+        svg.querySelectorAll('.sy-actor').forEach(function(actor) {
+            var aid = actor.dataset.actor;
+            var data = actorData[aid];
+            if (!data) return;
+            actor.style.cursor = 'pointer';
+
+            actor.addEventListener('mouseenter', function(e) {
+                showTip(data, e);
+                // Highlight connected flows
+                actor.classList.add('actor-active');
+            });
+            actor.addEventListener('mousemove', moveTip);
+            actor.addEventListener('mouseleave', function() {
+                hideTip();
+                actor.classList.remove('actor-active');
+            });
+        });
+
+        // ═══ LEGEND HOVER ═══
+        legend.querySelectorAll('.flux-legend-item').forEach(function(item) {
+            var fid = item.dataset.flow;
+            item.addEventListener('mouseenter', function() {
+                svg.classList.add('flux-highlight');
+                var t = svg.querySelector('.sy-flow-group[data-flow="' + fid + '"]');
+                if (t) t.classList.add('flow-active');
+                item.classList.add('legend-active');
+            });
+            item.addEventListener('mouseleave', function() {
+                svg.classList.remove('flux-highlight');
+                svg.querySelectorAll('.flow-active').forEach(function(el) { el.classList.remove('flow-active'); });
+                item.classList.remove('legend-active');
+                hideTip();
+            });
+        });
+
+        // ═══ FULLSCREEN ═══
+        function openFS() {
+            var clone = svg.cloneNode(true);
+            clone.removeAttribute('id');
+
+            var ov = document.createElement('div');
+            ov.className = 'flux-fullscreen-overlay';
+            ov.innerHTML =
+                '<div class="flux-fs-toolbar">' +
+                    '<span class="flux-fs-title">🔀 Le schéma en Y — Vue plein écran</span>' +
+                    '<div class="flux-fs-controls">' +
+                        '<button class="flux-fs-btn flux-fs-btn--close" id="sy-fs-close">✕ Fermer</button>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="flux-fs-svg-container" id="sy-fs-container"></div>' +
+                '<div class="flux-fs-hint"><kbd>Échap</kbd> pour fermer · Survolez un flux ou acteur pour les détails</div>';
+
+            document.body.appendChild(ov);
+            document.getElementById('sy-fs-container').appendChild(clone);
+            document.body.style.overflow = 'hidden';
+
+            // Tooltip dans le clone
+            var fsTip = clone.querySelector('.flux-tooltip');
+            var fsTNum = clone.querySelector('#sy-tooltip-num');
+            var fsTName = clone.querySelector('#sy-tooltip-name');
+            var fsTDir = clone.querySelector('#sy-tooltip-dir');
+            var fsTDesc = clone.querySelector('#sy-tooltip-desc');
+
+            function showFsTip(data, e) {
+                if (!data || !fsTip) return;
+                fsTNum.textContent = data.num;
+                fsTName.textContent = data.name;
+                fsTDir.textContent = data.dir;
+                fsTDesc.textContent = data.desc;
+                var pt = clone.createSVGPoint();
+                pt.x = e.clientX; pt.y = e.clientY;
+                var sp = pt.matrixTransform(clone.getScreenCTM().inverse());
+                fsTip.setAttribute('transform', 'translate(' + Math.min(sp.x+15,800) + ',' + Math.max(sp.y-80,10) + ')');
+                fsTip.setAttribute('opacity', '1');
+            }
+            function hideFsTip() { if(fsTip) fsTip.setAttribute('opacity','0'); }
+
+            // Flows dans fullscreen
+            clone.querySelectorAll('.sy-flow-group').forEach(function(g) {
+                var fid = g.dataset.flow;
+                var data = flowData[fid]; if(!data) return;
+                g.style.cursor = 'pointer';
+                g.addEventListener('mouseenter', function(e) { clone.classList.add('flux-highlight'); g.classList.add('flow-active'); showFsTip(data,e); });
+                g.addEventListener('mousemove', function(e) {
+                    if(fsTip.getAttribute('opacity')==='0') return;
+                    var pt = clone.createSVGPoint(); pt.x=e.clientX; pt.y=e.clientY;
+                    var sp = pt.matrixTransform(clone.getScreenCTM().inverse());
+                    fsTip.setAttribute('transform','translate('+Math.min(sp.x+15,800)+','+Math.max(sp.y-80,10)+')');
+                });
+                g.addEventListener('mouseleave', function() { clone.classList.remove('flux-highlight'); clone.querySelectorAll('.flow-active').forEach(function(el){el.classList.remove('flow-active');}); hideFsTip(); });
+            });
+
+            // Actors dans fullscreen
+            clone.querySelectorAll('.sy-actor').forEach(function(actor) {
+                var aid = actor.dataset.actor;
+                var data = actorData[aid]; if(!data) return;
+                actor.style.cursor = 'pointer';
+                actor.addEventListener('mouseenter', function(e) { showFsTip(data,e); });
+                actor.addEventListener('mousemove', function(e) {
+                    if(fsTip.getAttribute('opacity')==='0') return;
+                    var pt = clone.createSVGPoint(); pt.x=e.clientX; pt.y=e.clientY;
+                    var sp = pt.matrixTransform(clone.getScreenCTM().inverse());
+                    fsTip.setAttribute('transform','translate('+Math.min(sp.x+15,800)+','+Math.max(sp.y-80,10)+')');
+                });
+                actor.addEventListener('mouseleave', function() { hideFsTip(); });
+            });
+
+            // Close
+            function closeFS() { ov.classList.add('closing'); document.body.style.overflow=''; setTimeout(function(){ov.remove();},250); document.removeEventListener('keydown',escH); }
+            function escH(e) { if(e.key==='Escape') closeFS(); }
+            document.getElementById('sy-fs-close').addEventListener('click', closeFS);
+            ov.addEventListener('click', function(e){ if(e.target===ov) closeFS(); });
+            document.addEventListener('keydown', escH);
+        }
+
+        expandBtn.addEventListener('click', function(e) { e.stopPropagation(); openFS(); });
+        wrap.addEventListener('dblclick', openFS);
+    });
+    </script>
+
 </body>
 </html>

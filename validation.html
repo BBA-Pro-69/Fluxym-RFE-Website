@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation XML / XSD / Schematron | E-Invoicing Academy</title>
+    <link rel="icon" href="./assets/favicon-Fluxym-V2.png" sizes="32x32" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/pages.css">
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="main-nav"></nav>
+
+    <!-- HERO -->
+    <!-- NOUVEAU -->
+    <header class="page-hero">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="./index.html">Accueil</a> <span>/</span> <span>Niveau 4 — Mettre en pratique</span>
+            </div>
+            <span class="hero-badge">Niveau 4 — Mettre en pratique</span>
+            <h1>Validation des factures</h1>
+            <p>XML · XSD · Schematron — Les 4 niveaux de contrôle qui garantissent la conformité d'une facture électronique.</p>
+        </div>
+    </header>
+
+    <!-- COMPTEURS -->
+    <section class="counters-section">
+        <div class="counters-grid">
+            <div class="counter-card">
+                <div class="counter-icon">🔍</div>
+                <div class="counter-value">4</div>
+                <div class="counter-label">Niveaux de validation</div>
+                <div class="counter-detail">XSD → Schematron EU → Schematron FR → PPF</div>
+            </div>
+            <div class="counter-card">
+                <div class="counter-icon">📐</div>
+                <div class="counter-value">~200</div>
+                <div class="counter-label">Règles BR + BR-FR</div>
+                <div class="counter-detail">Vérifiées automatiquement par Schematron</div>
+            </div>
+            <div class="counter-card">
+                <div class="counter-icon">📁</div>
+                <div class="counter-value">12+</div>
+                <div class="counter-label">Fichiers de validation</div>
+                <div class="counter-detail">XSD, .sch, .xslt pour UBL et CII</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENU PRINCIPAL -->
+    <section class="page-section">
+        <div class="page-container page-layout">
+
+    <!-- SIDEBAR NAV -->
+            <aside class="page-sidebar">
+                <div class="sidebar-sticky">
+                    <h4>Sur cette page</h4>
+                    <ul class="sidebar-nav">
+                        <li><a href="#chaine" class="sidebar-link active">🔗 Chaîne de validation</a></li>
+                        <li><a href="#niveau1" class="sidebar-link">📐 Niveau 1 — XSD</a></li>
+                        <li><a href="#niveau2" class="sidebar-link">🇪🇺 Niveau 2 — Schematron EU</a></li>
+                        <li><a href="#niveau3" class="sidebar-link">🇫🇷 Niveau 3 — Schematron FR</a></li>
+                        <li><a href="#niveau4" class="sidebar-link">🏛️ Niveau 4 — Contrôles PPF</a></li>
+                        <li class="sidebar-sep"></li>
+                        <li><a href="#fichiers" class="sidebar-link">📁 Fichiers</a></li>
+                        <li><a href="#exemples" class="sidebar-link">💻 Exemples de règles</a></li>
+                        <li><a href="#svrl" class="sidebar-link">📋 Rapport SVRL</a></li>
+                        <li><a href="#erreurs" class="sidebar-link">🐛 Top 10 erreurs</a></li>
+                        <li><a href="#outils" class="sidebar-link">🧰 Outils</a></li>
+                    </ul>
+                    <div class="sidebar-pages">
+                        <h4>Pages liées</h4>
+                        <a href="./champs.html" class="sidebar-page-link">🔧 Les champs BT/BG</a>
+                        <a href="./cas-usage.html" class="sidebar-page-link">📋 Cas d'usage</a>
+                        <a href="./schema-en-y.html" class="sidebar-page-link">🔄 Le schéma en Y</a>
+                    </div>
+                </div>
+            </aside>
+
+
+            <!-- MAIN CONTENT -->
+            <main class="page-content">
+
+                <!-- ANALOGIE -->
+                <div class="callout callout--info" style="margin-bottom:2rem;">
+                    <div class="callout-icon">🏠</div>
+                    <div class="callout-content">
+                        <strong>Analogie de la maison</strong><br>
+                        Le <strong>XML</strong> c'est la maison construite. Le <strong>XSD</strong> c'est le plan d'architecte (les murs sont-ils au bon endroit ?). Le <strong>Schematron</strong> c'est l'inspecteur qualité (l'eau chaude arrive-t-elle dans la salle de bain ?). Le <strong>PPF</strong> c'est le notaire (le propriétaire existe-t-il vraiment ?).
+                    </div>
+                </div>
+
+                <!-- CHAÎNE DE VALIDATION -->
+                <h2 id="chaine">🔗 La chaîne de validation — Vue d'ensemble</h2>
+                <p>La validation d'une facture électronique s'effectue en <strong>4 niveaux successifs</strong>. C'est un entonnoir : chaque niveau suppose que le précédent est passé.</p>
+
+                <div class="val-pipeline">
+                    <div class="val-level val-level--1">
+                        <div class="val-level-badge">Niveau 1</div>
+                        <div class="val-level-icon">📐</div>
+                        <h3>XSD — Structure</h3>
+                        <p>Le XML est-il bien formé ?<br>Les balises sont-elles au bon endroit ?</p>
+                        <div class="val-level-file">UBL-Invoice-2.1.xsd</div>
+                    </div>
+                    <div class="val-arrow">▼</div>
+                    <div class="val-level val-level--2">
+                        <div class="val-level-badge">Niveau 2</div>
+                        <div class="val-level-icon">🇪🇺</div>
+                        <h3>Schematron EN16931</h3>
+                        <p>Les règles européennes sont-elles respectées ?<br>Calculs, cohérence, présence des champs.</p>
+                        <div class="val-level-file">EN16931-UBL-validation.xslt</div>
+                    </div>
+                    <div class="val-arrow">▼</div>
+                    <div class="val-level val-level--3">
+                        <div class="val-level-badge">Niveau 3</div>
+                        <div class="val-level-icon">🇫🇷</div>
+                        <h3>Schematron BR-FR</h3>
+                        <p>Les exigences françaises sont-elles respectées ?<br>SIREN, cadre de facturation, note BAR.</p>
+                        <div class="val-level-file">BR-FR-Flux2-Schematron-UBL_V0.1.xslt</div>
+                    </div>
+                    <div class="val-arrow">▼</div>
+                    <div class="val-level val-level--4">
+                        <div class="val-level-badge">Niveau 4</div>
+                        <div class="val-level-icon">🏛️</div>
+                        <h3>Contrôles PA / PPF</h3>
+                        <p>La plateforme valide en temps réel.<br>SIREN actif ? Doublon ? Routage ?</p>
+                        <div class="val-level-file">Code applicatif PA + Annuaire PPF</div>
+                    </div>
+                </div>
+
+                <!-- NIVEAU 1 -->
+                <h2 id="niveau1">1️⃣ Niveau 1 — Validation XSD (Structure)</h2>
+
+                <div class="val-detail-grid">
+                    <div class="val-detail-card val-detail--yes">
+                        <h4>✅ Ce qu'il vérifie</h4>
+                        <ul>
+                            <li>XML bien formé (balises, encodage UTF-8)</li>
+                            <li>Structure conforme au schéma UBL 2.1 ou CII D22B</li>
+                            <li>Ordre des éléments correct</li>
+                            <li>Cardinalités syntaxiques (minOccurs, maxOccurs)</li>
+                            <li>Types de données de base (string, date, decimal)</li>
+                            <li>Espaces de noms (namespaces) corrects</li>
+                        </ul>
+                    </div>
+                    <div class="val-detail-card val-detail--no">
+                        <h4>❌ Ce qu'il NE vérifie PAS</h4>
+                        <ul>
+                            <li>Cohérence des données entre elles (BT-112 = BT-109 + BT-110)</li>
+                            <li>Valeurs obligatoires au sens métier (CustomizationID est 0..1 en XSD)</li>
+                            <li>Règles conditionnelles (si TVA = "S" → taux obligatoire)</li>
+                            <li>Validité des identifiants SIREN/SIRET</li>
+                            <li>Codelists (un code pays "ZZ" passe le XSD)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="callout callout--warning">
+                    <div class="callout-icon">⚠️</div>
+                    <div class="callout-content"><strong>Limite majeure :</strong> XSD accepte une TVA à 99% sans broncher. Il ne sait pas exprimer « si le champ A vaut X, alors le champ B est obligatoire ».</div>
+                </div>
+
+                <!-- NIVEAU 2 -->
+                <h2 id="niveau2">2️⃣ Niveau 2 — Schematron EN16931 (Norme européenne)</h2>
+
+                <div class="val-detail-grid">
+                    <div class="val-detail-card val-detail--yes">
+                        <h4>✅ Ce qu'il vérifie</h4>
+                        <ul>
+                            <li>Toutes les règles <strong>BR-xx</strong> de la norme EN 16931</li>
+                            <li>Présence des champs obligatoires au sens sémantique</li>
+                            <li>Cohérence arithmétique (BT-112 = BT-109 + BT-110)</li>
+                            <li>Règles par catégorie TVA (BR-S-xx, BR-Z-xx, BR-E-xx…)</li>
+                            <li>Restrictions de contenu UBL-CR-xxx / CII-SR-xxx</li>
+                        </ul>
+                    </div>
+                    <div class="val-detail-card val-detail--no">
+                        <h4>❌ Ce qu'il NE vérifie PAS</h4>
+                        <ul>
+                            <li>Règles spécifiques françaises (SIREN, adresse 0225, note BAR)</li>
+                            <li>Présence dans l'annuaire PPF</li>
+                            <li>Format des identifiants français (≤ 35 caractères)</li>
+                            <li>Règles B2G / Chorus Pro</li>
+                            <li>Extensions françaises (EXT-FR-FE-xxx)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- NIVEAU 3 -->
+                <h2 id="niveau3">3️⃣ Niveau 3 — Schematron BR-FR (Règles françaises)</h2>
+
+                <div class="val-detail-grid">
+                    <div class="val-detail-card val-detail--yes">
+                        <h4>✅ Ce qu'il vérifie</h4>
+                        <ul>
+                            <li><strong>BR-FR-01</strong> : Identifiant ≤ 35 car. [A-Za-z0-9+\-_/]</li>
+                            <li><strong>BR-FR-10/11</strong> : SIREN vendeur et acheteur obligatoires</li>
+                            <li><strong>BR-FR-21/22</strong> : Adresse électronique schemeID 0225</li>
+                            <li><strong>BR-FR-31</strong> : Note BAR unique et cohérente</li>
+                            <li><strong>BR-FR-CO-09</strong> : Cohérence SIRET[1..9] = SIREN</li>
+                            <li><strong>BR-FR-CO-12</strong> : TVA en EUR si devise ≠ EUR</li>
+                        </ul>
+                    </div>
+                    <div class="val-detail-card val-detail--no">
+                        <h4>❌ Ce qu'il NE vérifie PAS</h4>
+                        <ul>
+                            <li>Existence effective du SIREN dans l'annuaire PPF</li>
+                            <li>Validité fiscale (TVA due, montants déclarés)</li>
+                            <li>Règles de gestion propres à chaque PA</li>
+                            <li>Routage vers le bon destinataire</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- NIVEAU 4 -->
+                <h2 id="niveau4">4️⃣ Niveau 4 — Contrôles PA / PPF</h2>
+
+                <div class="val-detail-grid">
+                    <div class="val-detail-card val-detail--yes">
+                        <h4>✅ Ce qu'il vérifie</h4>
+                        <ul>
+                            <li>SIREN actif dans l'annuaire PPF (API Directory)</li>
+                            <li>Résolution de l'adresse électronique du destinataire</li>
+                            <li>Contrôle de doublons (numéro facture déjà émis)</li>
+                            <li>Pas d'antidatage (date ≤ date de dépôt)</li>
+                            <li>Règles de gestion DGFIP (G1.xx, G6.xx, G7.xx)</li>
+                        </ul>
+                    </div>
+                    <div class="val-detail-card val-detail--no">
+                        <h4>❌ Ce qu'il NE vérifie PAS</h4>
+                        <ul>
+                            <li>Validité comptable ou fiscale au fond</li>
+                            <li>Conformité de la prestation sous-jacente</li>
+                            <li>Acceptation commerciale par le destinataire</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="callout callout--info">
+                    <div class="callout-icon">💡</div>
+                    <div class="callout-content"><strong>Pas de fichier Schematron</strong> à ce niveau : ces contrôles sont implémentés dans le code applicatif de la PA et du PPF, avec accès à l'annuaire en temps réel.</div>
+                </div>
+
+                <!-- FICHIERS -->
+                <h2 id="fichiers">📁 Inventaire des fichiers de validation</h2>
+
+                <h3>Schémas XSD — UBL 2.1</h3>
+                <div class="table-wrap">
+                <table class="styled-table">
+                    <thead><tr><th>Fichier</th><th>Rôle</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>UBL-Invoice-2.1.xsd</code></td><td>Schéma racine facture</td></tr>
+                        <tr><td><code>UBL-CreditNote-2.1.xsd</code></td><td>Schéma racine avoir</td></tr>
+                        <tr><td><code>UBL-CommonBasicComponents-2.1.xsd</code></td><td>Éléments simples (cbc:)</td></tr>
+                        <tr><td><code>UBL-CommonAggregateComponents-2.1.xsd</code></td><td>Éléments complexes (cac:)</td></tr>
+                        <tr><td><code>CCTS_CCT_SchemaModule-2.1.xsd</code></td><td>Types CCTS (UN/CEFACT)</td></tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <h3>Schematron EN16931 + BR-FR</h3>
+                <div class="table-wrap">
+                <table class="styled-table">
+                    <thead><tr><th>Fichier</th><th>Type</th><th>Rôle</th><th>Exécutable ?</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>EN16931-UBL-validation.sch</code></td><td>.sch source</td><td>Règles BR-xx UBL</td><td>❌ À compiler</td></tr>
+                        <tr><td><code>EN16931-UBL-validation.xslt</code></td><td>.xslt compilé</td><td>Règles BR-xx UBL</td><td>✅ Oui</td></tr>
+                        <tr><td><code>EN16931-CII-validation.xslt</code></td><td>.xslt compilé</td><td>Règles BR-xx CII</td><td>✅ Oui</td></tr>
+                        <tr class="table-row--highlight"><td><code>BR-FR-Flux2-Schematron-UBL_V0.1.sch</code></td><td>.sch source</td><td>Règles BR-FR UBL</td><td>❌ À compiler</td></tr>
+                        <tr class="table-row--highlight"><td><code>BR-FR-Flux2-Schematron-UBL_V0.1-compiled.xslt</code></td><td>.xslt compilé</td><td>Règles BR-FR UBL</td><td>✅ Oui</td></tr>
+                        <tr class="table-row--highlight"><td><code>BR-FR-Flux2-Schematron-CII_V0.1-compiled.xslt</code></td><td>.xslt compilé</td><td>Règles BR-FR CII</td><td>✅ Oui</td></tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <!-- EXEMPLES DE RÈGLES -->
+                <h2 id="exemples">💻 Exemples de règles Schematron</h2>
+
+                <div class="val-tabs">
+                    <button class="val-tab val-tab--active" data-target="tab-br">🇪🇺 Règles BR (EN16931)</button>
+                    <button class="val-tab" data-target="tab-brfr">🇫🇷 Règles BR-FR (France)</button>
+                </div>
+
+                <!-- TAB BR -->
+                <div id="tab-br" class="val-tab-content val-tab-content--active">
+
+                    <div class="val-rule-card">
+                        <div class="val-rule-header">
+                            <span class="val-rule-id">BR-01</span>
+                            <span class="val-rule-flag val-flag--fatal">fatal</span>
+                            <span class="val-rule-name">Présence de BT-24 (Specification Identifier)</span>
+                        </div>
+                        <pre class="val-code"><code>&lt;assert id="BR-01" flag="fatal"
+  test="normalize-space(cbc:CustomizationID) != ''"&gt;
+  [BR-01]-An Invoice shall have a Specification identifier (BT-24).
+&lt;/assert&gt;</code></pre>
+                        <p class="val-rule-explain">💡 XSD dit 0..1 (optionnel). C'est le Schematron qui impose 1..1. Sans cette règle, une facture sans CustomizationID passerait le XSD.</p>
+                    </div>
+
+                    <div class="val-rule-card">
+                        <div class="val-rule-header">
+                            <span class="val-rule-id">BR-CO-10</span>
+                            <span class="val-rule-flag val-flag--fatal">fatal</span>
+                            <span class="val-rule-name">Σ montants nets de ligne = total HT lignes</span>
+                        </div>
+                        <pre class="val-code"><code>&lt;assert id="BR-CO-10" flag="fatal"
+  test="xs:decimal(cbc:LineExtensionAmount) =
+    round(sum(//cac:InvoiceLine/cbc:LineExtensionAmount
+    /xs:decimal(.)) * 100) div 100"&gt;
+  [BR-CO-10]-Sum of Invoice line net amount (BT-106)
+  = Σ Invoice line net amount (BT-131).
+&lt;/assert&gt;</code></pre>
+                        <p class="val-rule-explain">💡 Tolérance d'arrondi : ±0.01 × nombre de lignes. Erreur n°1 en production.</p>
+                    </div>
+
+                    <div class="val-rule-card">
+                        <div class="val-rule-header">
+                            <span class="val-rule-id">BR-CO-15</span>
+                            <span class="val-rule-flag val-flag--fatal">fatal</span>
+                            <span class="val-rule-name">TTC = HT + TVA</span>
+                        </div>
+                        <pre class="val-code"><code>&lt;assert id="BR-CO-15" flag="fatal"
+  test="xs:decimal(cbc:TaxInclusiveAmount) =
+    xs:decimal(cbc:TaxExclusiveAmount) +
+    xs:decimal(../cac:TaxTotal/cbc:TaxAmount)"&gt;
+  [BR-CO-15]-BT-112 = BT-109 + BT-110.
+&lt;/assert&gt;</code></pre>
+                        <p class="val-rule-explain">💡 Vérifie BT-112 = BT-109 + BT-110. Erreur n°2 en production.</p>
+                    </div>
+
+                </div>
+
+                <!-- TAB BR-FR -->
+                <div id="tab-brfr" class="val-tab-content">
+
+                    <div class="val-rule-card">
+                        <div class="val-rule-header">
+                            <span class="val-rule-id">BR-FR-01</span>
+                            <span class="val-rule-flag val-flag--warning">warning</span>
+                            <span class="val-rule-name">Format identifiant facture ≤ 35 car.</span>
+                        </div>
+                        <pre class="val-code"><code>&lt;assert test="string-length(.) le 35" flag="warning"&gt;
+  BR-FR-01/BT-1 : L'identifiant ne doit pas
+  dépasser 35 caractères.
+&lt;/assert&gt;
+&lt;assert test="matches(., '^[A-Za-z0-9+\-_/]+$')"&gt;
+  BR-FR-01/BT-1 : Caractères non autorisés détectés.
+  Seuls [A-Za-z0-9+\-_/] sont acceptés.
+&lt;/assert&gt;</code></pre>
+                        <p class="val-rule-explain">💡 Pas d'espaces, pas de points, pas d'accents. Erreur n°4 en production.</p>
+                    </div>
+
+                    <div class="val-rule-card">
+                        <div class="val-rule-header">
+                            <span class="val-rule-id">BR-FR-CO-09</span>
+                            <span class="val-rule-flag val-flag--fatal">fatal</span>
+                            <span class="val-rule-name">Cohérence SIRET / SIREN</span>
+                        </div>
+                        <pre class="val-code"><code>&lt;assert id="BR-FR-CO-09" flag="fatal"
+  test="string-length(.) = 14 and
+    substring(., 1, 9) = ancestor::cac:Party
+    /cac:PartyLegalEntity/cbc:CompanyID[@schemeID='0002']"&gt;
+  [BR-FR-CO-09] Le SIRET doit faire 14 chiffres
+  et SIRET[1..9] doit correspondre au SIREN.
+&lt;/assert&gt;</code></pre>
+                        <p class="val-rule-explain">💡 Attention aux fusions/scissions d'entreprise où le SIREN change.</p>
+                    </div>
+
+                    <div class="val-rule-card">
+                        <div class="val-rule-header">
+                            <span class="val-rule-id">BR-FR-CO-12</span>
+                            <span class="val-rule-flag val-flag--fatal">fatal</span>
+                            <span class="val-rule-name">TVA en EUR obligatoire si devise étrangère</span>
+                        </div>
+                        <pre class="val-code"><code>&lt;assert id="BR-FR-CO-12" flag="fatal"
+  test="cbc:TaxCurrencyCode = 'EUR'"&gt;
+  [BR-FR-CO-12] Si BT-5 ≠ EUR, la devise de
+  comptabilité (BT-6) DOIT être EUR.
+&lt;/assert&gt;</code></pre>
+                        <p class="val-rule-explain">💡 Facture en USD ? Ajoutez un second bloc TaxTotal avec currencyID="EUR".</p>
+                    </div>
+
+                </div>
+
+                <!-- SVRL -->
+                <h2 id="svrl">📋 Le rapport SVRL</h2>
+
+                <p>Le <strong>SVRL</strong> (Schematron Validation Report Language) est le XML produit après validation. C'est le "journal de bord" qui liste toutes les erreurs.</p>
+
+                <h3>Exemple de rapport SVRL avec 2 erreurs</h3>
+                <pre class="val-code val-code--svrl"><code>&lt;svrl:schematron-output title="BR-FR Flux 2"&gt;
+
+  &lt;!-- Erreur 1 : identifiant trop long (warning) --&gt;
+  &lt;svrl:failed-assert
+    test="string-length(.) le 35"
+    location="/ubl:Invoice[1]/cbc:ID[1]"
+    flag="<span class="val-hl-warning">warning</span>"
+    id="BR-FR-01"&gt;
+    &lt;svrl:text&gt;BT-1 dépasse 35 caractères.&lt;/svrl:text&gt;
+  &lt;/svrl:failed-assert&gt;
+
+  &lt;!-- Erreur 2 : SIRET incohérent (fatal) --&gt;
+  &lt;svrl:failed-assert
+    test="string-length(.) = 14"
+    location="…/cbc:ID[@schemeID='0009'][1]"
+    flag="<span class="val-hl-fatal">fatal</span>"
+    id="BR-FR-CO-09"&gt;
+    &lt;svrl:text&gt;SIRET doit faire 14 chiffres.&lt;/svrl:text&gt;
+  &lt;/svrl:failed-assert&gt;
+
+&lt;/svrl:schematron-output&gt;</code></pre>
+
+                <div class="table-wrap">
+                <table class="styled-table">
+                    <thead><tr><th>Attribut</th><th>Signification</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>test</code></td><td>L'expression XPath qui a échoué (retourné <code>false</code>)</td></tr>
+                        <tr><td><code>location</code></td><td>Chemin XPath exact vers l'élément fautif</td></tr>
+                        <tr><td><code>flag</code></td><td><code>fatal</code> = bloquant, <code>warning</code> = avertissement</td></tr>
+                        <tr><td><code>id</code></td><td>Identifiant de la règle (BR-01, BR-FR-01…)</td></tr>
+                        <tr><td><code>&lt;svrl:text&gt;</code></td><td>Message d'erreur lisible</td></tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <!-- TOP 10 ERREURS -->
+                <h2 id="erreurs">🐛 Top 10 des erreurs en production</h2>
+
+                <div id="errors-list">
+
+                    <div class="val-error-card">
+                        <div class="val-error-rank">1</div>
+                        <div class="val-error-body">
+                            <div class="val-error-header">
+                                <span class="val-rule-id">BR-CO-10</span>
+                                <span class="val-rule-flag val-flag--fatal">fatal</span>
+                            </div>
+                            <h4>Somme des montants nets incohérente</h4>
+                            <p><strong>Cause :</strong> L'ERP arrondit chaque ligne puis fait la somme. Le total recalculé diffère de BT-106.</p>
+                            <p><strong>Solution :</strong> Arrondir chaque BT-131 à 2 décimales, puis sommer. Vérifier que BT-106 = Σ BT-131.</p>
+                        </div>
+                    </div>
+
+                    <div class="val-error-card">
+                        <div class="val-error-rank">2</div>
+                        <div class="val-error-body">
+                            <div class="val-error-header">
+                                <span class="val-rule-id">BR-CO-15</span>
+                                <span class="val-rule-flag val-flag--fatal">fatal</span>
+                            </div>
+                            <h4>TTC ≠ HT + TVA</h4>
+                            <p><strong>Cause :</strong> Montants calculés indépendamment sans vérifier la cohérence finale.</p>
+                            <p><strong>Solution :</strong> Toujours recalculer BT-112 = BT-109 + BT-110.</p>
+                        </div>
+                    </div>
+
+                    <div class="val-error-card">
+                        <div class="val-error-rank">3</div>
+                        <div class="val-error-body">
+                            <div class="val-error-header">
+                                <span class="val-rule-id">BR-01</span>
+                                <span class="val-rule-flag val-flag--fatal">fatal</span>
+                            </div>
+                            <h4>CustomizationID absent</h4>
+                            <p><strong>Cause :</strong> L'ERP ne génère pas <code>cbc:CustomizationID</code>. XSD dit 0..1 donc pas d'erreur à ce niveau.</p>
+                            <p><strong>Solution :</strong> Ajouter <code>urn:cen.eu:en16931:2017</code> ou la variante EXTENDED.</p>
+                        </div>
+                    </div>
+
+                    <div class="val-error-card">
+                        <div class="val-error-rank">4</div>
+                        <div class="val-error-body">
+                            <div class="val-error-header">
+                                <span class="val-rule-id">BR-FR-01</span>
+                                <span class="val-rule-flag val-flag--warning">warning</span>
+                            </div>
+                            <h4>Identifiant trop long ou caractères interdits</h4>
+                            <p><strong>Cause :</strong> Numérotation ERP avec préfixes + année + séquence > 35 car., ou présence d'espaces/points.</p>
+                            <p><strong>Solution :</strong> Limiter à 35 car. max. Uniquement [A-Za-z0-9+\-_/].</p>
+                        </div>
+                    </div>
+
+                    <div class="val-error-card">
+                        <div class="val-error-rank">5</div>
+                        <div class="val-error-body">
+                            <div class="val-error-header">
+                                <span class="val-rule-id">BR-FR-CO-09</span>
+                                <span class="val-rule-flag val-flag--fatal">fatal</span>
+                            </div>
+                            <h4>Incohérence SIRET / SIREN</h4>
+                            <p><strong>Cause :</strong> SIRET tronqué (10 chiffres) ou SIRET d'un établissement qui ne correspond pas au SIREN.</p>
+                            <p><strong>Solution :</strong> Vérifier SIRET = 14 chiffres et SIRET[1..9] = SIREN.</p>
+                        </div>
+                    </div>
+
+                    <div class="val-error-card">
+                        <div class="val-error-rank">6</div>
+                        <div class="val-error-body">
+                            <div class="val-error-header">
+                                <span class="val-rule-id">BR-S-08</span>
+                                <span class="val-rule-flag val-flag--fatal">fatal</span>
+                            </div>
+                            <h4>Base imposable TVA incohérente</h4>
+                            <p><strong>Cause :</strong> Remises/charges rattachées au mauvais taux TVA, ou ligne classée dans la mauvaise catégorie.</p>
+                            <p><strong>Solution :</strong> Vérifier que chaque ligne/remise/charge porte le bon code TVA et taux.</p>
+                        </div>
+                    </div>
+
+                    <div class="val-error-card">
+                        <div class="val-error-rank">7</div>
+                        <div class="val-error-body">
+                            <div class="val-error-header">
+                                <span class="val-rule-id">BR-FR-CO-12</span>
+                                <span class="val-rule-flag val-flag--fatal">fatal</span>
+                            </div>
+                            <h4>TVA pas en EUR pour facture en devise étrangère</h4>
+                            <p><strong>Cause :</strong> Facture en USD sans BT-6 = EUR ni BT-111 en EUR.</p>
+                            <p><strong>Solution :</strong> Ajouter <code>&lt;cbc:TaxCurrencyCode&gt;EUR&lt;/cbc:TaxCurrencyCode&gt;</code> + second TaxTotal en EUR.</p>
+                        </div>
+                    </div>
+
+                    <div class="val-error-card">
+                        <div class="val-error-rank">8</div>
+                        <div class="val-error-body">
+                            <div class="val-error-header">
+                                <span class="val-rule-id">BR-FR-21/22</span>
+                                <span class="val-rule-flag val-flag--fatal">fatal</span>
+                            </div>
+                            <h4>Adresse électronique non conforme</h4>
+                            <p><strong>Cause :</strong> schemeID = "EM" au lieu de "0225", ou format non SIREN/SIREN_XXX.</p>
+                            <p><strong>Solution :</strong> En B2B : <code>&lt;cbc:EndpointID schemeID="0225"&gt;123456789&lt;/cbc:EndpointID&gt;</code></p>
+                        </div>
+                    </div>
+
+                    <div class="val-error-card">
+                        <div class="val-error-rank">9</div>
+                        <div class="val-error-body">
+                            <div class="val-error-header">
+                                <span class="val-rule-id">BR-FR-CO-01</span>
+                                <span class="val-rule-flag val-flag--fatal">fatal</span>
+                            </div>
+                            <h4>Date de facture dans le futur</h4>
+                            <p><strong>Cause :</strong> Date d'émission (BT-2) postérieure à la date du jour.</p>
+                            <p><strong>Solution :</strong> Vérifier que BT-2 ≤ date courante avant envoi.</p>
+                        </div>
+                    </div>
+
+                    <div class="val-error-card">
+                        <div class="val-error-rank">10</div>
+                        <div class="val-error-body">
+                            <div class="val-error-header">
+                                <span class="val-rule-id">UBL-CR-xxx</span>
+                                <span class="val-rule-flag val-flag--warning">warning</span>
+                            </div>
+                            <h4>Éléments UBL hors périmètre EN16931</h4>
+                            <p><strong>Cause :</strong> L'ERP génère des éléments UBL non utilisés par EN16931.</p>
+                            <p><strong>Solution :</strong> Supprimer les éléments inutiles ou passer au profil EXTENDED.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- OUTILS -->
+                <h2 id="outils">🧰 Outils de validation</h2>
+
+                <h3>🌐 Outils en ligne (gratuits)</h3>
+                <div class="val-tools-grid">
+                    <a href="https://ecosio.com/en/peppol-and-xml-document-validator/" target="_blank" class="val-tool-card">
+                        <strong>Ecosio Validator</strong>
+                        <p>XSD + Schematron EN16931 + PEPPOL</p>
+                    </a>
+                    <a href="https://www.itb.ec.europa.eu/invoice/upload" target="_blank" class="val-tool-card">
+                        <strong>Validex (CEF)</strong>
+                        <p>Validateur officiel Commission Européenne</p>
+                    </a>
+                    <a href="https://invoice-portal.org/" target="_blank" class="val-tool-card">
+                        <strong>Invoice Portal FNFE</strong>
+                        <p>Validation Factur-X / ZUGFeRD</p>
+                    </a>
+                </div>
+
+                <h3>💻 Commande Saxon (chaîne complète)</h3>
+                <pre class="val-code"><code>#!/bin/bash
+FACTURE=$1
+SAXON="java -jar saxon-he-12.5.jar"
+
+echo "=== Étape 1 : XSD ==="
+xmllint --schema UBL-Invoice-2.1.xsd --noout "$FACTURE"
+
+echo "=== Étape 2 : EN16931 ==="
+$SAXON -s:"$FACTURE" -xsl:EN16931-UBL-validation.xslt -o:rapport_en.svrl
+
+echo "=== Étape 3 : BR-FR ==="
+$SAXON -s:"$FACTURE" -xsl:BR-FR-Flux2-UBL_V0.1-compiled.xslt -o:rapport_fr.svrl
+
+echo "=== ✅ Validation terminée ==="</code></pre>
+
+            </main>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="main-footer"></footer>
+
+    <script src="./js/nav.js"></script>
+    <script src="./js/animations.js"></script>
+    <script>
+    (function() {
+        // Tabs switching
+        document.querySelectorAll('.val-tab').forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.val-tab').forEach(function(t) { t.classList.remove('val-tab--active'); });
+                document.querySelectorAll('.val-tab-content').forEach(function(c) { c.classList.remove('val-tab-content--active'); });
+                this.classList.add('val-tab--active');
+                document.getElementById(this.dataset.target).classList.add('val-tab-content--active');
+            });
+        });
+
+        // Sidebar active link on scroll
+        var sections = document.querySelectorAll('h2[id]');
+        var sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+        function updateSidebar() {
+            var scrollPos = window.scrollY + 120;
+            var current = '';
+
+            sections.forEach(function(section) {
+                if (section.offsetTop <= scrollPos) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            sidebarLinks.forEach(function(link) {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateSidebar);
+        updateSidebar();
+
+        // Smooth scroll for sidebar links
+        sidebarLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.pushState(null, null, this.getAttribute('href'));
+                }
+            });
+        });
+    })();
+    </script>
+</body>
+</html>
