@@ -468,13 +468,12 @@
     "label": "Cas 42 : Détaxe (touristes non-UE)"
   },
   "A": {
-    "badge": "⚙️ Cas A / Rejet + Réémission",
-    "title": "Facture Rejetée (pack ZIP)",
-    "desc1": "<strong>Scénario :</strong> La facture contient une erreur métier. Elle est rejetée. Le vendeur doit émettre une nouvelle facture corrigée. Ce cas génère un pack complet de test.",
-    "desc2": "<strong>Action générée :</strong> Ce cas de test génère un ZIP contenant : fichiers Master Data (Headers + Items) + Facture d'origine en erreur + Avoir d'annulation (Credit Note).",
-    "info": "Génère un ZIP : Master Data CSV + Facture 380 + Avoir 381. Scénario complet d'annulation.",
-    "target": "esker",
-    "label": "Cas A : Rejet et nouvelle émission (ZIP)"
+    "badge": "⚠️ Cas A / Erreur volontaire",
+    "title": "Type de document invalide (Code 999)",
+    "desc1": "<strong>Scénario :</strong> Cette facture contient une <strong>erreur volontaire</strong> : le InvoiceTypeCode est 999 au lieu d'un code valide (380, 381, 386, 393). L'objectif est de tester la capacité de la plateforme à détecter cette erreur, la signaler clairement et permettre de la corriger.",
+    "desc2": "<strong>Comportement attendu :</strong> La plateforme doit bloquer l'import, afficher une erreur modifiable sur le champ InvoiceTypeCode, et permettre au valideur de corriger le code (ex : 999 → 380) sans avoir à réémettre la facture.",
+    "info": "InvoiceTypeCode = 999 (INVALIDE). Seuls 380, 381, 383, 384, 386, 389, 393 sont acceptés. Test de robustesse de la plateforme.",
+    "label": "Cas A : Erreur volontaire — Type Doc invalide (999)"
   },
   "B": {
     "badge": "⚙️ Cas B / Avoir commercial",

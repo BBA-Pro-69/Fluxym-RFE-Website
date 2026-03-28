@@ -73,7 +73,7 @@ const UBLGenerator = {
         "41": { typeCode: "380", profile: "S1", zip: false },
         "42": { typeCode: "380", profile: "S1", zip: false },
         // --- PACKS ZIP (inchangés) ---
-        "A": { typeCode: "380", profile: "B1", zip: true },
+        "A": { typeCode: "999", profile: "S1", zip: false },
         "B": { typeCode: "380", profile: "B1", zip: true, creditNote: true }
     },
 
@@ -228,8 +228,13 @@ const UBLGenerator = {
                     lines: [{ id: "1", qty: "1.00", amount: "500.00", desc: "Debours (avance pour le compte du client, hors champ TVA)", price: "500.00" }]
                 };
 
-            // --- PACKS ZIP (existants) ---
+            // --- CAS A : ERREUR VOLONTAIRE (TypeCode 999) ---
             case "A":
+                xml += UBLTemplates.getTaxTotal("1000.00", "200.00");
+                xml += UBLTemplates.getLegalMonetaryTotal("1000.00", "1000.00", "1200.00", "0.00", "1200.00");
+                xml += UBLTemplates.getInvoiceLine("1", "1.00", "1000.00", "Prestation standard (Facture en erreur volontaire)", "1000.00");
+                break;
+            // --- PACK ZIP (Case B uniquement) ---
             case "B":
                 return null; // Géré dans la section ZIP
 

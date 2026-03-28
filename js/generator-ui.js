@@ -17,7 +17,8 @@ const GeneratorUI = {
         { key: "mandat", label: "📝 Mandat & Auto-fact.", cases: ["19a", "19b", "23"] },
         { key: "acompte", label: "💰 Acompte & Escompte", cases: ["20", "21", "22a", "22b"] },
         { key: "special", label: "⭐ Cas spécifiques", cases: ["18", "24", "25", "26", "27", "28", "29", "30", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42"] },
-        { key: "packs", label: "📦 Packs de test (ZIP)", cases: ["A", "B"] }
+        { key: "tests", label: "⚠️ Tests de robustesse", cases: ["A"] },
+        { key: "packs", label: "📦 Packs de test (ZIP)", cases: ["B"] }
     ],
 
     populateSelects: function() {
